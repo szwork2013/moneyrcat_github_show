@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background" >
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/adListView"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:divider="#cdcdcd"
+        android:dividerHeight="0.5dp"
+        android:scrollbars="none" >
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+    <Button
+        android:id="@+id/error_hit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/progress"
+        android:layout_centerHorizontal="true"
+        android:background="#00000000"
+        android:drawableTop="@drawable/ic_launcher"
+        android:onClick="onClick"
+        android:text="加载失败!点击重新加载!"
+        android:textColor="@color/textcontent"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingBottom="10dp"
+    android:layout_height="match_parent"
+    android:background="@color/background" >
+
+    <TextView
+        android:id="@+id/transTypeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="广告点击"
+        android:textColor="@color/texttitle"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/transBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/transTypeTitle"
+        android:layout_below="@+id/transTypeTitle"
+        android:layout_marginTop="5dp"
+        android:text="余额:11.0元"
+        android:textColor="@color/textcontent"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/transDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/transTypeTitle"
+        android:textSize="12sp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/texttitle"
+        android:text="2014-19-22" />
+
+    <TextView
+        android:id="@+id/transCurrentBalance"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/transDate"
+        android:layout_below="@+id/transDate"
+        android:text="+10.00"
+        android:textColor="#0099AA"
+        android:textSize="14sp" />
+
+</RelativeLayout>

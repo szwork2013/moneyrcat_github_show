@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/back_header" />
+
+    <include layout="@layout/wodeyue" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/adIconBg"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/adIconBg"
+            android:text="奔驰汽车"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView1"
+            android:layout_below="@+id/textView1"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="4dp"
+            android:text="秉承&quot;唯有最好&quot;的品牌理念,秉承&quot;唯有最好&quot;的品牌理念"
+            android:textColor="#A0A0A0"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:id="@+id/adIconBg"
+            android:layout_width="71dp"
+            android:layout_height="71dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:background="@color/textcontent" >
+
+            <ImageView
+                android:id="@+id/adIcon"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bmtestbg" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:textColor="@color/textcontent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="推荐点击50次\t\t\t 获得5元" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="信息收集50次\t\t\t 获得50元"
+        android:textColor="@color/textcontent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="线下试驾60次\t\t\t 获得500元"
+        android:textColor="@color/textcontent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="实际购车10人\t\t\t 获得500000元"
+        android:textColor="@color/textcontent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="合计收入\t\t\t\t\t\t 502034元"
+        android:textColor="@color/textcontent" />
+
+    <Button
+        android:onClick="onClick"
+        android:id="@+id/goonshare"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/commit_bt_selector"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:textColor="@color/textcontent"
+        android:text="继续分享给好友" />
+
+</LinearLayout>

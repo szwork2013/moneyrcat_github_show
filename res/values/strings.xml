@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">招财喵</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="neterror">网络错误</string>
+    <string name="commitsuccess">提交成功</string>
+    <string name="signtoast">签到成功获得0.1元</string>
+    <string name="errortoast">操作失败</string>
+    <string name="wait">操作中请等待</string>
+    <string name="hit">提示</string>
+    <string name="home">首页</string>
+    <string name="recommend">推荐</string>
+    <string name="tasktitle">任务广场</string>
+    <string name="my">我的</string>
+    <string name="more">更多</string>
+    <string name="gl_wait">请稍等</string>
+    <string name="guanggaoxiangqing">广告详情</string>
+    <string name="chaozhiduihuan">超值兑换</string>
+    <string name="duihuanchenggong">兑换成功</string>
+    <string name="shouzhimingxi">收支明细</string>
+    <string name="copylikestr">成功复制到剪切板</string>
+    <string name="guanggaoshenling">广告申领</string>
+    <string name="woyaotixian">我要提现</string>
+    <string name="myad">我的广告</string>
+    <string name="updatestartstr">招财喵更新启动</string>
+    <string name="cancle">取消</string>
+    <string name="sure">确定</string>
+    <string name="errcode_success">发送成功</string>
+	<string name="errcode_cancel">发送取消</string>
+	<string name="errcode_deny">发送被拒绝</string>
+	<string name="errcode_unknown">发送返回</string>
+	<string name="tasks">任务</string>
+	<string name="dialog_default_message">确定要执行此操作吗?</string>
+	<string name="update_button_text">更新</string>
+	<string name="update_title">更新提示</string>
+	<string name="bindteltext">绑定手机</string>
+	<string name="safe_info_text">安全信息</string>
+	<string name="sendcode">发送验证码</string>
+	<string name="bindtext">绑定</string>
+	<string name="yanzheng_hit_text">提示:请确认绑定的手机号码能够正常接收短信,兑换、提现时均需要通过手机短信验证。</string>
+	<string name="more_update_text">当前已经是最新版本</string>
+	<string name="recommend_title">推荐给朋友</string>
+	<string name="tixian">提现</string>
+	<string name="picture_nofound">图片没找到</string>
+	<string name="myqrcodestr">我的二维码</string>
+	<string name="NET_ERROR">请检查网络是否连接正常</string>
+<string-array name="sexitem">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+        <string name="http_www_emperises_com_">http://www.emperises.com/</string>
+        <string name="share_title">招财喵,真正可以赚钱的APP</string>
+        <string name="share_content">你的好友分享了一个招财喵给你!招财喵，真正可以赚钱的APP!</string>
+        <string name="m_gold">喵币</string>
+        <string name="loading">获取中...</string>
+        <string name="ad_hteml5_title">广告详细</string>
+        <string name="_get_fail">获取失败</string>
+        <string name="about">关于我们</string>
+</resources>

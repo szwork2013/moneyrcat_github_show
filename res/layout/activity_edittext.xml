@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/back_header" />
+
+    <EditText
+            android:background="@color/background"
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:gravity="top"
+        android:paddingLeft="10dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:inputType="textPersonName"
+        android:text="流金岁月"
+        android:textColor="@color/textcontent" >
+        <requestFocus />
+    </EditText>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <Button
+            android:id="@+id/edit_cancel"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+			android:onClick="onClick"            
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/texttitle"
+            android:background="@drawable/commit_bt_normal"
+            android:text="@string/cancle" />
+
+        <Button
+            android:onClick="onClick"
+            android:id="@+id/edit_sure"
+            android:layout_width="70dp"
+            android:focusable="false"
+            android:layout_height="30dp"
+			android:textColor="@color/texttitle"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="28dp"
+            android:layout_toLeftOf="@+id/edit_cancel"
+            android:background="@drawable/commit_bt_normal"
+            android:text="@string/sure" />
+    </RelativeLayout>
+
+</LinearLayout>

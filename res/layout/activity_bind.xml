@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background" >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/back_header" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号:"
+            android:textColor="@color/texttitle"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/bindEditTel"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/commit_bt_normal"
+            android:text="13298765445"
+            android:textColor="@color/textcontent"
+            android:textSize="13sp" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linearLayout2"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_marginTop="27dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="验证码:"
+            android:textColor="@color/texttitle"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/commit_bt_normal"
+            android:text="3841"
+            android:gravity="center"
+            android:textColor="@color/textcontent"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/bindCheckCodeButton"
+            android:layout_width="110dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/commit_bt_selector"
+            android:text="@string/sendcode" 
+            android:textColor="@color/texttitle"
+            android:onClick="onClick"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:textSize="12sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/textcontent"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginTop="30dp"
+        android:text="@string/yanzheng_hit_text" /> 
+
+    <Button
+        android:id="@+id/bind_button"
+        android:layout_width="fill_parent"
+        android:background="@drawable/commit_bt_selector"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/texttitle"
+        android:layout_marginRight="20dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/textView1"
+        android:onClick="onClick"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/bindtext" />
+
+</RelativeLayout>

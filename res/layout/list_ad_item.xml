@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/white_selector" >
+
+    <RelativeLayout
+        android:id="@+id/aditem_content"
+        android:layout_width="fill_parent"
+        android:layout_height="95dp"
+        android:background="#00000000" >
+
+        <RelativeLayout
+            android:id="@+id/adIconBg"
+            android:layout_width="61dp"
+            android:layout_height="61dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:background="#ffffff" >
+
+            <ImageView
+                android:id="@+id/adIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                 />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="81dp"
+            android:layout_alignTop="@+id/adIconBg"
+            android:layout_toRightOf="@+id/adIconBg"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+             >
+
+            <TextView
+                android:id="@+id/adTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="荣耀之上传 奇不止"
+                android:textColor="@color/texttitle"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/adDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/adTitle"
+                android:ellipsize="end"
+                android:layout_marginTop="5dp"
+                android:text="全新BMW M3和全新BMW M4双门跑车即将上市"
+                android:maxLines="3"
+                android:textColor="@color/textcontent"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:id="@+id/ImageView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="2dp"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/adBalanceIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/rmbicon_1" />
+
+                <TextView
+                    android:id="@+id/adBalanceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:text="总金额:500000.0元"
+                    android:textColor="#777777"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:id="@+id/adRecommendIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/rmbicon_2" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/adRecommendText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:text="推荐:5元/次"
+                    android:textColor="#777777"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background" >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/back_header" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:textSize="19sp"
+        android:gravity="center"
+        android:textColor="@color/texttitle"
+        android:text="已绑定手机号:13298765445" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="fill_parent"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/textcontent"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="30dp"
+        android:text="提示:请确认绑定的手机号码能够正常接收短信,兑换、提现时均需要通过手机短信验证" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/bind_done_button"
+            android:layout_marginLeft="20dp"
+            android:layout_width="0dp"
+            android:onClick="onClick"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/commit_bt_selector"
+            android:text="完成"
+            android:textColor="@color/texttitle"
+            android:textSize="13sp" />
+        
+        <Button
+            android:onClick="onClick"
+            android:id="@+id/bind_jump_safe_button"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/commit_bt_selector"
+            android:text="完善安全信息"
+            android:textColor="@color/texttitle"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true" >
+
+    <View
+        android:id="@+id/topLine"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#cdcdcd" />
+
+    <LinearLayout
+        android:id="@+id/bottomlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/topLine"
+        android:background="#ecebeb"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/tab_index"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#ecebeb"
+            android:drawableTop="@drawable/bottom_home_selected"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="@string/home"
+            android:textColor="#777777"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/tab_recommend"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#ecebeb"
+            android:drawableTop="@drawable/bottom_recommed_normal"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="@string/recommend"
+            android:textColor="#777777"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/tab_my"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#ecebeb"
+            android:drawableTop="@drawable/bottom_my_normal"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="@string/my"
+            android:textColor="#777777"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/tab_more"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#ecebeb"
+            android:drawableTop="@drawable/bottom_more_normal"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="@string/more"
+            android:textColor="#777777"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/dialog_bg"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="兑换"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/texttitle" />
+
+            <Button
+                android:id="@+id/closeButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:onClick="onClick"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/x"
+                />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/line" />
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:id="@+id/editText1"
+                android:layout_width="fill_parent"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/textView2"
+                android:textColor="@color/texttitle"
+                android:text="576222211222331122"
+                 />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="卡号"
+                android:textColor="@color/texttitle" />
+        </RelativeLayout>
+        
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:id="@+id/editText33"
+                android:layout_width="fill_parent"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/textView4"
+                android:textColor="@color/texttitle"
+                android:text="A828D828377DD"
+                 />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="密码"
+                android:textColor="@color/texttitle" />
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/sure_bt"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="onClick"
+            android:textColor="@color/texttitle"
+            android:background="@drawable/commit_bt_selector"
+            android:text="确定" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="*您将兑换电信50元充值卡"
+            android:textColor="@color/textcontent" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dp" />
+    </LinearLayout>
+
+</RelativeLayout>

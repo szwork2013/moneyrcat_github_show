@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/header"
+    android:layout_height="50dp"
+    android:background="#ad1f24"
+    >
+
+        <TextView
+            android:id="@+id/titleText"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="#ffffff"
+            android:text="首页" />
+
+        <Button
+            android:id="@+id/rightItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/header_right_item"
+             />
+
+        <Button
+            android:id="@+id/leftItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/rightItem"
+            android:layout_alignBottom="@+id/rightItem"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/header_left_item" />
+
+</RelativeLayout>

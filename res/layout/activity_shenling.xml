@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/back_header" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/adIcon"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/adIcon"
+            android:text="奔驰汽车"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView1"
+            android:layout_below="@+id/textView1"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="4dp"
+            android:text="秉承&quot;唯有最好&quot;的品牌理念,秉承&quot;唯有最好&quot;的品牌理念"
+            android:textColor="#A0A0A0"
+            android:textSize="12sp" />
+
+        <com.emperises.monercat.customview.CircleImageView
+            android:id="@+id/adIcon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:background="@drawable/testbenchi" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/line" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="16dp"
+            android:text="分享至"
+            android:textColor="@color/texttitle" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/textView3"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/shenling_pengyouquan"
+                android:layout_width="40dp"
+                android:onClick="onClick"
+                android:layout_height="40dp"
+                android:background="@drawable/pengyouquan" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/weixinhaoyou" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/sina" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/linearLayout2"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_marginTop="10dp"
+            android:text="每次有效点击广告,您将获得0.2元\n您的等级是Lv1，每条广告最多获取5元"
+            android:textColor="@color/textcontent"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/recommend_bt"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/textView4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/commit_bt_selector"
+            android:onClick="onClick"
+            android:text="推荐好有参加" />
+    </RelativeLayout>
+
+</LinearLayout>

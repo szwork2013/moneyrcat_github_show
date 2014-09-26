@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/background"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <include layout="@layout/back_header"/>
+
+    <TextView
+        android:background="#f0f0f0" 
+        android:layout_width="fill_parent"
+        android:gravity="center|left"
+        android:paddingLeft="10dp"
+        android:textColor="@color/texttitle"
+        android:layout_height="30dp"
+        android:textSize="13sp"
+        android:text="进行中的广告"
+        />
+    <include layout="@layout/list_ad_item"/>
+    <View android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line"/>
+    <include layout="@layout/list_ad_item"/>
+    <TextView
+        android:background="#f0f0f0" 
+        android:layout_width="fill_parent"
+        android:gravity="center|left"
+        android:paddingLeft="10dp"
+        android:textColor="@color/texttitle"
+        android:layout_height="30dp"
+        android:textSize="13sp"
+        android:text="进行中的任务"
+        />
+    <include layout="@layout/list_task_item"/>
+    <View android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line"/>
+    <include layout="@layout/list_task_item"/>
+    <View android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line"/>
+</LinearLayout>

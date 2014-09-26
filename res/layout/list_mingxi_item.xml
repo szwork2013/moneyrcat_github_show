@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:text="06.22"
+        android:layout_marginTop="7dp"
+        android:textColor="@color/texttitle"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_marginTop="14dp"
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:src="@drawable/circle_selected" />
+
+    <View
+        android:layout_marginLeft="3dp"
+        android:layout_width="1dp"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_below="@+id/imageView1"
+        android:visibility="invisible"
+        android:background="@color/line" />
+
+	<LinearLayout
+	    android:layout_marginTop="10dp"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:layout_alignParentTop="true"
+	    android:layout_toRightOf="@+id/imageView1"
+	    android:orientation="vertical" >
+
+	    <TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dp"
+	        android:text="奔驰广告申领"
+	        android:textColor="@color/textcontent"
+	        android:textSize="12sp" />
+
+	    <TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginTop="5dp"
+	        android:text="兑换电信充值卡"
+	        android:textColor="@color/textcontent"
+	        android:textSize="12sp" />
+
+	    <TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginTop="5dp"
+	        android:text="奔驰汽车推荐点击获得0.2元"
+	        android:textColor="@color/textcontent"
+	        android:textSize="12sp" />
+
+	    <View
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dp"
+	        android:layout_marginRight="15dp"
+	        android:layout_marginTop="5dp"
+	        android:background="@color/line" />
+	</LinearLayout>
+
+</RelativeLayout>

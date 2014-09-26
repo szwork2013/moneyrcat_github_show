@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/header" />
+
+    <com.emperises.monercat.customview.MainViewPager
+        android:id="@+id/homePager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/tabLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/include1" >
+    </com.emperises.monercat.customview.MainViewPager>
+
+    <include
+        android:id="@+id/tabLayout"
+        layout="@layout/bottom" />
+
+</RelativeLayout>

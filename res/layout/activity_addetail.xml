@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background" >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/back_header" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/include1"
+        android:background="@drawable/adtestbig" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/adtestlogo" />
+
+    <RelativeLayout
+        android:id="@+id/ImageView01"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@+id/imageView2"
+        android:background="#ebebeb" >
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/rmbicon_1" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@+id/imageView3"
+            android:text="点击:0.2元/次"
+            android:textColor="#777777"
+            android:textSize="10sp" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="45dp"
+            android:layout_toRightOf="@+id/textView1"
+            android:src="@drawable/rmbicon_2" />
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView1"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@+id/imageView4"
+            android:text="推荐:5元/次"
+            android:textColor="#777777"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/woyaocanjia_button"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/imageView2"
+        android:layout_below="@+id/imageView2"
+        android:onClick="onClick"
+        android:layout_marginTop="60dp"
+        android:text="我要参加"
+        android:textColor="#ffffff"
+        android:background="@drawable/black_button" />
+
+    <Button
+        android:id="@+id/shenling_but"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:text="申领"
+        android:gravity="center"
+        android:layout_alignBaseline="@+id/woyaocanjia_button"
+        android:layout_alignBottom="@+id/woyaocanjia_button"
+        android:layout_alignRight="@+id/ImageView01"
+        android:background="@drawable/commit_bt_selector" />
+
+
+</RelativeLayout>
