@@ -21,6 +21,7 @@ import com.emperises.monercat.interfacesandevents.NativeJavaScriptImpl;
 import com.emperises.monercat.ui.RecommendDialogActivity;
 import com.emperises.monercat.ui.WYCJDialogActivity;
 import com.emperises.monercat.utils.Logger;
+import com.emperises.monercat.utils.Util;
 
 @SuppressLint({ "NewApi", "SetJavaScriptEnabled" })
 public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
@@ -42,7 +43,8 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 		String url = info.getAdUrl();
 		StringBuilder sb = new StringBuilder(url);
 		sb.delete(sb.lastIndexOf("/")+1, sb.length());
-		sb.append("index.html");
+		sb.append("index.html?"); 
+		sb.append("p1="+Util.getDeviceId(this)+"&p2="+info.getAdId());
 		setShareUrl(sb.toString());
 		setShareTitle(info.getAdTitle());
 		setShareContent(info.getAdContent());		
@@ -64,7 +66,7 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 		webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
 		webview.setHorizontalScrollBarEnabled(false);
 		webview.setVerticalScrollBarEnabled(false);
-		webview.addJavascriptInterface(new NativeJavaScriptImpl(this,mAdWebView), "zcmJavaCallBack");
+		webview.addJavascriptInterface(new NativeJavaScriptImpl(this,mAdWebView,info.getAdId()), "zcmJavaCallBack");
 	}
 
 	@Override
@@ -86,6 +88,8 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 		mAdWebView.setWebChromeClient(new WebChromeClient() {
 			@Override
 			public void onProgressChanged(WebView view, int newProgress) {
+				Logger.i("PROGRESS", newProgress+"");
+				mProgressBar.setVisibility(View.VISIBLE);
 				mProgressBar.setProgress(newProgress);
 				if(newProgress == 100){
 					mProgressBar.setVisibility(View.GONE);

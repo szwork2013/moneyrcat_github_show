@@ -12,8 +12,10 @@ public class NativeJavaScriptImpl implements NativeJavaScriptCallBackInterface{
 
 	private BaseActivity context;
 	private WebView mWebView;
-	public NativeJavaScriptImpl(BaseActivity context , WebView mWebView) {
+	private String adId;
+	public NativeJavaScriptImpl(BaseActivity context , WebView mWebView , String adId) {
 		this.context = context;
+		this.adId = adId;
 		this.mWebView = mWebView;
 	}
 	@Override
@@ -36,7 +38,12 @@ public class NativeJavaScriptImpl implements NativeJavaScriptCallBackInterface{
 	}
 
 	@Override
-	public void refresh() {
-		mWebView.reload();
+	public void JsRefresh() {
+		mWebView.loadUrl(mWebView.getUrl());
+	}
+	@Override
+	public String JsGetAdId() {
+		
+		return adId;
 	}
 }

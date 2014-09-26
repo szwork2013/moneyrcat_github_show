@@ -37,7 +37,7 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter implements LocalCon
     private boolean       isInfiniteLoop;
     List<ZcmAdertising> mLoopAdInfos;
     public ImagePagerAdapter(Context context, List<ZcmAdertising> mLoopAdInfos) {
-    	mLoadingBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
+    	mLoadingBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.loading_icon);
     	this.mLoopAdInfos = mLoopAdInfos;
     	mFinalBitmap = FinalBitmap.create(context);
         this.context = context;
