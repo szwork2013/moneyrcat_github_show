@@ -412,6 +412,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 			
 			break;
 		case R.id.error_hit:
+			mErrorHit.setVisibility(View.GONE);
 			initAdList();
 			initViewPager();
 			break;

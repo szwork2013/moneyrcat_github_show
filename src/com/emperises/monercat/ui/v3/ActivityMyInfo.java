@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.database.Cursor;
@@ -26,7 +26,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.customview.headerimage.CropImageActivity;
@@ -35,6 +34,7 @@ import com.emperises.monercat.interfacesandevents.HeaderImageEvent;
 import com.emperises.monercat.ui.BindActivity;
 import com.emperises.monercat.ui.MingXiActivity;
 
+@SuppressLint("NewApi")
 public class ActivityMyInfo extends OtherBaseActivity {
 	private static final int FLAG_CHOOSE_IMG = 5;
 	private static final int FLAG_CHOOSE_PHONE = 6;
@@ -210,7 +210,10 @@ public class ActivityMyInfo extends OtherBaseActivity {
 			startActivity(new Intent(this , ActivityEditMyinfo.class));
 			break;
 		case R.id.myinfo_tel:
-			startActivity(new Intent(this , BindActivity.class));
+			String tel = mTel.getText().toString();
+			if(!tel.isEmpty() && tel.contains("未绑定")){
+				startActivity(new Intent(this , BindActivity.class));
+			}
 			break;
 		default:
 			break;

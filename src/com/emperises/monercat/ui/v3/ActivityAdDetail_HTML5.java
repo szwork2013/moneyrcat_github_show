@@ -12,6 +12,7 @@ import android.webkit.WebSettings.RenderPriority;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
@@ -21,7 +22,7 @@ import com.emperises.monercat.ui.RecommendDialogActivity;
 import com.emperises.monercat.ui.WYCJDialogActivity;
 import com.emperises.monercat.utils.Logger;
 
-@SuppressLint("NewApi")
+@SuppressLint({ "NewApi", "SetJavaScriptEnabled" })
 public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 
 	private WebView mAdWebView;
@@ -30,7 +31,7 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_about);
+		setContentView(R.layout.activity_ad_detail_v3_html5);
 		setCurrentTitle(getString(R.string.loading));
 
 	}
@@ -50,31 +51,26 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 	private void initWebSetting(WebView webview) {
 		WebSettings webSettings = webview.getSettings();
 		webSettings.setAllowContentAccess(true);
-		webSettings.setAppCacheMaxSize(10 * 1024 * 1024);
 		webSettings.setAllowFileAccess(true);
-		webSettings.setAppCacheEnabled(true);
-		webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
 		webSettings.setDomStorageEnabled(true);
 		webSettings.setDatabaseEnabled(true);
-
-		webSettings.setBuiltInZoomControls(true);
-		webSettings.setSupportZoom(true);
 		webSettings.setUseWideViewPort(true);
-
 		webSettings.setJavaScriptEnabled(true);
 		webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
 		webSettings.setRenderPriority(RenderPriority.HIGH);
 		webSettings.setDefaultTextEncodingName("utf-8");
 		webSettings.setLoadWithOverviewMode(true);
 		webSettings.setGeolocationEnabled(true);
+		webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
 		webview.setHorizontalScrollBarEnabled(false);
 		webview.setVerticalScrollBarEnabled(false);
-		webview.addJavascriptInterface(new NativeJavaScriptImpl(this), "zcmJavaCallBack");
+		webview.addJavascriptInterface(new NativeJavaScriptImpl(this,mAdWebView), "zcmJavaCallBack");
 	}
 
 	@Override
 	protected void initViews() {
 		super.initViews();
+		mProgressBar = (ProgressBar) findViewById(R.id.progressbar);
 		mShareButton = (ImageView) findViewById(R.id.ad_share);
 		mShareButton.setVisibility(View.VISIBLE);
 		mAdWebView = (WebView) findViewById(R.id.adwebView);
@@ -90,7 +86,9 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 		mAdWebView.setWebChromeClient(new WebChromeClient() {
 			@Override
 			public void onProgressChanged(WebView view, int newProgress) {
+				mProgressBar.setProgress(newProgress);
 				if(newProgress == 100){
+					mProgressBar.setVisibility(View.GONE);
 					setCurrentTitle(getString(R.string.ad_hteml5_title));
 					//获取新的余额信息
 					updateBalance();
@@ -149,6 +147,7 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 	private ValueCallback<Uri> mUploadMessage;
 	private final static int FILECHOOSER_RESULTCODE = 1;
 	private ZcmAdertising info;
+	private ProgressBar mProgressBar;
 
 	@Override
 	public void onClick(View v) {

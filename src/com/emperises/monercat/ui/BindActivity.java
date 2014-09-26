@@ -93,9 +93,10 @@ public class BindActivity extends OtherBaseActivity {
 		String currentCode = mCodeEdit.getText().toString();
 		if(!TextUtils.isEmpty(currentCode) && currentCode.equals(code)){
 			//如果验证成功
+			final String tel = mTelEditText.getText().toString();
 			AjaxParams params = new AjaxParams();
 			params.put("udevicesId", Util.getDeviceId(this));
-			params.put("utelephone", mTelEditText.getText().toString());
+			params.put("utelephone", tel);
 			params.put("smsCode", currentCode);
 			getHttpClient().post(SERVER_URL_BINDPHONE, params,new AjaxCallBack<String>() {
 				@Override
@@ -107,7 +108,9 @@ public class BindActivity extends OtherBaseActivity {
 					DomainObject d = new Gson().fromJson(t, DomainObject.class);
 					if(d != null && d.getResultCode().equals(HTTP_RESULE_SUCCESS)){
 						showToast(d.getResultMsg());
-						startActivity(new Intent(BindActivity.this, BindActivity_1.class));
+						Intent i = new Intent(BindActivity.this, BindActivity_1.class);
+						i.putExtra(INTENT_KEY_TEL, tel);
+						startActivity(i);
 					}
 					super.onSuccess(t);
 				} 

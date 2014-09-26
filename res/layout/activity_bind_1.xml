@@ -9,7 +9,7 @@
         layout="@layout/back_header" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/telBindMsg"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/include1"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:textColor="@color/textcontent"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/telBindMsg"
         android:layout_marginTop="30dp"
         android:text="提示:请确认绑定的手机号码能够正常接收短信,兑换、提现时均需要通过手机短信验证" />
 
