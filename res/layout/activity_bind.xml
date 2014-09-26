@@ -31,10 +31,11 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/commit_bt_normal"
-            android:text="13298765445"
+            android:inputType="number"
+            android:maxLength="11"
             android:textColor="@color/textcontent"
             android:textSize="13sp" >
-
+			
             <requestFocus />
         </EditText>
     </LinearLayout>
@@ -56,11 +57,13 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/code_text"
             android:layout_width="80dp"
             android:layout_height="30dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/commit_bt_normal"
-            android:text="3841"
+            android:maxLength="5"
+            android:inputType="number"
             android:gravity="center"
             android:textColor="@color/textcontent"
             android:textSize="13sp" />

@@ -11,7 +11,6 @@ import android.os.Message;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
@@ -30,7 +29,6 @@ import com.emperises.monercat.adapter.ImagePagerAdapter;
 import com.emperises.monercat.domain.model.AdInfoV3;
 import com.emperises.monercat.domain.model.UserInfoV3;
 import com.emperises.monercat.domain.model.ZcmAdertising;
-import com.emperises.monercat.interfacesandevents.EditMyInfoEvent;
 import com.emperises.monercat.interfacesandevents.HeaderImageEvent;
 import com.emperises.monercat.ui.v3.ActivityAdDetail_HTML5;
 import com.emperises.monercat.utils.Logger;
@@ -246,6 +244,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 			Logger.i("INFOS", infos.toString());
 			mAdListAdapter = new MyAdAdapter(mAdInfos);
 			mPullListView.setAdapter(mAdListAdapter);
+			Logger.i("ADAPTER", "设置适配器");
 		}
 		mPullListView.onRefreshComplete();
 		mProgressBar.setVisibility(View.GONE);
@@ -337,6 +336,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 				holder.adBalanceText.setText("总额:" + info.getAdAward()
 						+ getString(R.string.m_gold));
 			}
+			Logger.i("VIEW", "getView");
 			return view;
 		}
 
