@@ -201,7 +201,7 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 		@Override
 		public int getCount() {
 			Logger.i("SIZECAO", "tasks:" + mAdTaskInfos.size());
-			return mAdTaskInfos.size();
+			return mAdTaskInfos.size() + 1;
 		}
 
 		@Override
@@ -250,10 +250,8 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 					view.setTag(holder);
 				}
 			}
-			if (type == 1) {
-				ZcmAdertising zcm = mAdTaskInfos.get(position);
-				Logger.i("view", "getView :" + zcm.getAdTitle());
-				Logger.i("POSITION", "listview current position = " + position);
+			if (type == ITEM_TYPE_DEFAULT) {
+				ZcmAdertising zcm = mAdTaskInfos.get(position - 1);
 				holder.taskTitle.setText(zcm.getAdTitle());
 				getFinalBitmap().display(holder.taskIcon, zcm.getAdIcon());
 			}

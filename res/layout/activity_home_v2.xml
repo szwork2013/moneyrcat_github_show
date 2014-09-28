@@ -31,8 +31,9 @@
         android:background="#00000000"
         android:drawableTop="@drawable/ic_launcher"
         android:onClick="onClick"
+        android:textColor="#C80019"
         android:visibility="gone"
         android:text="加载失败!点击重新加载!"
-        android:textColor="@color/textcontent" />
+         />
 
 </RelativeLayout>

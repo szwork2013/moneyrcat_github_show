@@ -69,7 +69,9 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	private SharedPreferences sp;
 
 	protected FinalBitmap getFinalBitmap() {
-		return FinalBitmap.create(this);
+		FinalBitmap f = FinalBitmap.create(this);
+		f.clearCache();
+		return f;
 	}
 	@Override
 	public void onHeaderImageChange(int resId) {
@@ -249,8 +251,6 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	protected void onCreate(Bundle savedInstanceState) {
 		setShareInfo();
 		super.onCreate(savedInstanceState);
-		// 社会化分享初始化
-		resetShareSdk();
 		if (mDatabase == null) {
 			mDatabase = new DatabaseImpl(this, null);// TODO:创建数据库
 			List<Class<?>> classs = new ArrayList<Class<?>>();
@@ -435,7 +435,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	}
 
 	protected void openShare() {
-
+		resetShareSdk();
 		mController.openShare(this, new SnsPostListener() {
 
 			@Override
@@ -586,7 +586,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		super.onDestroy();
 		HeaderImageEvent.getInstance().removeListener(this);
 		BalanceEvent.getInstance().removeListener(this);
-		EditMyInfoEvent.getInstance().removeListener(this);
+		EditMyInfoEvent.getInstance().removeListener(this); 
 	}
 
 	@Override

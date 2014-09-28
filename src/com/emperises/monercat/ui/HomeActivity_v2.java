@@ -86,8 +86,8 @@ public class HomeActivity_v2 extends BaseActivity implements
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
 				mAdPager.stopAutoScroll();
-				initAdList();
 				initViewPager();
+				initAdList();
 			}
 		});
 		mMXButton = (Button) homeHeaderItem.findViewById(R.id.mingxi_button);
@@ -241,7 +241,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 		if (infos != null && infos.getRows() != null
 				&& infos.getRows().size() > 0) {
 			mAdInfos = infos.getRows();
-			Logger.i("INFOS", infos.toString());
+			Logger.i("INFOS", mAdInfos.toString());
 			mAdListAdapter = new MyAdAdapter(mAdInfos);
 			mPullListView.setAdapter(mAdListAdapter);
 			Logger.i("ADAPTER", "设置适配器");
@@ -274,12 +274,12 @@ public class HomeActivity_v2 extends BaseActivity implements
 
 		@Override
 		public int getCount() {
-			return mAdInfos.size();
+			return mAdInfos.size() + 1;
 		}
 
 		@Override
 		public Object getItem(int position) {
-			return mAdInfos.get(position);
+			return mAdInfos.get(position - 1);
 		}
 
 		@Override
@@ -328,8 +328,10 @@ public class HomeActivity_v2 extends BaseActivity implements
 					view = homeHeaderItem;
 				}
 			}
-			if (getItemViewType(position) == 0) {
-				ZcmAdertising info = mAdInfos.get(position);
+			if (getItemViewType(position) == ITEM_VIEW_TYPE_DEFAULT) {
+				ZcmAdertising info = mAdInfos.get(position - 1);
+				Logger.i("ICON", info.getAdIcon());
+				
 				getFinalBitmap().display(holder.adIcon, info.getAdIcon());
 				holder.adTitle.setText(info.getAdTitle());
 				holder.adDescription.setText(info.getAdContent());
@@ -395,7 +397,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 			long id) {
 		Intent i = new Intent(this, ActivityAdDetail_HTML5.class);
 		ZcmAdertising itemInfo = (ZcmAdertising) mAdListAdapter
-				.getItem(position);
+				.getItem(position - 1);
 		i.putExtra(INTENT_KEY_ADINFO, itemInfo);
 		startActivityWithAnimation(i);
 
