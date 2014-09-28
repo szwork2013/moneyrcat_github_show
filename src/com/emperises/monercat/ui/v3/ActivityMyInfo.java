@@ -52,6 +52,7 @@ public class ActivityMyInfo extends OtherBaseActivity {
 	private TextView mCurrentBalance;
 	private TextView mGenderAgeAddr;
 	private TextView mTel;
+	private TextView mRecommendCode;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class ActivityMyInfo extends OtherBaseActivity {
 		mCurrentBalance = (TextView) findViewById(R.id.myinfo_balance);
 		mCurrentBalance.setText(queryLocalBalance()+getString(R.string.m_gold));
 		mGenderAgeAddr = (TextView) findViewById(R.id.myinfo_normalinfo);
+		mRecommendCode = (TextView) findViewById(R.id.myinfo_recommend_code);
 		mTel = (TextView) findViewById(R.id.myinfo_tel_text);
 		setMyInfo();
 	}
@@ -79,6 +81,7 @@ public class ActivityMyInfo extends OtherBaseActivity {
 			String gender = info.getUsex();
 			String age = info.getUage();
 			String addr = info.getUaddress();
+			mRecommendCode.setText(info.getUtgm());
 			mGenderAgeAddr.setText(gender+age+"岁 "+addr);
 			mInfoNicknameText.setText(info.getUname());
 			mTel.setText(info.getUtelephone());

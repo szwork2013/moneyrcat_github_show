@@ -43,7 +43,7 @@
 
         <TextView
             android:id="@+id/myinfo_normalinfo"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/myinfo_nickname"
             android:layout_below="@+id/myinfo_nickname"
@@ -177,18 +177,18 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="12dp"
-                    android:text="专属链接"
+                    android:text="推 荐 码"
                     android:textColor="@color/texttitle" />
 
                 <TextView
-                    android:id="@+id/myinfo_balance22"
+                    android:id="@+id/myinfo_recommend_code"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/textView322"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="27dp"
                     android:layout_marginRight="10dp"
                     android:layout_toRightOf="@+id/textView322"
-                    android:text="http://www.baidu.com/toast?id=1010"
+                    android:text="1223"
                     android:textColor="@color/textcontent" />
             </RelativeLayout>
 

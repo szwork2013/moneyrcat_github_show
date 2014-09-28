@@ -1,11 +1,11 @@
 package com.emperises.monercat.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.emperises.monercat.BaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmUser;
@@ -35,13 +35,17 @@ public class WoDeTabActivity extends BaseActivity {
 		setMyInfo();
 	}
 
+	@SuppressLint("NewApi")
 	private void setMyInfo() {
 		ZcmUser info = getMyInfoForDatabase();
 		if(info != null){
-			String gender = info.getUsex();
+			String gender = info.getUsex() + " ";
 			String age = info.getUage();
 			String addr = info.getUaddress();
-			genderAgeAddr.setText(gender+age+"岁 "+addr);
+			if(!age.isEmpty()){
+				age = age +"岁 ";
+			}
+			genderAgeAddr.setText(gender+age+addr);
 			mNicknameText.setText(info.getUname());
 			mTelText.setText(info.getUtelephone());
 		}
