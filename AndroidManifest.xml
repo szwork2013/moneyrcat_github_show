@@ -120,6 +120,11 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
+            android:name="com.emperises.monercat.ui.v3.UploadImageActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
             android:name="com.emperises.monercat.ui.WoDeAdDetailForList"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -239,11 +244,6 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
-        <activity
-            android:name="com.emperises.monercat.ui.HaoPinTestActivity"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
         <!-- push应用定义消息receiver声明 -->
         <receiver

@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     android:background="#F6F8F9"
      >
-
-    
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/adListView"
         android:layout_width="fill_parent"

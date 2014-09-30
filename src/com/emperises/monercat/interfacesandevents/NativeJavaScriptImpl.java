@@ -1,9 +1,11 @@
 package com.emperises.monercat.interfacesandevents;
 
+import android.content.Intent;
 import android.webkit.WebView;
 
 import com.emperises.monercat.BaseActivity;
 import com.emperises.monercat.domain.model.ZcmUser;
+import com.emperises.monercat.ui.v3.UploadImageActivity;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
@@ -46,4 +48,12 @@ public class NativeJavaScriptImpl implements NativeJavaScriptCallBackInterface{
 		
 		return adId;
 	}
+	@Override
+	public void JsUploadImage() {
+		//获取当前的广告ID
+		Intent i = new Intent(context,UploadImageActivity.class);
+		i.putExtra("adId", adId);
+		context.startActivity(i);
+	}
+	
 }

@@ -150,10 +150,10 @@ public class ZcmUser extends BaseObject{
 	}
 	
 	public String getUage() {
-		if(TextUtils.isEmpty(this.uage)){
+		if(TextUtils.isEmpty(this.uage) || "0".equals(this.uage)){
 			return "";
 		}
-		return this.uage;
+		return this.uage+"岁";
 	}
 	public void setUsex(String value) {
 		this.usex = value;

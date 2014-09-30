@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/include1"
-        android:background="@drawable/adtestbig" />
+         />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -24,7 +24,7 @@
         android:layout_below="@+id/imageView1"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/adtestlogo" />
+         />
 
     <RelativeLayout
         android:id="@+id/ImageView01"

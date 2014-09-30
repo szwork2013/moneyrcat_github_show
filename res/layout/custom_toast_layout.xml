@@ -9,7 +9,6 @@
     <ImageView
         android:layout_gravity="center_vertical"
         android:id="@+id/toast_icon"
-        android:background="@drawable/gold_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          />

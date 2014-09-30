@@ -35,21 +35,21 @@ public class TiXianActivity extends OtherBaseActivity {
 		switch (v.getId()) {
 		case R.id.tixian_rel_one:
 			if(currentBanlnce < 100){
-				showToast("您的余额还不够提现10元哦!赶快点击广告赚取瞄币吧!");
+				showToast("您的余额还不够提现10元哦!赶快点击广告赚取喵币吧!");
 				return;
 			}
 			i.putExtra(INTENT_KEY_TIXIAN_TYPE, "10");
 			break; 
 		case R.id.tixian_rel_two:
 			if(currentBanlnce < 500){
-				showToast("您的余额还不够提现50元哦!赶快点击广告赚取瞄币吧!");
+				showToast("您的余额还不够提现50元哦!赶快点击广告赚取喵币吧!");
 				return;
 			}
 			i.putExtra(INTENT_KEY_TIXIAN_TYPE, "50");
 			break;
 		case R.id.tixian_rel_three:
 			if(currentBanlnce < 1000){
-				showToast("您的余额还不够提现100元哦!赶快点击广告赚取瞄币吧!");
+				showToast("您的余额还不够提现100元哦!赶快点击广告赚取喵币吧!");
 				return;
 			}
 			i.putExtra(INTENT_KEY_TIXIAN_TYPE, "100");

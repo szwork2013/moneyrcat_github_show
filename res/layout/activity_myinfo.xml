@@ -221,7 +221,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="25dp"
                     android:layout_toRightOf="@+id/textView5"
-                    android:background="@drawable/testerweima" />
+                     />
             </RelativeLayout>
 
             <View

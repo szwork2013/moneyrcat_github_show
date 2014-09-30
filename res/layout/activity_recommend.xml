@@ -35,7 +35,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="22dp"
                 android:layout_toRightOf="@+id/textView1"
-                android:src="@drawable/testerweima" />
+                 />
         </RelativeLayout>
 
         <View
@@ -145,13 +145,13 @@
                     android:onClick="onClick"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/pengyouquan" />
+                     />
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="15dp"
-                    android:background="@drawable/weixinhaoyou" />
+                     />
 
                 <ImageView
                     android:layout_width="40dp"

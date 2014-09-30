@@ -31,6 +31,7 @@ public class SplashActivity extends OtherBaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Logger.i("INTENT", getIntent().toString());
 		setContentView(R.layout.activity_splash);
 		//检测是否是真机
 		String deviceId = Util.getDeviceId(this);

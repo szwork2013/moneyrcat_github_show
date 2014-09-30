@@ -206,7 +206,7 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 
 		@Override
 		public Object getItem(int position) {
-			return mAdTaskInfos.get(position);
+			return mAdTaskInfos.get(position - 1);
 		}
 
 		@Override
@@ -271,7 +271,7 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 			long arg3) {
 		Intent i = new Intent(this, ActivityAdDetail_HTML5.class);
 		ZcmAdertising itemInfo = (ZcmAdertising) mAdListAdapter
-				.getItem(position);
+				.getItem(position - 1);
 		i.putExtra(INTENT_KEY_ADINFO, itemInfo);
 		startActivityWithAnimation(i);
 	}

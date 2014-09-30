@@ -7,4 +7,5 @@ public interface NativeJavaScriptCallBackInterface {
 	String JsGetAdId();
 	void   JsUpdateBalance();//更新余额
 	void JsRefresh();
+	void JsUploadImage();
 }

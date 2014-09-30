@@ -82,7 +82,7 @@ public class ActivityMyInfo extends OtherBaseActivity {
 			String age = info.getUage();
 			String addr = info.getUaddress();
 			mRecommendCode.setText(info.getUtgm());
-			mGenderAgeAddr.setText(gender+age+"岁 "+addr);
+			mGenderAgeAddr.setText(gender+age+addr);
 			mInfoNicknameText.setText(info.getUname());
 			mTel.setText(info.getUtelephone());
 		}
@@ -128,7 +128,6 @@ public class ActivityMyInfo extends OtherBaseActivity {
 				final String path = data.getStringExtra("path");
 				Bitmap b = BitmapFactory.decodeFile(path);
 				mHeadImage.setImageBitmap(b);
-
 			}
 		}
 	}
