@@ -27,7 +27,7 @@ public class AboutActivity extends OtherBaseActivity {
 	protected void initViews() {
 		mAdWebView = (WebView) findViewById(R.id.adwebView);
 		initWebSetting(mAdWebView);
-		mAdWebView.loadUrl("http://www.emperises.com/");
+		mAdWebView.loadUrl("http://115.28.136.194:8086/zcm/ex/zcm/about.html");
 		mAdWebView.setWebChromeClient(new WebChromeClient(){
 			@Override
 			public void onProgressChanged(WebView view, int newProgress) {
