@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -41,13 +42,15 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 		info = (	ZcmAdertising) getIntent().getSerializableExtra(
 				INTENT_KEY_ADINFO);
 		String url = info.getAdUrl();
-		StringBuilder sb = new StringBuilder(url);
-		sb.delete(sb.lastIndexOf("/")+1, sb.length());
-		sb.append("index.html?"); 
-		sb.append("p1="+Util.getDeviceId(this)+"&p2="+info.getAdId());
-		setShareUrl(sb.toString());
-		setShareTitle(info.getAdTitle());
-		setShareContent(info.getAdContent());		
+		if(!TextUtils.isEmpty(url)){
+			StringBuilder sb = new StringBuilder(url);
+			sb.delete(sb.lastIndexOf("/")+1, sb.length());
+			sb.append("index.html?"); 
+			sb.append("p1="+Util.getDeviceId(this)+"&p2="+info.getAdId());
+			setShareUrl(sb.toString());
+			setShareTitle(info.getAdTitle());
+			setShareContent(info.getAdContent());		
+		}
 	};
 	@SuppressLint("JavascriptInterface")
 	private void initWebSetting(WebView webview) {

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -328,7 +329,11 @@ public class HomeActivity extends BaseActivity implements OnPageChangeListener,
 		ZcmAdertising itemInfo = (ZcmAdertising) mAdListAdapter
 				.getItem(position);
 		i.putExtra(INTENT_KEY_ADINFO, itemInfo);
-		startActivityWithAnimation(i);
+		String url = itemInfo.getAdUrl();
+		if(!TextUtils.isEmpty(itemInfo.getAdUrl()) || url.contains("null")){
+			Logger.i("URL", "AD URL:"+itemInfo.getAdUrl());
+			startActivityWithAnimation(i);
+		} 
 
 	}
 

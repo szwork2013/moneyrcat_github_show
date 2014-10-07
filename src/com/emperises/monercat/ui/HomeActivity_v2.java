@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -81,6 +82,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 		mPagerIndexLayout = (LinearLayout) homeHeaderItem
 				.findViewById(R.id.pageControlLayout);
 		mPullListView = (PullToRefreshListView) findViewById(R.id.adListView);
+		
 		mPullListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
 
 			@Override
@@ -399,7 +401,11 @@ public class HomeActivity_v2 extends BaseActivity implements
 		ZcmAdertising itemInfo = (ZcmAdertising) mAdListAdapter
 				.getItem(position - 1);
 		i.putExtra(INTENT_KEY_ADINFO, itemInfo);
-		startActivityWithAnimation(i);
+		String url = itemInfo.getAdUrl();
+		if(!TextUtils.isEmpty(url)){
+			Logger.i("URL", "AD URL:"+itemInfo.getAdUrl());
+			startActivityWithAnimation(i);
+		}
 
 	}
 

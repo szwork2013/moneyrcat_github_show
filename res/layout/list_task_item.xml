@@ -2,69 +2,73 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/wodeguanggao"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
+    android:background="@drawable/white_selector"
     android:orientation="vertical"
-    android:paddingBottom="10dp"
-    android:paddingTop="10dp"
-    android:background="@drawable/white_selector" >
+     >
 
-    <RelativeLayout 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
-        
-    
-    <ImageView
-        android:id="@+id/task_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="20dp"
-         />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line" />
 
-    <TextView
-        android:id="@+id/taskTitle"
+    <RelativeLayout
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="16dp"
-        android:layout_toRightOf="@+id/task_icon"
-        android:text="签到大转盘"
-        android:textColor="@color/texttitle"
-        android:textSize="18sp" />
+        android:layout_height="wrap_content" >
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/right_arrow" />
+        <ImageView
+            android:id="@+id/task_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="15dp"
-        android:layout_toLeftOf="@+id/imageView2"
-        android:text="未完成"
-        android:visibility="gone"
-        android:textColor="#AAff0a0a" />
+        <TextView
+            android:id="@+id/taskTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/task_icon"
+            android:text="签到大转盘"
+            android:textColor="@color/texttitle"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/textBalance"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/taskTitle"
-        android:layout_alignBottom="@+id/taskTitle"
-        android:layout_toRightOf="@+id/taskTitle"
-        android:text="0.1元"
-        android:textColor="@color/textcontent"
-        android:textSize="10sp" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/right_arrow" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@+id/imageView2"
+            android:text="未完成"
+            android:textColor="#AAff0a0a"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/taskTitle"
+            android:layout_alignBottom="@+id/taskTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/taskTitle"
+            android:text="0.1元"
+            android:textColor="@color/textcontent"
+            android:textSize="10sp"
+            android:visibility="gone" />
     </RelativeLayout>
+
 </LinearLayout>
