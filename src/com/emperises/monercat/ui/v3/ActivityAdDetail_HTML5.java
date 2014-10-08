@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmAdertising;
 import com.emperises.monercat.interfacesandevents.NativeJavaScriptImpl;
+import com.emperises.monercat.interfacesandevents.NativeJavaScriptImpl.ResCallBack;
 import com.emperises.monercat.ui.RecommendDialogActivity;
 import com.emperises.monercat.ui.WYCJDialogActivity;
 import com.emperises.monercat.utils.Logger;
@@ -30,7 +32,7 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 
 	private WebView mAdWebView;
 	private ImageView mShareButton;
-
+	private Handler mHandler = new Handler();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,7 +72,19 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 		webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
 		webview.setHorizontalScrollBarEnabled(false);
 		webview.setVerticalScrollBarEnabled(false);
-		webview.addJavascriptInterface(new NativeJavaScriptImpl(this,mAdWebView,info.getAdId()), "zcmJavaCallBack");
+		mNativeJavaScriptImpl = new NativeJavaScriptImpl(this,mAdWebView,info.getAdId());
+		mNativeJavaScriptImpl.setRefreshCallBack(new ResCallBack() {
+			@Override
+			public void onRefresh() {
+				mHandler.post(new Runnable() {
+					@Override
+					public void run() {
+						mAdWebView.loadUrl(mAdWebView.getUrl());
+					}
+				});
+			}
+		});
+		webview.addJavascriptInterface(mNativeJavaScriptImpl, "zcmJavaCallBack");
 	}
 
 	@Override
@@ -156,6 +170,7 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 	private final static int FILECHOOSER_RESULTCODE = 1;
 	private ZcmAdertising info;
 	private ProgressBar mProgressBar;
+	private NativeJavaScriptImpl mNativeJavaScriptImpl;
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

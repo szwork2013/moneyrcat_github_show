@@ -94,26 +94,20 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 
 	}
 
+	private int mCurrentGengerSelected = 0;
 	private void showGenderDialog() {
 		final String[] items = getResources().getStringArray(R.array.sexitem);
 		Builder dialog = new AlertDialog.Builder(this);
 		dialog.setTitle("请选择");
-		dialog.setNegativeButton("确定", new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				Logger.i("SELECTED", "current which = " + which);
-			}
-
-		});
-
-		dialog.setSingleChoiceItems(items, 0,
+		dialog.setSingleChoiceItems(items, mCurrentGengerSelected,
 				new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						Logger.i("SELECTED", "current which = " + which);
+						mCurrentGengerSelected = which;
 						mInfo.setUsex(items[which]);
 						mGenderText.setText(mInfo.getUsex());
+						dialog.dismiss();
 					}
 
 				});
