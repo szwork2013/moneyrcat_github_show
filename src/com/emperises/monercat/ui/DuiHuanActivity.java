@@ -41,6 +41,7 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 	}
 
 	private MyAdapter mProductAdapter;
+	private TextView mDefaultLable;
 	private void initProductData() {
 		AjaxParams params = new AjaxParams();
 		params.put("udevicesId", Util.getDeviceId(this));
@@ -55,16 +56,25 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 					mProductAdapter = new MyAdapter();
 					mDuiHuanListView.setAdapter(mProductAdapter);
 				}
+				setDefaultLableState();
 				super.onSuccess(t);
 			}
 			@Override
 			public void onFailure(Throwable t, int errorNo, String strMsg) {
 				super.onFailure(t, errorNo, strMsg);
 				setCurrentTitle(getString(R.string._get_fail));
+				setDefaultLableState();
 			}
 		});
 	}
 
+	private void setDefaultLableState() {
+		if(mProductInfos.size() > 0 ){
+			mDefaultLable.setVisibility(View.GONE);
+		} else {
+			mDefaultLable.setVisibility(View.VISIBLE);
+		}
+	}
 	@Override
 	protected void initViews() {
 		mDuiHuanListView = (ListView) findViewById(R.id.duihuanListView);
@@ -73,6 +83,7 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 		mMXButton = (Button) findViewById(R.id.mingxi_button);
 		mMXButton.setText("兑换记录");
 		mMXButton.setVisibility(View.GONE);
+		mDefaultLable = (TextView) findViewById(R.id.default_lable);
 	}
 
 	class MyAdapter extends BaseAdapter {

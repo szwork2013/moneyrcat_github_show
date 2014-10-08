@@ -121,17 +121,6 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 
 
 
-	// 提现
-	protected void tixian(float money) {
-		showToast("成功提现:" + money + getString(R.string.m_gold));
-		// 余额减少
-	}
-
-	// 兑换
-	protected void duihuan(float money) {
-		showToast("成功兑换电信充值卡");
-		// 余额减少
-	}
 
 	//获取余额并存储到本地数据库中
 		public void updateBalance() {

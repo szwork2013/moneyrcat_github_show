@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -156,6 +157,17 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 	private ZcmAdertising info;
 	private ProgressBar mProgressBar;
 
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode == KeyEvent.KEYCODE_BACK){
+			if(mAdWebView.getUrl().equals(info.getAdUrl())){
+				finish();
+			} else {
+				mAdWebView.loadUrl(info.getAdUrl());
+			}
+		}
+		return true;
+	}
 	@Override
 	public void onClick(View v) {
 		super.onClick(v);

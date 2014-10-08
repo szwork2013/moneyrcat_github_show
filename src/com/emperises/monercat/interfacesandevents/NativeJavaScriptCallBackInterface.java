@@ -8,4 +8,5 @@ public interface NativeJavaScriptCallBackInterface {
 	void   JsUpdateBalance();//更新余额
 	void JsRefresh();
 	void JsUploadImage();
+	void JsStartActivity(String className);
 }

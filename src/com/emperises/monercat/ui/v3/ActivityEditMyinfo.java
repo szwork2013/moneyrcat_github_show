@@ -46,7 +46,7 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 		mInfo = getDatabaseInterface().getMyInfo();
 		if (info != null) {
 			mAddressText.setText(info.getUaddress());
-			mAgeText.setText(info.getUage() + "岁");
+			mAgeText.setText(info.getUage());
 			mGenderText.setText(info.getUsex());
 			mNicknameText.setText(info.getUname());
 		}
@@ -68,7 +68,7 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 			break;
 		case R.id.editinfo_age:
 			i.putExtra(INTENT_KEY_EDIT_TYPE, R.id.editinfo_age);
-			i.putExtra(INTENT_KEY_EDIT_VALUE, mAgeText.getText().toString().replace("岁", ""));
+			i.putExtra(INTENT_KEY_EDIT_VALUE, replaceAgeStringEmpty(mInfo.getUage()));
 			startActivity(i);
 			break;
 		case R.id.editinfo_gender:
@@ -120,6 +120,12 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 		dialog.show();
 	}
 
+	private String replaceAgeStringEmpty(String age){
+		if(age.contains("岁")){
+			age = age.replace("岁", "");
+		} 
+		return age;
+	}
 	private void saveMyInfo() {
 		// 提交到服务器
 		AjaxParams params = new AjaxParams();
@@ -128,7 +134,7 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 		params.put("uname", mInfo.getUname());
 		params.put("usex", mInfo.getUsex());
 		params.put("uadress", mInfo.getUaddress());
-		params.put("uage", mInfo.getUage());
+		params.put("uage", replaceAgeStringEmpty(mInfo.getUage()));
 		params.put("file", "");
 		getHttpClient().post(SERVER_URL_SAVEUSERINFO, params,
 				new AjaxCallBack<String>() {

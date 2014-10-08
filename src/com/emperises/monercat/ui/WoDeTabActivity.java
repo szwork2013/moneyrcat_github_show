@@ -41,7 +41,7 @@ public class WoDeTabActivity extends BaseActivity {
 		if(info != null){
 			String gender = info.getUsex() + " ";
 			String age = info.getUage();
-			String addr = info.getUaddress();
+			String addr = " "+info.getUaddress();
 			String append = gender+age+addr;
 			genderAgeAddr.setText(append);
 			mNicknameText.setText(info.getUname());

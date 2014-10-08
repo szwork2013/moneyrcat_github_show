@@ -15,4 +15,15 @@
         android:divider="#cdcdcd"
         android:dividerHeight="0.5dp" >
     </ListView>
+    <TextView
+        android:id="@+id/default_lable" 
+        android:textSize="14sp"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="现在还没有商品哦,敬请期待更多商品上线!"
+        android:textColor="@color/textcontent"
+        />
 </LinearLayout>

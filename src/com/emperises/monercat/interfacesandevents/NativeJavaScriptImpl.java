@@ -55,5 +55,18 @@ public class NativeJavaScriptImpl implements NativeJavaScriptCallBackInterface{
 		i.putExtra("adId", adId);
 		context.startActivity(i);
 	}
+	@Override
+	public void JsStartActivity(String className) {
+		Class<?> classIntent;
+		try {
+			classIntent = Class.forName(className);
+			Intent i = new Intent(context, classIntent);
+			context.startActivity(i);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			Logger.e("ERROR", "class no found",e);
+		}
+		
+	}
 	
 }

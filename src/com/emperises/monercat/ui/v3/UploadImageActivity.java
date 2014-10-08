@@ -56,10 +56,10 @@ public class UploadImageActivity extends OtherBaseActivity {
 		} else {
 			//开始上传
 			AjaxParams params = new AjaxParams();
-			params.put("udevicesId", Util.getDeviceId(this));
+			params.put("extUdevicesId", Util.getDeviceId(this));
 			params.put("extAdId", mAdId);
 			try {
-				params.put("file", mUploadImagePath);
+				params.put("extImage", mUploadImagePath);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
