@@ -10,11 +10,15 @@ public interface LocalConfigKey {
 	String LOCAL_CONFIGKEY_FIRSTRUN = "isFirstRun";
 	String LOCAL_CONFIGKEY_BALANCE = "balance";//余额
 	String LOCAL_CONFIGKEY_REG = "first_reg"; //第一次注册
+	String LOCAL_CONFIGKEY_DUIHUAN_NAME = "duihuan_name"; //兑换名字
+	String LOCAL_CONFIGKEY_DUIHUAN_TEL = "duihuan_tel"; //兑换手机
+	String LOCAL_CONFIGKEY_DUIHUAN_ADDR = "duihuan_addr"; //兑换地址
 	
 	String INTENT_KEY_EDIT_TYPE = "edit_type"; //编辑标识
 	String INTENT_KEY_EDIT_VALUE = "edit_value"; //编辑内容
 	String INTENT_KEY_ADINFO = "adinfo"; //广告信息
 	String INTENT_KEY_TIXIAN_TYPE = "tixian_type";//提现类型 10 , 50 ,100
 	String INTENT_KEY_TEL = "tel";
+	String INTENT_KEY_PRODUCTID = "productid";
 	
 }

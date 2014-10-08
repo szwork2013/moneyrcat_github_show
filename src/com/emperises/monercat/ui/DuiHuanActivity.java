@@ -137,8 +137,11 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 		
 	}
 	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		startActivity(new Intent(this, DuiHuanDialogActivity.class));
+	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+		Intent i  =  new Intent(this, DuiHuanDialogActivity.class);
+		ZcmProduct pro = (ZcmProduct) mProductAdapter.getItem(position);
+		i.putExtra(INTENT_KEY_PRODUCTID, pro.getPid());
+		startActivity(i);
 	}
 
 	@Override
