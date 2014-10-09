@@ -20,5 +20,8 @@ public interface LocalConfigKey {
 	String INTENT_KEY_TIXIAN_TYPE = "tixian_type";//提现类型 10 , 50 ,100
 	String INTENT_KEY_TEL = "tel";
 	String INTENT_KEY_PRODUCTID = "productid";
+	//URL 参数key
+	String POST_KEY_DEVICESID = "udevicesId";
+	
 	
 }

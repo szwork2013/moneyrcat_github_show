@@ -123,7 +123,7 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 	private void saveMyInfo() {
 		// 提交到服务器
 		AjaxParams params = new AjaxParams();
-		params.put("udevicesId", Util.getDeviceId(this));
+		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 		params.put("action_type", "0");
 		params.put("uname", mInfo.getUname());
 		params.put("usex", mInfo.getUsex());

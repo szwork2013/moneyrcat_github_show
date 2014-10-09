@@ -51,7 +51,7 @@ public class DuiHuanDialogActivity extends OtherBaseActivity {
 			setStringtForKey(LOCAL_CONFIGKEY_DUIHUAN_NAME, name);
 			setStringtForKey(LOCAL_CONFIGKEY_DUIHUAN_TEL, tel);
 			setStringtForKey(LOCAL_CONFIGKEY_DUIHUAN_ADDR, address);
-			params.put("udevicesId", Util.getDeviceId(getApplicationContext()));
+			params.put(POST_KEY_DEVICESID, Util.getDeviceId(getApplicationContext()));
 			params.put("productId", mCurrentProductId);
 			params.put("telephone", tel);
 			params.put("uname", name);

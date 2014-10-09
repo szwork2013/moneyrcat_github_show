@@ -100,13 +100,14 @@ public class Util {
 	 * @param k
 	 */
 	private static  String DOWN_ID = "";
-	private static final String APK_NAME = "moneycat.apk";
+	private static String APK_NAME = "";
 	private static final String APK_PATH = "/moneycat/";
 	private static final String CONFIG_FILE_NAME = "config";
 	
 	@SuppressLint({ "InlinedApi", "NewApi" })
 	public static void downloadApkAndInstall(Context context , ZcmApp updateObj){
 			DOWN_ID = System.currentTimeMillis()+"";
+			APK_NAME = "moneycat_"+System.currentTimeMillis()+".apk";
 			BroadcastReceiver mDownloadReceiver = new BroadcastReceiver() {
 				@Override
 				public void onReceive(Context context, Intent arg1) {

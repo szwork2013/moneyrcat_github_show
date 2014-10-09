@@ -91,7 +91,7 @@ public class TasksActivity extends OtherBaseActivity implements
 	private List<ZcmAdertising> mAdTaskInfos = new ArrayList<ZcmAdertising>();
 	private void initTaskInfos() {
 		AjaxParams params = new AjaxParams();
-		params.put("udevicesId", Util.getDeviceId(this));
+		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 		params.put("type", "1");
 		getHttpClient().post(SERVER_URL_ADLIST, params,new AjaxCallBack<String>() {
 			@Override
@@ -118,7 +118,7 @@ public class TasksActivity extends OtherBaseActivity implements
 
 	private void initViewPager() {
 		AjaxParams params = new AjaxParams();
-		params.put("udevicesId", Util.getDeviceId(this));
+		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 		params.put("type", "1");
 		getHttpClient().post(SERVER_URL_LOOPAD, params,
 				new AjaxCallBack<String>() {

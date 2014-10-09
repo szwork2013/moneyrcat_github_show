@@ -95,7 +95,7 @@ public class BindActivity extends OtherBaseActivity {
 			//如果验证成功
 			final String tel = mTelEditText.getText().toString();
 			AjaxParams params = new AjaxParams();
-			params.put("udevicesId", Util.getDeviceId(this));
+			params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 			params.put("utelephone", tel);
 			params.put("smsCode", currentCode);
 			getHttpClient().post(SERVER_URL_BINDPHONE, params,new AjaxCallBack<String>() {

@@ -52,7 +52,7 @@
         <item>女</item>
     </string-array>
 
-    <string name="http_www_emperises_com_">http://www.emperises.com/</string>
+    <string name="http_www_emperises_com_">http://115.28.136.194:8086/zcm/ex/zcm/down.html</string>
     <string name="share_title">招财喵,真正可以赚钱的APP</string>
     <string name="share_content">你的好友分享了一个招财喵给你!招财喵，真正可以赚钱的APP!</string>
     <string name="m_gold">喵币</string>

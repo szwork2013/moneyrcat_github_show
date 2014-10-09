@@ -102,7 +102,7 @@ public class HomeActivity extends BaseActivity implements OnPageChangeListener,
 
 	private void initViewPager() {
 		AjaxParams params = new AjaxParams();
-		params.put("udevicesId", Util.getDeviceId(this));
+		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 		params.put("type", "0");
 		getHttpClient().post(SERVER_URL_LOOPAD, params,
 				new AjaxCallBack<String>() {
@@ -160,7 +160,7 @@ public class HomeActivity extends BaseActivity implements OnPageChangeListener,
 	private void initMyInfo() {
 		// 初始化用户信息
 		AjaxParams params = new AjaxParams();
-		params.put("udevicesId", Util.getDeviceId(this));
+		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 		getHttpClient().post(SERVER_URL_USERINFO, params,
 				new AjaxCallBack<String>() {
 					@Override
@@ -190,7 +190,7 @@ public class HomeActivity extends BaseActivity implements OnPageChangeListener,
 	private void initAdList() {
 		// 获取广告列表mAdInfos
 		AjaxParams params = new AjaxParams();
-		params.put("udevicesId", Util.getDeviceId(this));
+		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 		params.put("type", "0");
 		startRequest(SERVER_URL_ADLIST, params);
 

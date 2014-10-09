@@ -13,10 +13,11 @@ import android.text.TextUtils;
 import com.emperises.monercat.domain.DomainObject;
 import com.emperises.monercat.domain.model.ZcmUser;
 import com.emperises.monercat.interfacesandevents.EditMyInfoEvent;
+import com.emperises.monercat.interfacesandevents.LocalConfigKey;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 
-public class DatabaseUtil {
+public class DatabaseUtil implements LocalConfigKey{
 	/**
 	 * 根据字节码创建数据库表，与字段
 	 * 
@@ -278,7 +279,7 @@ public class DatabaseUtil {
 	public static void saveMyInfo(DomainObject myInfoObj, SQLiteDatabase db , Context context) throws IllegalArgumentException, IllegalAccessException{
 		Logger.i("DATABASE", "保存用户信息执行");
 		//TODO:设置用户的userID
-		update(ZcmUser.class.getSimpleName(), myInfoObj, db, "udevicesId", new String[]{Util.getDeviceId(context)});
+		update(ZcmUser.class.getSimpleName(), myInfoObj, db, POST_KEY_DEVICESID, new String[]{Util.getDeviceId(context)});
 		EditMyInfoEvent.getInstance().fireEditInfoEvent((ZcmUser)myInfoObj);
 	}
 }

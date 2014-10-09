@@ -75,7 +75,7 @@ public class SplashActivity extends OtherBaseActivity {
 			
 		} else {
 			AjaxParams params = new AjaxParams();
-			params.put("udevicesId", Util.getDeviceId(SplashActivity.this));
+			params.put(POST_KEY_DEVICESID, Util.getDeviceId(SplashActivity.this));
 			startRequest(SERVER_URL_REG, params);
 		}
 	}

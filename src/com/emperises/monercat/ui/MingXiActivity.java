@@ -44,7 +44,7 @@ public class MingXiActivity extends OtherBaseActivity {
 	 */
 	private void initTransData() {
 		AjaxParams params = new AjaxParams();
-		params.put("udevicesId", Util.getDeviceId(this));
+		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 		getHttpClient().post(SERVER_URL_TRADE_DETAIL, params,new AjaxCallBack<String>() {
 			public void onSuccess(String t) {
 				Logger.i("TRANS", t);

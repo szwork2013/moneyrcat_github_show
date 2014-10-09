@@ -53,7 +53,7 @@ public class WoDebActivity extends OtherBaseActivity implements
 	private void initAdList() {
 		// 获取广告列表mAdInfos
 		AjaxParams params = new AjaxParams();
-		params.put("udevicesId", Util.getDeviceId(this));
+		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 		startRequest(SERVER_URL_AD_HISTORY, params);
 
 	}

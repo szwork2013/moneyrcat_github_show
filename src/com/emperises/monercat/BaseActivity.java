@@ -125,7 +125,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	//获取余额并存储到本地数据库中
 		public void updateBalance() {
 			AjaxParams params = new AjaxParams();
-			params.put("udevicesId", Util.getDeviceId(this));
+			params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 			getHttpClient().post(SERVER_URL_BALANCE, params,new AjaxCallBack<String>(){
 				@Override
 				public void onSuccess(String t) {

@@ -44,7 +44,7 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 	private TextView mDefaultLable;
 	private void initProductData() {
 		AjaxParams params = new AjaxParams();
-		params.put("udevicesId", Util.getDeviceId(this));
+		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 		getHttpClient().post(SERVER_URL_PRODUCT,params, new AjaxCallBack<String>() {
 			@Override
 			public void onSuccess(String t) {

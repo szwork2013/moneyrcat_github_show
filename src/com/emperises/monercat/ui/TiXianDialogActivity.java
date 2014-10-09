@@ -92,7 +92,7 @@ public class TiXianDialogActivity extends OtherBaseActivity {
 		String bankNumber = mBankIdText.getText().toString();
 		if (!TextUtils.isEmpty(bankNumber) && !TextUtils.isEmpty(bankAddr) && !TextUtils.isEmpty(name) ) {
 			AjaxParams params = new AjaxParams();
-			params.put("udevicesId", Util.getDeviceId(this));
+			params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 			params.put("ubankno", bankNumber);
 			params.put("ubankName", bankAddr);
 			params.put("uname", name);
