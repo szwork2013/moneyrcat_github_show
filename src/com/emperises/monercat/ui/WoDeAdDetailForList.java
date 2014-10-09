@@ -24,7 +24,7 @@ public class WoDeAdDetailForList extends OtherBaseActivity {
 		super.onClick(v);
 		switch (v.getId()) {
 		case R.id.recommend_bt:
-			startActivity(new Intent(this , RecommendDialogActivity.class));
+			startActivity(new Intent(this , RecommendDialogActivity_Deprecated.class));
 			break;
 
 		default:

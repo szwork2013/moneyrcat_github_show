@@ -20,7 +20,6 @@ import android.widget.TextView;
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmProduct;
-import com.emperises.monercat.ui.v3.ActivityDuiHuanJiLu;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
@@ -144,15 +143,4 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 		startActivity(i);
 	}
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.mingxi_button:
-			startActivity(new Intent(this, ActivityDuiHuanJiLu.class));
-			break;
-
-		default:
-			break;
-		}
-	}
 }

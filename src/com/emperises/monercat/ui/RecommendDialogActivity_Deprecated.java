@@ -2,14 +2,12 @@ package com.emperises.monercat.ui;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 
-public class RecommendDialogActivity extends OtherBaseActivity {
+public class RecommendDialogActivity_Deprecated extends OtherBaseActivity {
 
-	private Button mCloseButton;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -18,7 +16,6 @@ public class RecommendDialogActivity extends OtherBaseActivity {
 	}
 	@Override
 	protected void initViews() {
-		mCloseButton = (Button) findViewById(R.id.closeButton);
 	}
 	@Override
 	public void onClick(View v) {

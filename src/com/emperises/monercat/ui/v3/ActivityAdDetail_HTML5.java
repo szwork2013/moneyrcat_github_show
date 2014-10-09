@@ -22,7 +22,7 @@ import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmAdertising;
 import com.emperises.monercat.interfacesandevents.NativeJavaScriptImpl;
 import com.emperises.monercat.interfacesandevents.NativeJavaScriptImpl.ResCallBack;
-import com.emperises.monercat.ui.RecommendDialogActivity;
+import com.emperises.monercat.ui.RecommendDialogActivity_Deprecated;
 import com.emperises.monercat.ui.WYCJDialogActivity;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
@@ -191,7 +191,7 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 			startActivity(new Intent(this, WYCJDialogActivity.class));
 			break;
 		case R.id.recommend_friend:
-			startActivity(new Intent(this, RecommendDialogActivity.class));
+			startActivity(new Intent(this, RecommendDialogActivity_Deprecated.class));
 			break;
 		case R.id.ad_share:
 			openShare();
