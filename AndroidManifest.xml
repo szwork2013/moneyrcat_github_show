@@ -66,6 +66,11 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
+            android:name="com.emperises.monercat.ui.v3.ShangWuHeZuoActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
             android:name="com.emperises.monercat.ui.v3.ActivityEditText"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"

@@ -69,11 +69,13 @@ public class UploadImageActivity extends OtherBaseActivity {
 					Logger.i("UPLOAD", t);
 					DomainObject d = new Gson().fromJson(t, DomainObject.class);
 					if(d != null){
-						showToast(d.getResultMsg());
 						mSelectedImage.setEnabled(true);
 						mUploadSelected.setEnabled(true);
 						if(HTTP_RESULE_SUCCESS.equals(d.getResultCode())){
+							showToast("您的任务已经完成提交，小喵正在玩命儿审核中，敬请期待");
 							finish();
+						} else {
+							showToast(d.getResultMsg());
 						}
 					}
 					mPorgressBar.setVisibility(View.GONE);

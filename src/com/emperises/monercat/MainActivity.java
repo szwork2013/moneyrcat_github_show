@@ -18,7 +18,6 @@ import com.emperises.monercat.adapter.HomeViewPagerAdapter;
 import com.emperises.monercat.customview.MainViewPager;
 import com.emperises.monercat.ui.HomeActivity_v2;
 import com.emperises.monercat.ui.MoreActivity;
-import com.emperises.monercat.ui.TasksActivity;
 import com.emperises.monercat.ui.TasksActivity_v2;
 import com.emperises.monercat.ui.WoDeTabActivity;
 import com.emperises.monercat.ui.v3.ActivityDaiBan;
@@ -36,7 +35,7 @@ public class MainActivity extends ActivityGroup implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		PushUtils.startPush(this);
-		titleIds = new String[] { getResources().getString(R.string.home), getResources().getString(R.string.tasktitle),getResources().getString(R.string.my), getResources().getString(R.string.more) };
+		titleIds = new String[] { getResources().getString(R.string.tasktitle), getResources().getString(R.string.tasktitle_v2),getResources().getString(R.string.my), getResources().getString(R.string.more) };
 		mHomePager = (MainViewPager) findViewById(R.id.homePager);
 		mHomePager.setOffscreenPageLimit(4);
 		View home = getLocalActivityManager().startActivity("index",

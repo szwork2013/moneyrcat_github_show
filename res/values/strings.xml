@@ -11,8 +11,9 @@
     <string name="wait">操作中请等待</string>
     <string name="hit">提示</string>
     <string name="home">首页</string>
-    <string name="recommend">推荐</string>
+    <string name="recommend">喵福利</string>
     <string name="tasktitle">任务广场</string>
+    <string name="tasktitle_v2">福利广场</string>
     <string name="my">我的</string>
     <string name="more">更多</string>
     <string name="gl_wait">请稍等</string>
@@ -60,5 +61,6 @@
     <string name="ad_hteml5_title">任务说明</string>
     <string name="_get_fail">获取失败</string>
     <string name="about">关于我们</string>
+    <string name="hezuo">商务合作</string>
 
 </resources>

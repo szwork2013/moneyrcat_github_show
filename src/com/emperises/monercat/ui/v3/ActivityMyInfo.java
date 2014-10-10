@@ -213,9 +213,7 @@ public class ActivityMyInfo extends OtherBaseActivity {
 			break;
 		case R.id.myinfo_tel:
 			String tel = mTel.getText().toString();
-			if(!tel.isEmpty() && tel.contains("未绑定")){
 				startActivity(new Intent(this , BindActivity.class));
-			}
 			break;
 		default:
 			break;

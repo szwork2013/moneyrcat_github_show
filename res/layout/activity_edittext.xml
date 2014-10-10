@@ -8,15 +8,18 @@
     <include layout="@layout/back_header" />
 
     <EditText
-            android:background="@color/background"
         android:id="@+id/edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="35dp"
         android:ems="10"
         android:paddingTop="5dp"
+        android:background="@drawable/edit_bottom_line"
         android:paddingBottom="5dp"
         android:gravity="top"
         android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:inputType="textPersonName"
@@ -53,6 +56,17 @@
             android:layout_toLeftOf="@+id/edit_cancel"
             android:background="@drawable/commit_bt_normal"
             android:text="@string/sure" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="例:王小二" />
+
     </RelativeLayout>
 
 </LinearLayout>

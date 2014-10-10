@@ -91,8 +91,9 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	public void onBalanceChange(String currentBalance) {
 		TextView ye = (TextView) findViewById(R.id.yue_balance);
 		if (ye != null) {
-			ye.setText("余额:" + currentBalance + getString(R.string.m_gold));
-			Logger.i("BALANCE", "余额改变:" + currentBalance + getString(R.string.m_gold));
+			float ci = Float.parseFloat(currentBalance) / 100; 
+			ye.setText("余额:" + currentBalance + getString(R.string.m_gold)+"("+ci+"元)");
+			Logger.i("BALANCE", "余额改变:" + currentBalance + getString(R.string.m_gold)+"("+ci+"元)");
 		}
 	}
 
@@ -500,7 +501,9 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 							ActivityMyInfo.class));
 				}
 			});
-			ye.setText("余额:" + queryLocalBalance() + getString(R.string.m_gold));
+			String currentBalance = queryLocalBalance();
+			float ci = Float.parseFloat(currentBalance) / 100;
+			ye.setText("余额:" + currentBalance + getString(R.string.m_gold)+"("+ci+"元)");
 			tel.setText(info.getUtelephone());
 			nickname.setText(info.getUname());
 		}

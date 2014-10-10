@@ -160,7 +160,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
-            android:text="*请填写您的基本信息"
+            android:text="*请仔细填写以上信息,以便于收到商品"
             android:textColor="@color/textcontent" />
 
         <View

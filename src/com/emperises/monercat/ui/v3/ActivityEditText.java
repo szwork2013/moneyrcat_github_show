@@ -27,8 +27,8 @@ public class ActivityEditText extends OtherBaseActivity {
 		super.initViews();
 		mEditText = (EditText) findViewById(R.id.edit_text);
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-//		String defaultValue = getIntent().getStringExtra(INTENT_KEY_EDIT_VALUE);
-//		mEditText.setText(defaultValue);
+		String defaultValue = getIntent().getStringExtra(INTENT_KEY_EDIT_VALUE);
+		mEditText.setText(defaultValue);
 		editType = getIntent().getIntExtra(INTENT_KEY_EDIT_TYPE, 0);
 		if(editType == R.id.editinfo_age){
 			mEditText.setInputType(EditorInfo.TYPE_CLASS_PHONE);

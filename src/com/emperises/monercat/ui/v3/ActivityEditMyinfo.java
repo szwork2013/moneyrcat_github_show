@@ -2,6 +2,7 @@ package com.emperises.monercat.ui.v3;
 
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
@@ -9,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.DomainObject;
@@ -19,6 +19,7 @@ import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
 
+@SuppressLint("NewApi")
 public class ActivityEditMyinfo extends OtherBaseActivity implements
 		EditMyInfoInterface {
 	private TextView mAddressText;
@@ -52,6 +53,7 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 		}
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public void onClick(View v) {
 		Intent i = new Intent(this, ActivityEditText.class);
@@ -84,9 +86,21 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 			startActivity(i);
 			break;
 		case R.id.editinfo_done_button:
-			finish();
+			
 			// //修改完成将数据插入到数据库中
-			saveMyInfo();
+//			mAddressText.setText(info.getUaddress());
+//			mAgeText.setText(info.getUage());
+//			mGenderText.setText(info.getUsex());
+//			mNicknameText.setText(info.getUname());
+			String mAddress = mAddressText.getText().toString();
+			String mAge = mAgeText.getText().toString();
+			String mGend = mGenderText.getText().toString();
+			String mNickname = mNicknameText.getText().toString();
+			if( !mAddress.isEmpty() && mAge.isEmpty() && mGend.isEmpty() && mNickname.isEmpty()){
+				saveMyInfo();
+			} else {
+				showToast("您填写的信息不完整!");
+			}
 			break;
 		default:
 			break;
@@ -121,6 +135,7 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 		return age;
 	}
 	private void saveMyInfo() {
+		
 		// 提交到服务器
 		AjaxParams params = new AjaxParams();
 		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
@@ -140,6 +155,7 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 						if (ret.getResultCode().equals(HTTP_RESULE_SUCCESS)) {
 							showCommitOkToast();
 							getDatabaseInterface().saveMyInfo(mInfo, ActivityEditMyinfo.this);
+							finish();
 						} else {
 							showNetErrorToast(ret.getResultMsg(),null);
 						}

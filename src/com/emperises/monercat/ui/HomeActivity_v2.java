@@ -214,7 +214,8 @@ public class HomeActivity_v2 extends BaseActivity implements
 		super.onBalanceChange(currentBalance);
 		TextView balance = (TextView) homeHeaderItem
 				.findViewById(R.id.yue_balance);
-		balance.setText("余额:" + currentBalance + "喵币");
+		float ci = Float.parseFloat(currentBalance) / 100; 
+		balance.setText("余额:" + currentBalance + getString(R.string.m_gold)+"("+ci+"元)");
 	}
 
 	/**

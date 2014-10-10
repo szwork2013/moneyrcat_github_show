@@ -1,55 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     android:background="@color/background"
     android:orientation="vertical" >
-
-    <include
-        android:id="@+id/include1"
-        layout="@layout/back_header" />
-
-    <ProgressBar
-        android:id="@+id/progressbar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:max="100"
-        android:visibility="gone"
-        android:progressDrawable="@drawable/progressbar_color"
-         />
-
-
-
-    <ImageView
-        android:layout_marginTop="15dp"
-        android:id="@+id/uploadImage"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-         />
-    <Button
-        android:id="@+id/select_image_bt"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:onClick="onClick"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/commit_bt_selector"
-        android:text="选择图片"
-        android:textColor="@color/texttitle" />
+        android:orientation="vertical" >
 
-    <Button
-        android:onClick="onClick"
-        android:id="@+id/upload_image_bt"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/commit_bt_selector"
-        android:text="上传图片"
-        android:textColor="@color/texttitle" />
-</LinearLayout>
+        <include
+            android:id="@+id/include1"
+            layout="@layout/back_header" />
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:max="100"
+            android:progressDrawable="@drawable/progressbar_color"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/uploadImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp" />
+
+        <Button
+            android:id="@+id/select_image_bt"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/commit_bt_selector"
+            android:onClick="onClick"
+            android:text="选择图片"
+            android:textColor="@color/texttitle" />
+
+        <Button
+            android:id="@+id/upload_image_bt"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/commit_bt_selector"
+            android:onClick="onClick"
+            android:text="上传图片"
+            android:textColor="@color/texttitle" />
+    </LinearLayout>
+
+</ScrollView>

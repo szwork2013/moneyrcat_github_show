@@ -51,8 +51,8 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 			sb.append("index.html?"); 
 			sb.append("p1="+Util.getDeviceId(this)+"&p2="+info.getAdId());
 			setShareUrl(sb.toString());
-			setShareTitle(info.getAdTitle());
-			setShareContent(info.getAdContent());		
+			setShareTitle(info.getAdContent());
+//			setShareContent(info.getAdContent());		
 		}
 	};
 	@SuppressLint("JavascriptInterface")
@@ -187,12 +187,6 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 	public void onClick(View v) {
 		super.onClick(v);
 		switch (v.getId()) {
-		case R.id.woyaocanjia:
-			startActivity(new Intent(this, WYCJDialogActivity.class));
-			break;
-		case R.id.recommend_friend:
-			startActivity(new Intent(this, RecommendDialogActivity_Deprecated.class));
-			break;
 		case R.id.ad_share:
 			openShare();
 			break;

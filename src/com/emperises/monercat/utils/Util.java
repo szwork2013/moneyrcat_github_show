@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.emperises.monercat.R;
 import com.emperises.monercat.customview.CustomDialog.DialogClick;
@@ -223,6 +224,8 @@ public class Util {
 						float currentVersionCode = Float.parseFloat(update.getVal().getAppVersion());
 						if(currentVersionCode > getLocalVersionCode(context)){
 							showUpdateDialog(context, update.getVal());
+						} else {
+							Toast.makeText(context,"当前已是最新版本!", Toast.LENGTH_SHORT).show();;
 						}
 					}
 				}else{

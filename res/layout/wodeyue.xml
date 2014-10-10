@@ -51,7 +51,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="28dp"
-            android:background="@drawable/black_button"
+            android:background="#F2C21C"
             android:onClick="onClick"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
