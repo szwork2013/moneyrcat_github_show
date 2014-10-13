@@ -83,7 +83,7 @@ public class SplashActivity extends OtherBaseActivity {
 
 	private static final String VERSION = "version";//版本号
 	private void startHome() { 
-		float oldVersion = getFloatValueForKey(VERSION);
+		float oldVersion = getFloatValueForKey(VERSION); 
 		float currentVersion = Util.getLocalVersionCode(this); 
 		if(currentVersion > oldVersion){
 			//判断版本号
