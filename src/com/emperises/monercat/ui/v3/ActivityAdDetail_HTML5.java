@@ -49,11 +49,11 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 			sb.append("index.html?"); 
 			sb.append("p1="+Util.getDeviceId(this)+"&p2="+info.getAdId());
 			setShareUrl(sb.toString());
-			setShareTitle(info.getAdContent());
+			setShareTitle(info.getAdTitle());
 			setShareLogoUrl(info.getAdIcon());
-//			setShareContent(info.getAdContent());		
+			setShareContent(info.getAdContent());		
 		}
-	};
+	}; 
 	@SuppressLint("JavascriptInterface")
 	private void initWebSetting(WebView webview) {
 		WebSettings webSettings = webview.getSettings();

@@ -69,7 +69,6 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	private SharedPreferences sp;
 	protected FinalBitmap getFinalBitmap() {
 		FinalBitmap f = FinalBitmap.create(this);
-		f.clearCache();
 		return f;
 	}
 	@Override
@@ -322,7 +321,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		shareUrl = getString(R.string.http_www_emperises_com_);
 		shareTitle = getString(R.string.share_title);
 		shareContent = getString(R.string.share_content);
-		shareLogoUrl = "";
+		shareLogoUrl = "http://115.28.136.194:8086/zcm/ex/img/share_logo.png";
 		resetShareSdk();
 		openShare();
 	}
@@ -331,10 +330,10 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		shareUrl = getString(R.string.http_www_emperises_com_);
 		shareTitle = getString(R.string.share_title);
 		shareContent = getString(R.string.share_content);
-		shareLogoUrl = "";
+		shareLogoUrl = "http://115.28.136.194:8086/zcm/ex/img/share_logo.png";
 	}
 	protected void setShareLogoUrl(String url) {
-		this.shareUrl = url;
+		this.shareLogoUrl = url;
 	}
 	protected void setShareUrl(String url) {
 		this.shareUrl = url;
@@ -357,7 +356,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		QQShareContent qqShareContent = new QQShareContent();
 		qqShareContent.setShareContent(shareContent);
 		qqShareContent.setTitle(shareTitle);
-		qqShareContent.setShareImage(new UMImage(this, R.drawable.ic_launcher));
+		qqShareContent.setShareImage(new UMImage(this, shareLogoUrl));
 		qqShareContent.setTargetUrl(shareUrl);
 		mController.setShareMedia(qqShareContent);
 		// QQ空间
@@ -367,7 +366,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		qZoneSsoHandler.setTargetUrl(shareUrl);
 		qZoneSsoHandler.addToSocialSDK();
 		content.setShareContent(shareContent);
-		content.setShareImage(new UMImage(this, R.drawable.ic_launcher));
+		content.setShareImage(new UMImage(this, shareLogoUrl));
 		content.setTargetUrl(shareUrl);
 		content.setTitle(shareTitle);
 		mController.setShareMedia(content);
@@ -388,7 +387,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		// 为了保证人人分享成功且能够在PC上正常显示，请设置website
 		mController.setAppWebSite(SHARE_MEDIA.RENREN, shareUrl);
 		// 设置分享到微信的内容, 图片类型
-		UMImage mUMImgBitmap = new UMImage(this, R.drawable.ic_launcher);// TODO:改为网页LOGO图片
+		UMImage mUMImgBitmap = new UMImage(this, shareLogoUrl);// TODO:改为网页LOGO图片
 		WeiXinShareContent weixinContent = new WeiXinShareContent();
 		weixinContent.setTitle(shareTitle);
 		weixinContent.setTargetUrl(shareUrl);
@@ -401,21 +400,21 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		circleMedia.setTitle(shareTitle);
 		circleMedia.setTargetUrl(shareUrl);
 		circleMedia.setShareContent(shareContent);
-		circleMedia.setShareImage(new UMImage(this, "http://115.28.136.194:8086/zcm/ex/img/share_logo.png"));// TODO:改为网页LOGO图片
+		circleMedia.setShareImage(new UMImage(this, shareLogoUrl));// TODO:改为网页LOGO图片
 		mController.setShareMedia(circleMedia);
 
 		TencentWbShareContent tencentContent = new TencentWbShareContent();
 		tencentContent.setTitle(shareTitle);
 		tencentContent.setTargetUrl(shareUrl);
 		tencentContent.setShareContent(shareContent);
-		tencentContent.setShareImage(new UMImage(this, R.drawable.ic_launcher));
+		tencentContent.setShareImage(new UMImage(this, shareLogoUrl));
 		tencentContent.setTargetUrl(shareUrl);
 		// 设置分享到腾讯微博的文字内容
 		tencentContent.setShareContent(shareContent);
 		// 设置分享到腾讯微博的多媒体内容
 		mController.setShareMedia(tencentContent);
 		// 设置分享图片，参数2为图片的url.
-		mController.setShareMedia(new UMImage(this, R.drawable.ic_launcher));
+		mController.setShareMedia(new UMImage(this, shareLogoUrl));
 	}
 
 	protected boolean isFirstRun() {
