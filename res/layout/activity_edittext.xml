@@ -57,14 +57,6 @@
             android:background="@drawable/commit_bt_normal"
             android:text="@string/sure" />
 
-        <TextView
-            android:id="@+id/nickname_hit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="13dp"
-            android:text="例:王小二" />
 
     </RelativeLayout>
 

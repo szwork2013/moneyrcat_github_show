@@ -96,7 +96,7 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 			String mAge = mAgeText.getText().toString();
 			String mGend = mGenderText.getText().toString();
 			String mNickname = mNicknameText.getText().toString();
-			if( !mAddress.isEmpty() && mAge.isEmpty() && mGend.isEmpty() && mNickname.isEmpty()){
+			if( !mAddress.isEmpty() && !mAge.isEmpty() && !mGend.isEmpty() && !mNickname.isEmpty()){
 				saveMyInfo();
 			} else {
 				showToast("您填写的信息不完整!");
