@@ -235,7 +235,7 @@ public class Util {
 						if(currentVersionCode > getLocalVersionCode(context)){
 							showUpdateDialog(context, update.getVal());
 						} else {
-							Toast.makeText(context,"当前已是最新版本!", Toast.LENGTH_SHORT).show();;
+							
 						}
 					}
 				}else{

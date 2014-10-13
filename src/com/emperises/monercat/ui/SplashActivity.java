@@ -8,12 +8,14 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
 import com.emperises.monercat.MainActivity;
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.customview.CustomDialog.DialogClick;
 import com.emperises.monercat.domain.DomainObject;
+import com.emperises.monercat.domain.model.RegResult;
 import com.emperises.monercat.ui.v3.WelcomeActivity;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
@@ -99,10 +101,11 @@ public class SplashActivity extends OtherBaseActivity {
 	@Override
 	public void onFinished(String content) {
 		super.onFinished(content);
-		DomainObject obj = new Gson().fromJson(content, DomainObject.class);
+		RegResult obj = new Gson().fromJson(content, RegResult.class);
 		if (obj != null && obj.getResultCode().equals(HTTP_RESULE_SUCCESS)) {
 			// 如果注册成功
 			setBooleanForKey(LOCAL_CONFIGKEY_REG, true);
+			Toast.makeText(this, "恭喜，你已加入喵星人行列，代号No."+obj.getVal(), Toast.LENGTH_LONG).show();;
 		} 
 		startHome();
 		Logger.i(TAG_HTTP, content);

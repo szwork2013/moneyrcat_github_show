@@ -7,6 +7,7 @@
 
 package com.emperises.monercat.domain.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -61,6 +62,9 @@ public class ZcmMessage extends BaseObject{
 	}
 
 	public List<ZcmMessage> getRows() {
+		if(rows == null){
+			rows = new ArrayList<ZcmMessage>();
+		}
 		return rows;
 	}
 

@@ -32,9 +32,6 @@ public class MoreActivity extends BaseActivity {
 		case R.id.more_navication:
 			startActivity(new Intent(this, WelcomeActivity.class));
 			break;
-		case R.id.moreCheckUpdate:
-			Util.checkUpdateVersion(this, SERVER_URL_UPDATE_VERSION);
-			break;
 		case R.id.more_About:
 			startActivity(new Intent(this, AboutActivity.class));
 			break;

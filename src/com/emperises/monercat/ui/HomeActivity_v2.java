@@ -199,6 +199,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 								.findViewById(R.id.yue_tel);
 						nickName.setText(user.getVal().getUname());
 						tel.setText(user.getVal().getUtelephone());
+						
 					}
 
 					@Override

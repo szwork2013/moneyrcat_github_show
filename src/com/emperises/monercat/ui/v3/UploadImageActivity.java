@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
@@ -31,7 +32,7 @@ public class UploadImageActivity extends OtherBaseActivity {
 	private ImageView mUploadImage;
 	private Button mUploadSelected;
 	private File mUploadImagePath;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

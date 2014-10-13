@@ -22,8 +22,6 @@ import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmAdertising;
 import com.emperises.monercat.interfacesandevents.NativeJavaScriptImpl;
 import com.emperises.monercat.interfacesandevents.NativeJavaScriptImpl.ResCallBack;
-import com.emperises.monercat.ui.RecommendDialogActivity_Deprecated;
-import com.emperises.monercat.ui.WYCJDialogActivity;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 
@@ -52,6 +50,7 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 			sb.append("p1="+Util.getDeviceId(this)+"&p2="+info.getAdId());
 			setShareUrl(sb.toString());
 			setShareTitle(info.getAdContent());
+			setShareLogoUrl(info.getAdIcon());
 //			setShareContent(info.getAdContent());		
 		}
 	};

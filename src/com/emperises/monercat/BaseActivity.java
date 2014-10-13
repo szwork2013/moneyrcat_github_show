@@ -333,6 +333,9 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		shareContent = getString(R.string.share_content);
 		shareLogoUrl = "";
 	}
+	protected void setShareLogoUrl(String url) {
+		this.shareUrl = url;
+	}
 	protected void setShareUrl(String url) {
 		this.shareUrl = url;
 	}
