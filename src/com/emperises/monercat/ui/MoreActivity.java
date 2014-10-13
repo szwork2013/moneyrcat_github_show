@@ -6,12 +6,11 @@ import android.view.View;
 
 import com.emperises.monercat.BaseActivity;
 import com.emperises.monercat.R;
-import com.emperises.monercat.ui.v3.ActivityFeedBack;
 import com.emperises.monercat.ui.v3.ActivityFeedBack_v2;
 import com.emperises.monercat.ui.v3.ActivityMessageList;
+import com.emperises.monercat.ui.v3.CopyRightActivity;
 import com.emperises.monercat.ui.v3.ShangWuHeZuoActivity;
 import com.emperises.monercat.ui.v3.WelcomeActivity;
-import com.emperises.monercat.utils.Util;
 
 public class MoreActivity extends BaseActivity {
 	@Override
@@ -43,6 +42,9 @@ public class MoreActivity extends BaseActivity {
 			break;
 		case R.id.more_messagecenter:
 			startActivity(new Intent(this, ActivityMessageList.class));
+			break;
+		case R.id.copyright_info:
+			startActivity(new Intent(this, CopyRightActivity.class));
 			break;
 		default:
 			break;

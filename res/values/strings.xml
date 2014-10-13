@@ -61,6 +61,7 @@
     <string name="ad_hteml5_title">任务说明</string>
     <string name="_get_fail">获取失败</string>
     <string name="about">关于我们</string>
+    <string name="copyright">版本信息</string>
     <string name="hezuo">商务合作</string>
     <string name="yuebuzu">余额不足</string>
 

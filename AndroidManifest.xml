@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.emperises.monercat"
     android:versionCode="1"
-    android:versionName="1.2" >
+    android:versionName="1.3" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -60,6 +60,11 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Translucent_NoTitle" />
+        <activity
+            android:name="com.emperises.monercat.ui.v3.CopyRightActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.emperises.monercat.ui.v3.ActivityAdDetail_HTML5"
             android:launchMode="singleTop"

@@ -32,8 +32,6 @@
             android:background="@drawable/right_arrow" />
     </RelativeLayout>
 
-
-
     <View
         android:layout_width="fill_parent"
         android:layout_height="0.5dp"
@@ -167,14 +165,12 @@
         android:layout_height="0.5dp"
         android:background="@color/line" />
 
-
-
     <RelativeLayout
+        android:id="@+id/copyright_info"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:background="@drawable/white_selector"
-        android:onClick="onClick"
-        android:visibility="gone" >
+        android:onClick="onClick" >
 
         <TextView
             android:id="@+id/textView2"
@@ -183,25 +179,23 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="19dp"
-            android:text="提示音"
+            android:text="版本信息"
             android:textColor="@color/texttitle" />
 
-        <Button
-            android:id="@+id/button2"
-            style="?android:attr/buttonStyleSmall"
+        <ImageView
+            android:id="@+id/imageView723423423422277"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:background="@drawable/off_button" />
+            android:background="@drawable/right_arrow" />
     </RelativeLayout>
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="0.5dp"
-        android:background="@color/line"
-        android:visibility="gone" />
+        android:background="@color/line" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
