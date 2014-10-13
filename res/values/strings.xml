@@ -62,5 +62,6 @@
     <string name="_get_fail">获取失败</string>
     <string name="about">关于我们</string>
     <string name="hezuo">商务合作</string>
+    <string name="yuebuzu">余额不足</string>
 
 </resources>

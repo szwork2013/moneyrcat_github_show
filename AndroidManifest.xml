@@ -51,12 +51,27 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
+            android:name="com.emperises.monercat.ui.v3.WelcomeActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
             android:name="com.emperises.monercat.ui.v3.ActivitySelectedHeadImage"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Translucent_NoTitle" />
         <activity
             android:name="com.emperises.monercat.ui.v3.ActivityAdDetail_HTML5"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="com.emperises.monercat.ui.v3.ActivityFeedBack"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="com.emperises.monercat.ui.v3.ActivityFeedBack_v2"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />

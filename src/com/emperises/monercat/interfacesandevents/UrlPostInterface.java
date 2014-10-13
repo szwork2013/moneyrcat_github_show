@@ -25,4 +25,6 @@ public interface UrlPostInterface {
 	String SERVER_URL_UPLOAD_HEADERIMAGE = BASE_URL + "user/upload_user_img.do"; //上传头像
 	String SERVER_URL_UPLOAD_FILE = BASE_URL + "rh_ext/rh_ext_save.do"; //上传文件
 	String SERVER_URL_DUIHUAN_DEFAULT_INFO = BASE_URL + "/trans/trans_duihuan.do";//提交兑换信息
+	String SERVER_URL_MESSAGELIST = BASE_URL + "/messages/query_msgs.do";//查询消息列表
+	String SERVER_URL_FEEDBACK = BASE_URL + "/feedback/add.do";//提交意见反馈
 }

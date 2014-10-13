@@ -1,6 +1,8 @@
 package com.emperises.monercat.utils;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -39,6 +41,14 @@ import com.emperises.monercat.domain.model.ZcmApp;
 import com.google.gson.Gson;
 
 public class Util {
+	@SuppressLint("SimpleDateFormat")
+	public static String getDate() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置时间格式
+        Date date = new Date(System.currentTimeMillis());
+        String strDate = format.format(date);
+        return strDate;
+
+    }
 	//重新设置ListView的高度
 	public static void setListViewHeightBasedOnChildren(ListView listView) {  
         ListAdapter listAdapter = listView.getAdapter();   

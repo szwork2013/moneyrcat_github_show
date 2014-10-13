@@ -17,7 +17,7 @@ public interface LocalConfigKey {
 	String INTENT_KEY_EDIT_TYPE = "edit_type"; //编辑标识
 	String INTENT_KEY_EDIT_VALUE = "edit_value"; //编辑内容
 	String INTENT_KEY_ADINFO = "adinfo"; //广告信息
-	String INTENT_KEY_TIXIAN_TYPE = "tixian_type";//提现类型 10 , 50 ,100
+	String INTENT_KEY_TIXIAN_ID = "tixian_id";//提现id
 	String INTENT_KEY_TEL = "tel";
 	String INTENT_KEY_PRODUCTID = "productid";
 	//URL 参数key

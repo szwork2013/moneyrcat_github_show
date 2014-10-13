@@ -67,7 +67,6 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	private FinalHttp mFinalHttp;
 	private TextView titleText;
 	private SharedPreferences sp;
-
 	protected FinalBitmap getFinalBitmap() {
 		FinalBitmap f = FinalBitmap.create(this);
 		f.clearCache();
@@ -83,6 +82,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		if (headerInfo != null) {
 			headerInfo.setBackgroundResource(resId);
 		}
+		
 
 	}
 
@@ -416,12 +416,12 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	}
 
 	protected boolean isFirstRun() {
-		if (!getBoleanValueForKey(LOCAL_CONFIGKEY_FIRSTRUN)) {
-			// 第一次运行
+		if(!getBoleanValueForKey(LOCAL_CONFIGKEY_FIRSTRUN)){
 			setBooleanForKey(LOCAL_CONFIGKEY_FIRSTRUN, true);
 			return true;
 		}
 		return false;
+				
 	}
 
 	protected void openShare() {
@@ -464,6 +464,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 			List<DomainObject> objs = new ArrayList<DomainObject>();
 			objs.add(z);
 			getDatabaseInterface().insertDataForObjs(objs);
+			
 		}
 	}
 

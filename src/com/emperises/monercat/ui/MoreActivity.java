@@ -6,7 +6,11 @@ import android.view.View;
 
 import com.emperises.monercat.BaseActivity;
 import com.emperises.monercat.R;
+import com.emperises.monercat.ui.v3.ActivityFeedBack;
+import com.emperises.monercat.ui.v3.ActivityFeedBack_v2;
+import com.emperises.monercat.ui.v3.ActivityMessageList;
 import com.emperises.monercat.ui.v3.ShangWuHeZuoActivity;
+import com.emperises.monercat.ui.v3.WelcomeActivity;
 import com.emperises.monercat.utils.Util;
 
 public class MoreActivity extends BaseActivity {
@@ -26,7 +30,7 @@ public class MoreActivity extends BaseActivity {
 		super.onClick(v);
 		switch (v.getId()) {
 		case R.id.more_navication:
-			//TODO:进入引导界面
+			startActivity(new Intent(this, WelcomeActivity.class));
 			break;
 		case R.id.moreCheckUpdate:
 			Util.checkUpdateVersion(this, SERVER_URL_UPDATE_VERSION);
@@ -36,6 +40,12 @@ public class MoreActivity extends BaseActivity {
 			break;
 		case R.id.more_shangwuhezuo:
 			startActivity(new Intent(this, ShangWuHeZuoActivity.class));
+			break;
+		case R.id.more_feedback:
+			startActivity(new Intent(this, ActivityFeedBack_v2.class));
+			break;
+		case R.id.more_messagecenter:
+			startActivity(new Intent(this, ActivityMessageList.class));
 			break;
 		default:
 			break;

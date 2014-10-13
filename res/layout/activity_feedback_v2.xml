@@ -12,7 +12,7 @@
         android:layout_width="fill_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:paddingTop="5dp"
         android:background="@drawable/edit_bottom_line"
@@ -22,7 +22,6 @@
         android:layout_marginTop="10dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:inputType="textPersonName"
         android:textColor="@color/textcontent" >
         <requestFocus />
     </EditText>
@@ -57,14 +56,6 @@
             android:background="@drawable/commit_bt_normal"
             android:text="@string/sure" />
 
-        <TextView
-            android:id="@+id/nickname_hit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="13dp"
-            android:text="例:王小二" />
 
     </RelativeLayout>
 

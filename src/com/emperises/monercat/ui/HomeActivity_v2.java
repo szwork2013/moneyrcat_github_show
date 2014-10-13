@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -62,7 +63,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 	};
 	private LinearLayout mPagerIndexLayout;
 	private AutoScrollViewPager mAdPager;
-
+	private long mExitTime;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -71,7 +72,19 @@ public class HomeActivity_v2 extends BaseActivity implements
 		Util.checkUpdateVersion(this, SERVER_URL_UPDATE_VERSION);
 
 	}
+	  public boolean onKeyDown(int keyCode, KeyEvent event) {
+          if (keyCode == KeyEvent.KEYCODE_BACK) {
+                  if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                          showToast("再按一次退出程序!");
+                          mExitTime = System.currentTimeMillis();
 
+                  } else {
+                          finish();
+                  }
+                  return true;
+          }
+          return super.onKeyDown(keyCode, event);
+}
 	@Override
 	protected void initViews() {
 		mErrorHit = (Button) findViewById(R.id.error_hit);
@@ -338,7 +351,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 				getFinalBitmap().display(holder.adIcon, info.getAdIcon());
 				holder.adTitle.setText(info.getAdTitle());
 				holder.adDescription.setText(info.getAdContent());
-				holder.adBalanceText.setText("总额:" + info.getAdAward()
+				holder.adBalanceText.setText("剩余:" + info.getAd_award_balance()
 						+ getString(R.string.m_gold));
 			}
 			Logger.i("VIEW", "getView");

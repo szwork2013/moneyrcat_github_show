@@ -111,23 +111,15 @@ public class WoDebActivity extends OtherBaseActivity implements
 				view = convertView;
 				holder = (ViewHolder) view.getTag();
 			} else {
-				view = getLayoutInflater().inflate(R.layout.list_ad_item, null);
+				view = getLayoutInflater().inflate(R.layout.list_ad_item_wode, null);
 				holder = new ViewHolder();
 				holder.adIcon = (ImageView) view.findViewById(R.id.adIcon);
 				holder.adTitle = (TextView) view.findViewById(R.id.adTitle);
-				holder.adDescription = (TextView) view
-						.findViewById(R.id.adDescription);
-				holder.adRecommendText = (TextView) view
-						.findViewById(R.id.adRecommendText);// 推荐
-				holder.adBalanceText = (TextView) view
-						.findViewById(R.id.adBalanceText);// 点击
 				view.setTag(holder);
 			}
 			ZcmAdertising info = mAdInfos.get(position);
 			getFinalBitmap().display(holder.adIcon, info.getAdIcon());
 			holder.adTitle.setText(info.getAdTitle());
-			holder.adDescription.setText(info.getAdContent());
-			holder.adBalanceText.setText("总额:" + info.getAdAward() + getString(R.string.m_gold));
 			return view;
 		}
 
@@ -138,6 +130,11 @@ public class WoDebActivity extends OtherBaseActivity implements
 		Intent i = new Intent(this, ActivityAdDetail_HTML5.class);
 		ZcmAdertising itemInfo = (ZcmAdertising) mAdListAdapter
 				.getItem(position);
+		String url = itemInfo.getAdUrl();
+		StringBuffer sb = new StringBuffer(url);
+		String info =sb.delete(url.lastIndexOf("/")+1, url.length()).append("info.html").toString();
+		Logger.i("TURL", info);
+		itemInfo.setAdUrl(info);
 		i.putExtra(INTENT_KEY_ADINFO, itemInfo);
 		startActivityWithAnimation(i);
 	}

@@ -5,8 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.emperises.monercat.OtherBaseActivity;
@@ -17,9 +15,7 @@ import com.google.gson.Gson;
 
 public class TiXianDialogActivity extends OtherBaseActivity {
 
-	private Button mCloseButton;
-	private EditText mTiXianEditText;
-	private String tixianBalance;
+	private String tixianId;
 	private TextView tixianTitle;
 	private TextView mNameText;
 	private TextView mBankIdText;
@@ -33,14 +29,10 @@ public class TiXianDialogActivity extends OtherBaseActivity {
 	@Override
 	protected void initViews() {
 		tixianTitle = (TextView) findViewById(R.id.tixianTitle);
-		mCloseButton = (Button) findViewById(R.id.closeButton);
-		mTiXianEditText = (EditText) findViewById(R.id.tixian_balance_edittext);
 		mNameText = (TextView) findViewById(R.id.tixian_name);
 		mBankIdText = (TextView) findViewById(R.id.bank_id);
 		mBankAddressText = (TextView) findViewById(R.id.bank_address);
-		tixianBalance = getIntent().getStringExtra(INTENT_KEY_TIXIAN_TYPE);
-		mTiXianEditText.setEnabled(false);
-		mTiXianEditText.setText(tixianBalance+"元");
+		tixianId = getIntent().getStringExtra(INTENT_KEY_TIXIAN_ID);
 	}
 	@Override
 	public void onHttpStart() {
@@ -96,7 +88,7 @@ public class TiXianDialogActivity extends OtherBaseActivity {
 			params.put("ubankno", bankNumber);
 			params.put("ubankName", bankAddr);
 			params.put("uname", name);
-			params.put("money", tixianBalance);
+			params.put("pid", tixianId);
 			startRequest(SERVER_URL_TIXIAN, params);
 			showToast("提现时错误,请检查输入的金额是否正确");
 			finish();

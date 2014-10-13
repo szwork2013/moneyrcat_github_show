@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:orientation="horizontal" >
+
+    
+    <LinearLayout
+        android:id="@+id/layoutA"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/messageA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/dialogue_popo_white_bg"
+                android:maxWidth="250dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:text="aaa"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/textcontent"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/dateA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="@color/textcontent"
+                android:layout_marginLeft="10dp"
+                android:text="TextView" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutB"
+        android:layout_width="fill_parent"
+        android:gravity="right"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/messageB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/dialogue_popo_green_bg_2"
+                android:maxWidth="250dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="aaaa"
+                android:textColor="@color/texttitle"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/dateB"
+                android:textSize="10sp"
+                android:textColor="@color/textcontent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="35dp" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -37,6 +37,7 @@ public class ZcmProduct extends BaseObject{
 	private String pcreateTime="";
     // 创建人 	
 	private String paddUser="";
+	private String pTotalNum = "";
 	private List<ZcmProduct> rows;
 
 	public String getPtype() {
@@ -125,6 +126,14 @@ public class ZcmProduct extends BaseObject{
 
 	public void setRows(List<ZcmProduct> rows) {
 		this.rows = rows;
+	}
+
+	public String getpTotalNum() {
+		return pTotalNum;
+	}
+
+	public void setpTotalNum(String pTotalNum) {
+		this.pTotalNum = pTotalNum;
 	}
 
 

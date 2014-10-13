@@ -14,6 +14,7 @@ import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.customview.CustomDialog.DialogClick;
 import com.emperises.monercat.domain.DomainObject;
+import com.emperises.monercat.ui.v3.WelcomeActivity;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
@@ -80,8 +81,15 @@ public class SplashActivity extends OtherBaseActivity {
 		}
 	}
 
+	private static final String WELCOME_SHOW = "welcome";
 	private void startHome() {
-		startActivity(new Intent(SplashActivity.this, MainActivity.class));
+		if(getBoleanValueForKey(WELCOME_SHOW)){
+			startActivity(new Intent(SplashActivity.this, MainActivity.class));
+		} else {
+			setBooleanForKey(WELCOME_SHOW, true);
+			startActivity(new Intent(SplashActivity.this, WelcomeActivity.class));
+		}
+		
 		finish();
 	}
 

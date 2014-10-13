@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <ListView
+        android:id="@+id/messageList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
+        android:divider="@null" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="10dp"
+        android:gravity="bottom"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/feedBackEdit"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_bottom_line"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:hint="请输入反馈信息"
+            android:textSize="13sp"
+            android:paddingTop="5dp"
+            android:textColor="@color/textcontent" >
+        </EditText>
+
+        <Button
+            android:id="@+id/imageB"
+            android:layout_width="50dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:background="@drawable/commit_bt_selector"
+            android:onClick="onClick"
+            android:text="发送" />
+    </LinearLayout>
+
+</LinearLayout>

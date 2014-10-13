@@ -11,6 +11,8 @@ package com.emperises.monercat.domain.model;
 public class ZcmAdertising extends BaseObject{
 
 	private String adUrl;
+	
+	private String adAwardBalance;
     // adId 	
 	private String adId;
     // 标题 	
@@ -157,6 +159,14 @@ public class ZcmAdertising extends BaseObject{
 
 	public void setAdUrl(String adUrl) {
 		this.adUrl = adUrl;
+	}
+
+	public String getAd_award_balance() {
+		return adAwardBalance;
+	}
+
+	public void setAd_award_balance(String ad_award_balance) {
+		this.adAwardBalance = ad_award_balance;
 	}
 }
 
