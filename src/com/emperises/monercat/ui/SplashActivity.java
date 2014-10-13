@@ -81,13 +81,16 @@ public class SplashActivity extends OtherBaseActivity {
 		}
 	}
 
-	private static final String WELCOME_SHOW = "welcome";
+	private static final String VERSION = "version";
 	private void startHome() {
-		if(getBoleanValueForKey(WELCOME_SHOW)){
-			startActivity(new Intent(SplashActivity.this, MainActivity.class));
-		} else {
-			setBooleanForKey(WELCOME_SHOW, true);
+		float oldVersion = getFloatValueForKey(VERSION);
+		float currentVersion = Util.getLocalVersionCode(this); 
+		if(currentVersion > oldVersion){
+			//判断版本号
+			setFloatForKey(VERSION, currentVersion);
 			startActivity(new Intent(SplashActivity.this, WelcomeActivity.class));
+		} else {
+			startActivity(new Intent(SplashActivity.this, MainActivity.class));
 		}
 		
 		finish();
