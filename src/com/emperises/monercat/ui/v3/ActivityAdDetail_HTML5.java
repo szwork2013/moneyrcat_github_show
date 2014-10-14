@@ -49,7 +49,7 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 			sb.append("index.html?"); 
 			sb.append("p1="+Util.getDeviceId(this)+"&p2="+info.getAdId());
 			setShareUrl(sb.toString());
-			setShareTitle(info.getAdTitle());
+			setShareTitle(info.getAdContent());
 			setShareLogoUrl(info.getAdIcon());
 			setShareContent(info.getAdContent());		
 		}
