@@ -174,10 +174,15 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if(keyCode == KeyEvent.KEYCODE_BACK){
-			if(mAdWebView.getUrl().equals(info.getAdUrl())){
-				finish();
+			String url = mAdWebView.getUrl();
+			if(!url.isEmpty()){
+				if(url.equals(info.getAdUrl())){
+					finish();
+				} else {
+					mAdWebView.loadUrl(info.getAdUrl());
+				}
 			} else {
-				mAdWebView.loadUrl(info.getAdUrl());
+				finish();
 			}
 		}
 		return true;

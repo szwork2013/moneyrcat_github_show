@@ -103,6 +103,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 				mAdPager.stopAutoScroll();
 				initViewPager();
 				initAdList();
+				updateBalance();//刷新的时候更新余额
 			}
 		});
 		mMXButton = (Button) homeHeaderItem.findViewById(R.id.mingxi_button);

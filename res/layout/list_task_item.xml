@@ -35,7 +35,7 @@
             android:layout_toRightOf="@+id/task_icon"
             android:text="签到大转盘"
             android:textColor="@color/texttitle"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <ImageView
             android:id="@+id/imageView2"
