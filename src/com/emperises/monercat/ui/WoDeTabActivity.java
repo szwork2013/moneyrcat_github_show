@@ -33,7 +33,7 @@ public class WoDeTabActivity extends BaseActivity {
 		HeaderImageEvent.getInstance().addHeaderImageListener(this);
 		wh = Util.dip2px(70, this);
 		mHeaderImage = (ImageView) findViewById(R.id.headerImage);
-		displayHeaderImage(mHeaderImage, wh, wh);
+//		displayHeaderImage(mHeaderImage, wh, wh);
 		genderAgeAddr = (TextView) findViewById(R.id.mytab_genderageaddr);
 		mNicknameText = (TextView) findViewById(R.id.mytab_nickname);
 		mTelText = (TextView) findViewById(R.id.mytab_tel);

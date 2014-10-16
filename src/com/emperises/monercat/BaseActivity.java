@@ -253,6 +253,17 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		sp = getSharedPreferences("config", MODE_PRIVATE);
+		float oldVersion = getFloatValueForKey(VERSION); 
+		float currentVersion = Util.getLocalVersionCode(this);
+		if(currentVersion > oldVersion){
+			//判断是否是新版本
+			//如果上一个版本数据库存在就删除掉
+			File mDbPath = getDatabasePath("moneycat.db");
+			if(mDbPath.exists()){
+				mDbPath.delete();
+			}
+		}
 		setShareInfo();
 		super.onCreate(savedInstanceState);
 		if (mDatabase == null) {
@@ -263,7 +274,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		}
 		// testDB(d.getDatabase());
 		mFinalHttp = new FinalHttp();
-		sp = getSharedPreferences("config", MODE_PRIVATE);
+		
 		EditMyInfoEvent.getInstance().addEditInfoListener(this);
 	}
 
@@ -325,6 +336,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 
 	protected SQLiteDatabase getDatabase() {
 		return mDatabase.getDatabase();
+		
 	}
 
 	private String shareUrl;
@@ -517,7 +529,14 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 			String uri = getStringValueForKey(LOCAL_CONFIGKEY_HEADER_IMAGE_URL);
 			//默认头像
 			Bitmap defaultHeader = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-			getFinalBitmap().display(imageView, uri,w,h,defaultHeader,defaultHeader);
+			Bitmap onlineImageCache = getFinalBitmap().getBitmapFromDiskCache(uri);
+			if(onlineImageCache == null){//如果没有本地缓存
+				Logger.i("CACHE", "没有缓存"+imageView.toString());
+				getFinalBitmap().display(imageView, uri,w,h,defaultHeader,defaultHeader);
+			} else {
+				Logger.i("CACHE", "有缓存："+imageView.toString());
+				imageView.setImageBitmap(onlineImageCache);
+			}
 		}
 	}
 	// 顶部信息

@@ -1,7 +1,8 @@
 package com.emperises.monercat.interfacesandevents;
 
 public interface LocalConfigKey {
-
+	
+	String VERSION = "version";//版本号
 	//绑定标志
 	String LOCAL_CONFIGKEY_BIND_FLG = "bind_flg";
 	//本地头像

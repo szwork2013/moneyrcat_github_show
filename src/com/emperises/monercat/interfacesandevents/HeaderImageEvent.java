@@ -21,6 +21,7 @@ public class HeaderImageEvent {
 	}
 	public void removeListener(HeaderImageChangeInterface listener){
 		if(listener != null){
+			Logger.i("HEADERIMAGE", "删除子类个数:"+mHeaderImageChangeInterfaces.size());
 			mHeaderImageChangeInterfaces.remove(listener);
 		}
 	}
@@ -33,10 +34,12 @@ public class HeaderImageEvent {
 				mHeaderImageChangeInterfaces.get(i).onHeaderImageChange(path);
 			}
 		}
-		Logger.i("HEADERIMAGE", "子类个数:"+mHeaderImageChangeInterfaces.size());
 	}
 	public void addHeaderImageListener(HeaderImageChangeInterface listener){
-		mHeaderImageChangeInterfaces.add(listener);
+		if(listener != null){
+			Logger.i("HEADERIMAGE", "添加子类个数:"+mHeaderImageChangeInterfaces.size());
+			mHeaderImageChangeInterfaces.add(listener);
+		}
 	}
 	
 }

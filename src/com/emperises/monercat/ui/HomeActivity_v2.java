@@ -8,8 +8,6 @@ import net.tsz.afinal.http.AjaxParams;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -33,6 +31,7 @@ import com.emperises.monercat.adapter.ImagePagerAdapter;
 import com.emperises.monercat.domain.model.AdInfoV3;
 import com.emperises.monercat.domain.model.UserInfoV3;
 import com.emperises.monercat.domain.model.ZcmAdertising;
+import com.emperises.monercat.interfacesandevents.HeaderImageEvent;
 import com.emperises.monercat.ui.v3.ActivityAdDetail_HTML5;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
@@ -45,24 +44,24 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 public class HomeActivity_v2 extends BaseActivity implements
 		OnPageChangeListener, OnItemClickListener {
 	private MyAdAdapter mAdListAdapter;
-	private static final int REFRESH_COMPLETE = 1;
-	private static final int START_AUTO_VIEWPAGER = 2;
-	private Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			super.handleMessage(msg);
-			switch (msg.what) {
-			case REFRESH_COMPLETE:
-				mPullListView.onRefreshComplete();
-				break;
-			case START_AUTO_VIEWPAGER:
-				mAdPager.startAutoScroll();
-				break;
-			default:
-				break;
-			}
-		}
-	};
+//	private static final int REFRESH_COMPLETE = 1;
+//	private static final int START_AUTO_VIEWPAGER = 2;
+//	private Handler mHandler = new Handler() {
+//		@Override
+//		public void handleMessage(Message msg) {
+//			super.handleMessage(msg);
+//			switch (msg.what) {
+//			case REFRESH_COMPLETE:
+//				mPullListView.onRefreshComplete();
+//				break;
+//			case START_AUTO_VIEWPAGER:
+//				mAdPager.startAutoScroll();
+//				break;
+//			default:
+//				break;
+//			}
+//		}
+//	};
 	private LinearLayout mPagerIndexLayout;
 	private AutoScrollViewPager mAdPager;
 	private long mExitTime;
@@ -89,6 +88,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 }
 	@Override
 	protected void initViews() {
+		HeaderImageEvent.getInstance().addHeaderImageListener(this);
 		mErrorHit = (Button) findViewById(R.id.error_hit);
 		mProgressBar = (ProgressBar) findViewById(R.id.progress);
 		homeHeaderItem = (LinearLayout) getLayoutInflater().inflate(
@@ -109,7 +109,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 				updateBalance();//刷新的时候更新余额
 			}
 		});
-		mMXButton = (Button) homeHeaderItem.findViewById(R.id.mingxi_button);
+//		mMXButton = (Button) homeHeaderItem.findViewById(R.id.mingxi_button);
 		mAdPager = (AutoScrollViewPager) homeHeaderItem
 				.findViewById(R.id.adPager);
 		mPullListView.setOnItemClickListener(this);
@@ -211,9 +211,11 @@ public class HomeActivity_v2 extends BaseActivity implements
 									HomeActivity_v2.this);
 							//保存用户头像地址
 							setStringtForKey(LOCAL_CONFIGKEY_HEADER_IMAGE_URL, user.getVal().getuImage());
+							//发出一次头像变更事件
+							HeaderImageEvent.getInstance().fireHeaderChangeImageEvent(user.getVal().getuImage());
 						}
-						//显示头像
-						displayHeaderImage(mHeaderImage,mHeaderWH,mHeaderWH);
+//						//显示头像
+//						displayHeaderImage(mHeaderImage,mHeaderWH,mHeaderWH);
 						// 初始化控件的值
 						TextView nickName = (TextView) homeHeaderItem
 								.findViewById(R.id.yue_nickname);
@@ -406,7 +408,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 	}
 
 	private int currentIndex = 0;
-	private Button mMXButton;
+//	private Button mMXButton;
 	private List<ZcmAdertising> mAdInfos = new ArrayList<ZcmAdertising>();
 	private List<ZcmAdertising> mLoopAdInfos = new ArrayList<ZcmAdertising>();
 	private PullToRefreshListView mPullListView;

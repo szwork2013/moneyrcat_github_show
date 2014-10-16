@@ -90,16 +90,11 @@ public class SplashActivity extends OtherBaseActivity {
 		}
 	}
 
-	private static final String VERSION = "version";//版本号
+	
 	private void startHome() { 
 		float oldVersion = getFloatValueForKey(VERSION); 
 		float currentVersion = Util.getLocalVersionCode(this); 
 		if(currentVersion > oldVersion){
-			//如果上一个版本数据库存在就删除掉
-			File mDbPath = getDatabasePath("moneycat.db");
-			if(mDbPath.exists()){
-				mDbPath.delete();
-			}
 			//判断版本号
 			setFloatForKey(VERSION, currentVersion);
 			//如果有新版本让第一次运行生效
