@@ -6,6 +6,7 @@ import java.util.List;
 import net.tsz.afinal.http.AjaxParams;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -96,7 +97,7 @@ public class ActivityFeedBack extends OtherBaseActivity {
         switch (v.getId()) {
             case R.id.imageB:
             	String content = edittext.getText().toString();
-            	if(content.isEmpty()){
+            	if(TextUtils.isEmpty(content)){
             		showToast("请输入反馈信息!");
             	} else {
             		modle = new MessageModel();

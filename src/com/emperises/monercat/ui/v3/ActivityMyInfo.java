@@ -178,35 +178,6 @@ public class ActivityMyInfo extends OtherBaseActivity {
 		intent.setType("image/*");
 		startActivityForResult(intent, FLAG_CHOOSE_IMG);
 	}
-	@Deprecated
-	private void showSelectedImagePopupWindow(){
-		GridView headerLayout = (GridView) getLayoutInflater().inflate(R.layout.activity_headimageselect, null);
-		final List<Integer> mHeaders = new ArrayList<Integer>();
-		mHeaders.add(R.drawable.test_headimage1);
-		mHeaders.add(R.drawable.test_headimage2);
-		mHeaders.add(R.drawable.test_headimage3);
-		mHeaders.add(R.drawable.test_headimage4);
-		mHeaders.add(R.drawable.test_headimage5);
-		mHeaders.add(R.drawable.test_headimage6);
-		headerLayout.setAdapter(new MyAdaprer(mHeaders));
-		mPopupWindow = new PopupWindow(headerLayout,MarginLayoutParams.WRAP_CONTENT,MarginLayoutParams.WRAP_CONTENT,true);
-		mPopupWindow.setOutsideTouchable(true);
-		mPopupWindow.setBackgroundDrawable(new ColorDrawable(-000000));
-		mPopupWindow.setAnimationStyle(R.style.mypopwindow_anim_style);
-		mPopupWindow.showAsDropDown(mHeadImage);
-		headerLayout.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-					long arg3) {
-				mPopupWindow.dismiss();
-				mHeadImage.setBackgroundResource(mHeaders.get(position));
-//				HeaderImageEvent.getInstance().fireHeaderChangeImageEvent(mHeaders.get(position));
-//				setIntForKey(LOCAL_CONFIGKEY_HEADER_RESID, mHeaders.get(position));
-			}
-		});
-		
-	}
 	/**
 	 * 选择照片
 	 */

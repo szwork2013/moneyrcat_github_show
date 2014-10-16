@@ -229,11 +229,11 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 			String mAge = mAgeText.getText().toString();
 			String mGend = mGenderText.getText().toString();
 			String mNickname = mNicknameText.getText().toString();
-			if (!mAddress.isEmpty() && !mAge.isEmpty() && !mGend.isEmpty()
-					&& !mNickname.isEmpty()) {
+			if (!TextUtils.isEmpty(mAddress) && !TextUtils.isEmpty(mAge) && !TextUtils.isEmpty(mGend)
+					&& !TextUtils.isEmpty(mNickname)) {
 				saveMyInfo();
 			} else {
-				showToast("您填写的信息不完整!");
+				showToast("您填写的信息不完整!"); 
 			}
 			break;
 		case R.id.editinfo_headerimage_layout:

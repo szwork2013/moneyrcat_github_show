@@ -3,6 +3,7 @@ package com.emperises.monercat.ui.v3;
 import net.tsz.afinal.http.AjaxParams;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -57,7 +58,7 @@ public class ActivityFeedBack_v2 extends OtherBaseActivity {
         switch (v.getId()) {
             case R.id.edit_sure:
             	String content = edittext.getText().toString();
-            	if(content.isEmpty()){
+            	if(TextUtils.isEmpty(content)){
             		showToast("请输入反馈信息!");
             	} else {
             		postFeedBack(content);

@@ -40,7 +40,7 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 	}
 
 	protected void setShareInfo() {
-		info = (	ZcmAdertising) getIntent().getSerializableExtra(
+		info = (ZcmAdertising) getIntent().getSerializableExtra(
 				INTENT_KEY_ADINFO);
 		String url = info.getAdUrl();
 		if(!TextUtils.isEmpty(url)){
@@ -49,7 +49,7 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 			sb.append("index.html?"); 
 			sb.append("p1="+Util.getDeviceId(this)+"&p2="+info.getAdId());
 			setShareUrl(sb.toString());
-			setShareTitle(info.getAdContent());
+			setShareTitle(info.getAdTitle());
 			setShareLogoUrl(info.getAdIcon());
 			setShareContent(info.getAdContent());		
 		}
@@ -175,7 +175,7 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if(keyCode == KeyEvent.KEYCODE_BACK){
 			String url = mAdWebView.getUrl();
-			if(!url.isEmpty()){
+			if(!TextUtils.isEmpty(url)){
 				if(url.equals(info.getAdUrl())){
 					finish();
 				} else {

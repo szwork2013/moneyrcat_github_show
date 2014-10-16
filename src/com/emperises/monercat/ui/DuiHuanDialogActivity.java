@@ -3,6 +3,7 @@ package com.emperises.monercat.ui;
 import net.tsz.afinal.http.AjaxParams;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -42,7 +43,8 @@ public class DuiHuanDialogActivity extends OtherBaseActivity {
 		String name = mDuihuanName.getText().toString();
 		String address = mDuihuanAddress.getText().toString();
 		String tel = mDuihuanTel.getText().toString();
-		if(name.isEmpty() || tel.isEmpty()){
+		
+		if(TextUtils.isEmpty(name) || TextUtils.isEmpty(tel)){
 			showToast("您的信息不完整");
 		} else {
 			

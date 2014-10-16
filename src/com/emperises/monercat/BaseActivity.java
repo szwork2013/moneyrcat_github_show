@@ -18,6 +18,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -520,7 +521,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 
 	protected void displayHeaderImage(ImageView imageView,int w , int h) {
 		String path = getHeadImageResPath();
-		if(!path.isEmpty() && new File(path).exists()){
+		if(!TextUtils.isEmpty(path) && new File(path).exists()){
 			//如果有本地头像
 			Bitmap image = BitmapFactory.decodeFile(path);
 			imageView.setImageBitmap(image);

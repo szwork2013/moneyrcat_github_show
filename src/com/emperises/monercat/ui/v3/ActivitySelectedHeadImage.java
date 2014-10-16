@@ -26,12 +26,6 @@ public class ActivitySelectedHeadImage extends OtherBaseActivity{
 		super.initViews();
 		mHeaderImageSelectGridView = (GridView) findViewById(R.id.headerImageSelectGridView);
 		List<Integer> mHeaders = new ArrayList<Integer>();
-		mHeaders.add(R.drawable.test_headimage1);
-		mHeaders.add(R.drawable.test_headimage2);
-		mHeaders.add(R.drawable.test_headimage3);
-		mHeaders.add(R.drawable.test_headimage4);
-		mHeaders.add(R.drawable.test_headimage5);
-		mHeaders.add(R.drawable.test_headimage6);
 		mHeaderImageSelectGridView.setAdapter(new MyAdaprer(mHeaders));
 	}
 	
