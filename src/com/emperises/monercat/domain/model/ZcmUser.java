@@ -48,7 +48,7 @@ public class ZcmUser extends BaseObject{
     // 身份证号码 	
 	private String uidentity="";
 	
-	
+	private String uImage = "";
 	private String balance; //账户余额
 	
 
@@ -193,6 +193,14 @@ public class ZcmUser extends BaseObject{
 
 	public void setBalance(String balance) {
 		this.balance = balance;
+	}
+
+	public String getuImage() {
+		return uImage;
+	}
+
+	public void setuImage(String uImage) {
+		this.uImage = uImage;
 	}
 }
 

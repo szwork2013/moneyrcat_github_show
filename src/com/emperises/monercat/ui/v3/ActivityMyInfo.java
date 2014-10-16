@@ -4,8 +4,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -26,6 +31,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.customview.headerimage.CropImageActivity;
@@ -33,6 +39,7 @@ import com.emperises.monercat.domain.model.ZcmUser;
 import com.emperises.monercat.interfacesandevents.HeaderImageEvent;
 import com.emperises.monercat.ui.BindActivity;
 import com.emperises.monercat.ui.MingXiActivity;
+import com.emperises.monercat.utils.Util;
 
 @SuppressLint("NewApi")
 public class ActivityMyInfo extends OtherBaseActivity {
@@ -53,19 +60,27 @@ public class ActivityMyInfo extends OtherBaseActivity {
 	private TextView mGenderAgeAddr;
 	private TextView mTel;
 	private TextView mRecommendCode;
+	private int wh;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		HeaderImageEvent.getInstance().addHeaderImageListener(this);
 		setContentView(R.layout.activity_myinfo);
 		setCurrentTitle("我的信息");
 	}
 
 	@Override
+	public void onHeaderImageChange(String path) {
+		super.onHeaderImageChange(path);
+		displayHeaderImage(mHeadImage, wh, wh);
+	}
+	@Override
 	protected void initViews() {
 		super.initViews();
 		mHeadImage = (ImageView) findViewById(R.id.headerImage);
-		mHeadImage.setBackgroundResource(getHeadImageResId());
+		wh = Util.dip2px(70, this);
+		displayHeaderImage(mHeadImage, wh, wh);
 		mInfoNicknameText = (TextView) findViewById(R.id.myinfo_nickname);
 		mCurrentBalance = (TextView) findViewById(R.id.myinfo_balance);
 		mCurrentBalance.setText(queryLocalBalance()+getString(R.string.m_gold));
@@ -78,8 +93,8 @@ public class ActivityMyInfo extends OtherBaseActivity {
 	private void setMyInfo() {
 		ZcmUser info = getMyInfoForDatabase();
 		if(info != null){
-			String gender = info.getUsex();
-			String age = info.getUage();
+			String gender = info.getUsex() + " ";
+			String age = info.getUage() + " ";
 			String addr = info.getUaddress();
 			mRecommendCode.setText(info.getUtgm());
 			mGenderAgeAddr.setText(gender+age+addr);
@@ -163,6 +178,7 @@ public class ActivityMyInfo extends OtherBaseActivity {
 		intent.setType("image/*");
 		startActivityForResult(intent, FLAG_CHOOSE_IMG);
 	}
+	@Deprecated
 	private void showSelectedImagePopupWindow(){
 		GridView headerLayout = (GridView) getLayoutInflater().inflate(R.layout.activity_headimageselect, null);
 		final List<Integer> mHeaders = new ArrayList<Integer>();
@@ -185,11 +201,31 @@ public class ActivityMyInfo extends OtherBaseActivity {
 					long arg3) {
 				mPopupWindow.dismiss();
 				mHeadImage.setBackgroundResource(mHeaders.get(position));
-				HeaderImageEvent.getInstance().fireHeaderChangeImageEvent(mHeaders.get(position));
-				setIntForKey(LOCAL_CONFIGKEY_HEADER_RESID, mHeaders.get(position));
+//				HeaderImageEvent.getInstance().fireHeaderChangeImageEvent(mHeaders.get(position));
+//				setIntForKey(LOCAL_CONFIGKEY_HEADER_RESID, mHeaders.get(position));
 			}
 		});
 		
+	}
+	/**
+	 * 选择照片
+	 */
+	private void showSelectedHeaderImageDialog(){
+		final String[] items = getResources().getStringArray(R.array.photo);
+		Builder dialog = new AlertDialog.Builder(this);
+		dialog.setTitle("请选择");
+		dialog.setItems(items, new OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int witch) {
+				if(witch == 0){
+					selectedPhoto();
+				} else {
+					takePhoto();
+				}
+			}
+		});
+		dialog.show();
 	}
 	@Override
 	public void onClick(View v) {
@@ -197,7 +233,8 @@ public class ActivityMyInfo extends OtherBaseActivity {
 		switch (v.getId()) {
 		case R.id.headerImage:
 			//选择默认头像，弹出PopupWindow
-			showSelectedImagePopupWindow();
+//			showSelectedImagePopupWindow();
+			startActivity(new Intent(this , ActivityEditMyinfo.class));
 			break;
 		case R.id.myinfo_yue:
 			startActivity(new Intent(this , MingXiActivity.class));
@@ -212,7 +249,6 @@ public class ActivityMyInfo extends OtherBaseActivity {
 			startActivity(new Intent(this , ActivityEditMyinfo.class));
 			break;
 		case R.id.myinfo_tel:
-			String tel = mTel.getText().toString();
 				startActivity(new Intent(this , BindActivity.class));
 			break;
 		default:
@@ -252,9 +288,5 @@ public class ActivityMyInfo extends OtherBaseActivity {
 	@Override
 	public void onMyInfoChange(ZcmUser info) {
 		setMyInfo();
-	}
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
 	}
 }

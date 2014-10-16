@@ -10,7 +10,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
@@ -59,11 +58,11 @@ public class UploadImageActivity extends OtherBaseActivity {
 			AjaxParams params = new AjaxParams();
 			params.put("extUdevicesId", Util.getDeviceId(this));
 			params.put("extAdId", mAdId);
-			try {
-				params.put("extImage", mUploadImagePath);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+				try {
+					params.put("extImage", mUploadImagePath);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
 			getHttpClient().post(SERVER_URL_UPLOAD_FILE,params ,new AjaxCallBack<String>() {
 				@Override
 				public void onSuccess(String t) {

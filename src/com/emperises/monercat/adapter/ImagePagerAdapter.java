@@ -10,7 +10,6 @@ import java.util.List;
 import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,7 +20,6 @@ import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmAdertising;
 import com.emperises.monercat.interfacesandevents.LocalConfigKey;
 import com.emperises.monercat.ui.v3.ActivityAdDetail_HTML5;
-import com.emperises.monercat.utils.Logger;
 
 /**
  * ImagePagerAdapter
@@ -32,12 +30,10 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter implements LocalCon
 
     private Context       context;
     private FinalBitmap mFinalBitmap;
-    private Bitmap mLoadingBitmap;
     private int           size;
     private boolean       isInfiniteLoop;
     List<ZcmAdertising> mLoopAdInfos;
     public ImagePagerAdapter(Context context, List<ZcmAdertising> mLoopAdInfos) {
-    	mLoadingBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.loading_icon);
     	this.mLoopAdInfos = mLoopAdInfos;
     	mFinalBitmap = FinalBitmap.create(context);
         this.context = context;
@@ -64,7 +60,7 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter implements LocalCon
 
     @Override
     public View getView(final int position, View view, ViewGroup container) {
-        ViewHolder holder;
+        ViewHolder holder = null;
         if (view == null) {
             holder = new ViewHolder();
             view = holder.imageView = new ImageView(context);
@@ -73,9 +69,7 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter implements LocalCon
             holder = (ViewHolder)view.getTag();
         }
         String url = mLoopAdInfos.get(getPosition(position)).getAdImage();
-        Logger.i("URL", url);
-        Logger.i("POSITION", "curretn position = "+getPosition(position));
-        mFinalBitmap.display(holder.imageView , url , mLoadingBitmap,mLoadingBitmap);
+        mFinalBitmap.display(holder.imageView , url,BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher));
         holder.imageView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {

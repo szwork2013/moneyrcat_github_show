@@ -52,6 +52,10 @@
         <item>男</item>
         <item>女</item>
     </string-array>
+    <string-array name="photo">
+        <item>相册</item>
+        <item>拍照</item>
+    </string-array>
 
     <string name="http_www_emperises_com_">http://115.28.136.194:8086/zcm/ex/zcm/down.html</string>
     <string name="share_title">招财喵,真正可以赚钱的APP</string>

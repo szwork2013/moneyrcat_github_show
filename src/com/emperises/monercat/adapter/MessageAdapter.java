@@ -17,6 +17,7 @@ public class MessageAdapter extends BaseAdapter {
     private Context context;
     private ViewHolder holder;
     private int headerImageResId;
+    private String headerImageResPath;
     class ViewHolder {
         TextView messageA;
         TextView dateA;
@@ -69,7 +70,8 @@ public class MessageAdapter extends BaseAdapter {
             holder.layoutA.setVisibility(View.GONE);
             holder.messageB.setText(listModel.get(position).getMessage());
             holder.dateB.setText(listModel.get(position).getDate());
-            holder.headerB.setImageResource(headerImageResId);
+//            holder.headerB.setImageResource(headerImageResId);
+            //TODO:头像变更为做处理
         }
         return convertView;
     }
@@ -80,6 +82,14 @@ public class MessageAdapter extends BaseAdapter {
 
 	public void setHeaderImageResId(int headerImageResId) {
 		this.headerImageResId = headerImageResId;
+	}
+
+	public String getHeaderImageResPath() {
+		return headerImageResPath;
+	}
+
+	public void setHeaderImageResPath(String headerImageResPath) {
+		this.headerImageResPath = headerImageResPath;
 	}
 
 }

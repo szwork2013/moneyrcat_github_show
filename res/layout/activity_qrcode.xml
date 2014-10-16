@@ -32,7 +32,6 @@
             android:layout_alignLeft="@+id/imageView1"
             android:layout_below="@+id/imageView1"
             android:layout_marginTop="10dp"
-            android:background="@drawable/test_headimage5"
             android:onClick="onClick" />
 
         <TextView

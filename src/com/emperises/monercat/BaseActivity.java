@@ -1,5 +1,6 @@
 package com.emperises.monercat;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,12 +8,15 @@ import net.tsz.afinal.FinalBitmap;
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -52,6 +56,7 @@ import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners.SnsPostListener;
 import com.umeng.socialize.media.QQShareContent;
 import com.umeng.socialize.media.QZoneShareContent;
+import com.umeng.socialize.media.SinaShareContent;
 import com.umeng.socialize.media.TencentWbShareContent;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.sso.QZoneSsoHandler;
@@ -60,6 +65,7 @@ import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.umeng.socialize.weixin.media.CircleShareContent;
 import com.umeng.socialize.weixin.media.WeiXinShareContent;
 
+@SuppressLint("NewApi")
 public abstract class BaseActivity extends Activity implements OnClickListener,
 		HttpInterface, LocalConfigKey, HeaderImageChangeInterface,
 		BalanceInterface, EditMyInfoInterface , UrlPostInterface , LogTag{
@@ -72,17 +78,18 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		return f;
 	}
 	@Override
-	public void onHeaderImageChange(int resId) {
-		ImageView header = (ImageView) findViewById(R.id.myheaderimage);
-		ImageView headerInfo = (ImageView) findViewById(R.id.headerImage);
-		if (header != null) {
-			header.setBackgroundResource(resId);
-		}
-		if (headerInfo != null) {
-			headerInfo.setBackgroundResource(resId);
-		}
+	public void onHeaderImageChange(String path) {
 		
-
+//		Logger.i("HEADER", "path:"+path);
+//		ImageView header = (ImageView) findViewById(R.id.myheaderimage);
+//		ImageView headerInfo = (ImageView) findViewById(R.id.headerImage);
+//		Bitmap image = BitmapFactory.decodeFile(path);
+//		if (header != null) {
+//			header.setImageBitmap(image);
+//		}
+//		if (headerInfo != null) {
+//			headerInfo.setImageBitmap(image);
+//		}
 	}
 
 	// 余额改变时
@@ -97,16 +104,24 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	}
 
 	// 获得头像资源id
-	protected int getHeadImageResId() {
-		int resId = getIntValueForKey(LOCAL_CONFIGKEY_HEADER_RESID);
-		if (resId == 0) {
-			resId = R.drawable.test_headimage1;
-			setIntForKey(LOCAL_CONFIGKEY_HEADER_RESID,
-					R.drawable.test_headimage1);
-		}
-		return resId;
+//	protected int getHeadImageResId() {
+//		int resId = getIntValueForKey(LOCAL_CONFIGKEY_HEADER_RESID);
+//		if (resId == 0) {
+//			resId = R.drawable.test_headimage1;
+//			setIntForKey(LOCAL_CONFIGKEY_HEADER_RESID,
+//					R.drawable.test_headimage1);
+//		}
+//		return resId;
+//	}
+	protected String getHeadImageResPath() {
+		return getStringValueForKey(LOCAL_CONFIGKEY_HEADER_PATH);
 	}
+	protected String getHeadImageResUrl() {
+		return getStringValueForKey(LOCAL_CONFIGKEY_HEADER_IMAGE_URL);
+	}
+	
 
+	
 	// 查询当前余额
 	protected String queryLocalBalance() {
 		ZcmUser info = getMyInfoForDatabase();
@@ -384,6 +399,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		wxCircleHandler.setToCircle(true);
 		wxCircleHandler.addToSocialSDK();
 
+		
 		// 为了保证人人分享成功且能够在PC上正常显示，请设置website
 		mController.setAppWebSite(SHARE_MEDIA.RENREN, shareUrl);
 		// 设置分享到微信的内容, 图片类型
@@ -403,14 +419,20 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		circleMedia.setShareImage(new UMImage(this, shareLogoUrl));// TODO:改为网页LOGO图片
 		mController.setShareMedia(circleMedia);
 
+		//新浪分享内容
+		SinaShareContent sinaContent = new SinaShareContent();
+		sinaContent.setTitle(shareTitle);
+		sinaContent.setTargetUrl(shareUrl);
+		sinaContent.setShareContent(shareContent  + "\n详情点击:"+shareUrl);
+		sinaContent.setShareImage(new UMImage(this, shareLogoUrl));
+		mController.setShareMedia(sinaContent);
+		
 		TencentWbShareContent tencentContent = new TencentWbShareContent();
 		tencentContent.setTitle(shareTitle);
 		tencentContent.setTargetUrl(shareUrl);
-		tencentContent.setShareContent(shareContent);
 		tencentContent.setShareImage(new UMImage(this, shareLogoUrl));
-		tencentContent.setTargetUrl(shareUrl);
 		// 设置分享到腾讯微博的文字内容
-		tencentContent.setShareContent(shareContent);
+		tencentContent.setShareContent(shareContent + "\n详情点击:"+shareUrl);
 		// 设置分享到腾讯微博的多媒体内容
 		mController.setShareMedia(tencentContent);
 		// 设置分享图片，参数2为图片的url.
@@ -484,6 +506,20 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 
 	}
 
+	protected void displayHeaderImage(ImageView imageView,int w , int h) {
+		String path = getHeadImageResPath();
+		if(!path.isEmpty() && new File(path).exists()){
+			//如果有本地头像
+			Bitmap image = BitmapFactory.decodeFile(path);
+			imageView.setImageBitmap(image);
+		} else {
+			//显示网络头像
+			String uri = getStringValueForKey(LOCAL_CONFIGKEY_HEADER_IMAGE_URL);
+			//默认头像
+			Bitmap defaultHeader = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+			getFinalBitmap().display(imageView, uri,w,h,defaultHeader,defaultHeader);
+		}
+	}
 	// 顶部信息
 	private void setBaseHeaderInfo() {
 		Logger.i("HEADER", "setBaseHeaderInfo");
@@ -494,8 +530,8 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		ZcmUser info = getMyInfoForDatabase();
 		if (ye != null && info != null) {
 			HeaderImageEvent.getInstance().addHeaderImageListener(this);
-			int resId = getHeadImageResId();
-			mHeader.setBackgroundResource(resId);
+			int mHeaderWH = Util.dip2px(35, getApplicationContext());
+			displayHeaderImage(mHeader, mHeaderWH, mHeaderWH);
 			mHeader.setOnClickListener(new OnClickListener() {
 
 				@Override

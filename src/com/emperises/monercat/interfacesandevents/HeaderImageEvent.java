@@ -27,10 +27,10 @@ public class HeaderImageEvent {
 	public void removeAllListener(){
 		mHeaderImageChangeInterfaces.clear();
 	}
-	public void fireHeaderChangeImageEvent(int resId){
+	public void fireHeaderChangeImageEvent(String path){
 		for (int i = 0; i < mHeaderImageChangeInterfaces.size(); i++) {
 			if(mHeaderImageChangeInterfaces.get(i) != null){
-				mHeaderImageChangeInterfaces.get(i).onHeaderImageChange(resId);
+				mHeaderImageChangeInterfaces.get(i).onHeaderImageChange(path);
 			}
 		}
 		Logger.i("HEADERIMAGE", "子类个数:"+mHeaderImageChangeInterfaces.size());
@@ -38,4 +38,5 @@ public class HeaderImageEvent {
 	public void addHeaderImageListener(HeaderImageChangeInterface listener){
 		mHeaderImageChangeInterfaces.add(listener);
 	}
+	
 }

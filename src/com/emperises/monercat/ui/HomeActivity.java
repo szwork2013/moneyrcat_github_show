@@ -261,8 +261,8 @@ public class HomeActivity extends BaseActivity implements OnPageChangeListener,
 				holder.adTitle = (TextView) view.findViewById(R.id.adTitle);
 				holder.adDescription = (TextView) view
 						.findViewById(R.id.adDescription);
-				holder.adRecommendText = (TextView) view
-						.findViewById(R.id.adRecommendText);// 推荐
+//				holder.adRecommendText = (TextView) view
+//						.findViewById(R.id.adRecommendText);// 推荐
 				holder.adBalanceText = (TextView) view
 						.findViewById(R.id.adBalanceText);// 点击
 				view.setTag(holder);

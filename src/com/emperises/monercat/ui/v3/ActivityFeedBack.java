@@ -88,7 +88,7 @@ public class ActivityFeedBack extends OtherBaseActivity {
         modle.setDate(Util.getDate());
         listmodle.add(modle);
         adapter = new MessageAdapter(this, listmodle);
-        adapter.setHeaderImageResId(getHeadImageResId());
+        adapter.setHeaderImageResPath(getHeadImageResUrl());
         mListView.setAdapter(adapter);
 	}
 	@Override

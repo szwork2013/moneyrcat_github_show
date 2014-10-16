@@ -31,7 +31,7 @@ public class CropImage
 	public static final File FILE_SDCARD = Environment
             .getExternalStorageDirectory();
 
-    public static final File FILE_LOCAL = new File(FILE_SDCARD,"loveand");
+    public static final File FILE_LOCAL = new File(FILE_SDCARD,"moneycat/moneycat_header");
     
 	public boolean mWaitingToPick; // Whether we are wait the user to pick a face.
     public boolean mSaving; // Whether the "save" button is already clicked.

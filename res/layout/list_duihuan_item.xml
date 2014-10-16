@@ -67,7 +67,7 @@
         android:layout_below="@+id/linearLayout1"
         android:drawablePadding="5dp"
         android:drawableRight="@drawable/right_arrow"
-        android:text="兑换"
+        android:text="点击兑换"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/textcontent"
         android:textSize="15sp" />

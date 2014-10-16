@@ -67,5 +67,9 @@ public class OtherBaseActivity extends BaseActivity {
 		}
 	}
 	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
 
 }

@@ -37,7 +37,6 @@
                     android:layout_height="70dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/test_headimage5"
                     android:onClick="onClick" />
 
                 <TextView

@@ -1,8 +1,11 @@
 package com.emperises.monercat.ui;
 
+import java.io.File;
+
 import net.tsz.afinal.http.AjaxParams;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
@@ -14,7 +17,6 @@ import com.emperises.monercat.MainActivity;
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.customview.CustomDialog.DialogClick;
-import com.emperises.monercat.domain.DomainObject;
 import com.emperises.monercat.domain.model.RegResult;
 import com.emperises.monercat.ui.v3.WelcomeActivity;
 import com.emperises.monercat.utils.Logger;
@@ -35,7 +37,12 @@ public class SplashActivity extends OtherBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Logger.i("INTENT", getIntent().toString());
+		File file = new File(Environment.getExternalStorageDirectory(),"moneycat");
+		if(!file.exists()){
+				file.mkdir();
+		}
 		setContentView(R.layout.activity_splash);
+		//创建一个SD卡文件夹
 		//检测是否是真机
 		String deviceId = Util.getDeviceId(this);
 		if(TextUtils.isEmpty(deviceId) || deviceId.equals("00000000000000")){
@@ -88,8 +95,15 @@ public class SplashActivity extends OtherBaseActivity {
 		float oldVersion = getFloatValueForKey(VERSION); 
 		float currentVersion = Util.getLocalVersionCode(this); 
 		if(currentVersion > oldVersion){
+			//如果上一个版本数据库存在就删除掉
+			File mDbPath = getDatabasePath("moneycat.db");
+			if(mDbPath.exists()){
+				mDbPath.delete();
+			}
 			//判断版本号
 			setFloatForKey(VERSION, currentVersion);
+			//如果有新版本让第一次运行生效
+			setBooleanForKey(LOCAL_CONFIGKEY_FIRSTRUN, false);
 			startActivity(new Intent(SplashActivity.this, WelcomeActivity.class));
 		} else {
 			startActivity(new Intent(SplashActivity.this, MainActivity.class));

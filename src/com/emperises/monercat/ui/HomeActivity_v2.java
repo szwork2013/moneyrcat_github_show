@@ -1,9 +1,11 @@
 package com.emperises.monercat.ui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,7 +33,6 @@ import com.emperises.monercat.adapter.ImagePagerAdapter;
 import com.emperises.monercat.domain.model.AdInfoV3;
 import com.emperises.monercat.domain.model.UserInfoV3;
 import com.emperises.monercat.domain.model.ZcmAdertising;
-import com.emperises.monercat.interfacesandevents.HeaderImageEvent;
 import com.emperises.monercat.ui.v3.ActivityAdDetail_HTML5;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
@@ -40,6 +41,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
+@SuppressLint("NewApi")
 public class HomeActivity_v2 extends BaseActivity implements
 		OnPageChangeListener, OnItemClickListener {
 	private MyAdAdapter mAdListAdapter;
@@ -88,10 +90,11 @@ public class HomeActivity_v2 extends BaseActivity implements
 	@Override
 	protected void initViews() {
 		mErrorHit = (Button) findViewById(R.id.error_hit);
-		HeaderImageEvent.getInstance().addHeaderImageListener(this);
 		mProgressBar = (ProgressBar) findViewById(R.id.progress);
 		homeHeaderItem = (LinearLayout) getLayoutInflater().inflate(
 				R.layout.home_header_item, null);
+		mHeaderImage = (ImageView) homeHeaderItem
+				.findViewById(R.id.myheaderimage);
 		mPagerIndexLayout = (LinearLayout) homeHeaderItem
 				.findViewById(R.id.pageControlLayout);
 		mPullListView = (PullToRefreshListView) findViewById(R.id.adListView);
@@ -110,6 +113,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 		mAdPager = (AutoScrollViewPager) homeHeaderItem
 				.findViewById(R.id.adPager);
 		mPullListView.setOnItemClickListener(this);
+		mHeaderWH = Util.dip2px(35, getApplicationContext());
 		initMyInfo();
 		initAdList();
 		// /////////////////////
@@ -118,12 +122,16 @@ public class HomeActivity_v2 extends BaseActivity implements
 		initViewPager();
 	}
 
+	private ImagePagerAdapter mImagePagerAdapter;
 	private void initViewPager() {
 		AjaxParams params = new AjaxParams();
 		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 		params.put("type", "0");
 		getHttpClient().post(SERVER_URL_LOOPAD, params,
 				new AjaxCallBack<String>() {
+
+
+
 
 					@Override
 					public void onSuccess(String t) {
@@ -132,30 +140,14 @@ public class HomeActivity_v2 extends BaseActivity implements
 						if (infos != null && infos.getRows() != null
 								&& infos.getRows().size() > 0) {
 							// 获得首页广告轮询列表
+							mLoopAdInfos.clear();
 							mLoopAdInfos = infos.getRows();
 							mPagerIndexLayout.removeAllViews();
-							for (int i = 0; i < mLoopAdInfos.size(); i++) {
-								// 添加小圆点
-								ImageView pageControlChild = new ImageView(
-										HomeActivity_v2.this);
-								if (i == 0) {
-									pageControlChild
-											.setBackgroundResource(R.drawable.circle_selected);
-								} else {
-									pageControlChild
-											.setBackgroundResource(R.drawable.circle_noraml);
-								}
-								LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-										LayoutParams.WRAP_CONTENT,
-										LayoutParams.WRAP_CONTENT);
-								params.leftMargin = Util.px2dip(20,
-										HomeActivity_v2.this);
-								mPagerIndexLayout.addView(pageControlChild,
-										params);
-							}
-							mAdPager.setAdapter(new ImagePagerAdapter(
+							changeSmallIndexBg();
+							mImagePagerAdapter = new ImagePagerAdapter(
 									HomeActivity_v2.this, mLoopAdInfos)
-									.setInfiniteLoop(true));
+									.setInfiniteLoop(true);
+							mAdPager.setAdapter(mImagePagerAdapter);
 							mAdPager.setInterval(3000);
 							if (mLoopAdInfos.size() > 1) {
 								mAdPager.startAutoScroll();
@@ -167,6 +159,8 @@ public class HomeActivity_v2 extends BaseActivity implements
 						super.onSuccess(t);
 					}
 
+					
+
 					@Override
 					public void onFailure(Throwable t, int errorNo,
 							String strMsg) {
@@ -176,7 +170,30 @@ public class HomeActivity_v2 extends BaseActivity implements
 				});
 
 	}
-
+	/**
+	 * 改变首页的小圆点数量
+	 */
+	private void changeSmallIndexBg() {
+		for (int i = 0; i < mLoopAdInfos.size(); i++) {
+			// 添加小圆点
+			ImageView pageControlChild = new ImageView(
+					HomeActivity_v2.this);
+			if (i == 0) {
+				pageControlChild
+						.setBackgroundResource(R.drawable.circle_selected);
+			} else {
+				pageControlChild
+						.setBackgroundResource(R.drawable.circle_noraml);
+			}
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+					LayoutParams.WRAP_CONTENT,
+					LayoutParams.WRAP_CONTENT);
+			params.leftMargin = Util.px2dip(20,
+					HomeActivity_v2.this);
+			mPagerIndexLayout.addView(pageControlChild,
+					params);
+		}
+	}
 	private void initMyInfo() {
 		// 初始化用户信息
 		AjaxParams params = new AjaxParams();
@@ -192,7 +209,11 @@ public class HomeActivity_v2 extends BaseActivity implements
 						if (user != null && user.getVal() != null) {
 							getDatabaseInterface().saveMyInfo(user.getVal(),
 									HomeActivity_v2.this);
+							//保存用户头像地址
+							setStringtForKey(LOCAL_CONFIGKEY_HEADER_IMAGE_URL, user.getVal().getuImage());
 						}
+						//显示头像
+						displayHeaderImage(mHeaderImage,mHeaderWH,mHeaderWH);
 						// 初始化控件的值
 						TextView nickName = (TextView) homeHeaderItem
 								.findViewById(R.id.yue_nickname);
@@ -210,18 +231,11 @@ public class HomeActivity_v2 extends BaseActivity implements
 						showNetErrorToast(strMsg, t);
 					}
 				});
-		int resId = getHeadImageResId();
-		ImageView header = (ImageView) homeHeaderItem
-				.findViewById(R.id.myheaderimage);
-		header.setBackgroundResource(resId);
 	}
 
 	@Override
-	public void onHeaderImageChange(int resId) {
-		Logger.i("MYINFO", "头像变更!");
-		ImageView header = (ImageView) homeHeaderItem
-				.findViewById(R.id.myheaderimage);
-		header.setBackgroundResource(resId);
+	public void onHeaderImageChange(String path) {
+		displayHeaderImage(mHeaderImage, mHeaderWH, mHeaderWH);
 	}
 
 	@Override
@@ -258,6 +272,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 		AdInfoV3 infos = new Gson().fromJson(content, AdInfoV3.class);
 		if (infos != null && infos.getRows() != null
 				&& infos.getRows().size() > 0) {
+			mAdInfos.clear();
 			mAdInfos = infos.getRows();
 			Logger.i("INFOS", mAdInfos.toString());
 			mAdListAdapter = new MyAdAdapter(mAdInfos);
@@ -336,8 +351,8 @@ public class HomeActivity_v2 extends BaseActivity implements
 					holder.adTitle = (TextView) view.findViewById(R.id.adTitle);
 					holder.adDescription = (TextView) view
 							.findViewById(R.id.adDescription);
-					holder.adRecommendText = (TextView) view
-							.findViewById(R.id.adRecommendText);// 推荐
+//					holder.adRecommendText = (TextView) view
+//							.findViewById(R.id.adRecommendText);// 推荐
 					holder.adBalanceText = (TextView) view
 							.findViewById(R.id.adBalanceText);// 点击
 					view.setTag(holder);
@@ -392,12 +407,14 @@ public class HomeActivity_v2 extends BaseActivity implements
 
 	private int currentIndex = 0;
 	private Button mMXButton;
-	private List<ZcmAdertising> mAdInfos;
-	private List<ZcmAdertising> mLoopAdInfos;
+	private List<ZcmAdertising> mAdInfos = new ArrayList<ZcmAdertising>();
+	private List<ZcmAdertising> mLoopAdInfos = new ArrayList<ZcmAdertising>();
 	private PullToRefreshListView mPullListView;
 	private LinearLayout homeHeaderItem;
 	private ProgressBar mProgressBar;
 	private Button mErrorHit;
+	private ImageView mHeaderImage;
+	private int mHeaderWH;
 
 	private void changeIndexBg(int currentPosition) {
 		for (int i = 0; i < mPagerIndexLayout.getChildCount(); i++) {
