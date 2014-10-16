@@ -42,10 +42,11 @@
 
             <TextView
                 android:id="@+id/adTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
+               	android:ellipsize="end"
                 android:layout_height="wrap_content"
-                android:text="荣耀之上传 奇不止"
                 android:textColor="@color/texttitle"
+                android:singleLine="true"
                 android:textSize="17sp" />
 
             <TextView

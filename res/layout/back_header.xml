@@ -14,7 +14,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:textColor="#ffffff"
-            android:text="广告平台" />
+            android:textSize="16sp"
+             />
 
         <Button
             android:id="@+id/backbutton"
