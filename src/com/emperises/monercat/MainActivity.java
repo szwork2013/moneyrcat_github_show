@@ -17,10 +17,10 @@ import android.widget.TextView;
 import com.emperises.monercat.adapter.HomeViewPagerAdapter;
 import com.emperises.monercat.customview.MainViewPager;
 import com.emperises.monercat.ui.HomeActivity_v2;
+import com.emperises.monercat.ui.MingXiActivity;
 import com.emperises.monercat.ui.MoreActivity;
 import com.emperises.monercat.ui.TasksActivity_v2;
 import com.emperises.monercat.ui.WoDeTabActivity;
-import com.emperises.monercat.ui.v3.ActivityDaiBan;
 import com.emperises.monercat.ui.v3.ActivityMessageList;
 import com.emperises.monercat.utils.PushUtils;
 
@@ -162,8 +162,7 @@ public class MainActivity extends ActivityGroup implements OnClickListener {
 			startActivity(new Intent(this , ActivityMessageList.class));
 			break;
 		case R.id.rightItem:
-//			Toast.makeText(this, R.string.signtoast, Toast.LENGTH_SHORT).show();
-			startActivity(new Intent(this , ActivityDaiBan.class));
+			startActivity(new Intent(this , MingXiActivity.class));
 			break;
 		default:
 			break;

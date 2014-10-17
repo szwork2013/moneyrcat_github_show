@@ -3,6 +3,8 @@ package com.emperises.monercat.interfacesandevents;
 
 public interface UrlPostInterface {
 
+	
+//	http://115.28.136.194:8086/zcm/zcm/user_app_logs.html 日志地址
 	String HTTP_RESULE_SUCCESS = "00";
 	//服务器IP地址
 	String SERVER_ADDRESS  = "115.28.136.194";
@@ -27,4 +29,5 @@ public interface UrlPostInterface {
 	String SERVER_URL_DUIHUAN_DEFAULT_INFO = BASE_URL + "/trans/trans_duihuan.do";//提交兑换信息
 	String SERVER_URL_MESSAGELIST = BASE_URL + "/messages/query_msgs.do";//查询消息列表
 	String SERVER_URL_FEEDBACK = BASE_URL + "/feedback/add.do";//提交意见反馈
+	String SERVER_URL_UPLOAD_LOG_FILE = BASE_URL + "user/upload_user_log_file.do";//提交log文件
 }

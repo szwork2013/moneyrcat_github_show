@@ -2,6 +2,9 @@ package com.emperises.monercat.interfacesandevents;
 
 public interface LocalConfigKey {
 	
+	String INTENT_SERVICE_FLG = "push_logs";
+	String INTENT_KEY_LOG_PATH = "logs_path";
+	String LOCAL_CONFIG_KEY_UPLOAD_LOGS = "upload_logs";
 	String VERSION = "version";//版本号
 	//绑定标志
 	String LOCAL_CONFIGKEY_BIND_FLG = "bind_flg";

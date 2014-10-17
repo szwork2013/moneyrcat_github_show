@@ -22,12 +22,14 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="true"
         android:resizeable="true"
         android:smallScreens="true" />
+
     <application
         android:name="com.baidu.frontia.FrontiaApplication"
         android:allowBackup="true"
@@ -45,6 +47,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name="com.emperises.monercat.services.MoneyCatService" >
+        </service>
+
         <activity
             android:name="com.emperises.monercat.customview.headerimage.CropImageActivity"
             android:launchMode="singleTop"
@@ -122,11 +128,6 @@
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.emperises.monercat.ui.v3.ActivityTiXianJiLu"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar" />
-        <activity
-            android:name="com.emperises.monercat.ui.v3.ActivityDaiBan"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />

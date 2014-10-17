@@ -71,14 +71,13 @@ public class HomeActivity_v2 extends BaseActivity implements
 		Logger.i("Activity", "HomeActivity_v2");
 		setContentView(R.layout.activity_home_v2);
 		Util.checkUpdateVersion(this, SERVER_URL_UPDATE_VERSION);
-
+		
 	}
 	  public boolean onKeyDown(int keyCode, KeyEvent event) {
           if (keyCode == KeyEvent.KEYCODE_BACK) {
                   if ((System.currentTimeMillis() - mExitTime) > 2000) {
                           showToast("再按一次退出程序!");
                           mExitTime = System.currentTimeMillis();
-
                   } else {
                           finish();
                   }

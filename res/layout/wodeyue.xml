@@ -42,7 +42,8 @@
             android:id="@+id/yue_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="5dp"
+            android:textSize="12sp"
             android:text="余额:4.8 元"
             android:textColor="#6e7d83" />
 

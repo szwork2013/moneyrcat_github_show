@@ -18,7 +18,9 @@ import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.customview.CustomDialog.DialogClick;
 import com.emperises.monercat.domain.model.RegResult;
+import com.emperises.monercat.services.MoneyCatService;
 import com.emperises.monercat.ui.v3.WelcomeActivity;
+import com.emperises.monercat.utils.CrashHandler;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
@@ -35,6 +37,9 @@ public class SplashActivity extends OtherBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		//初始化异常捕获模块
+		CrashHandler.getInstance().init(getApplicationContext());
+		startService(new Intent(this,MoneyCatService.class));
 		super.onCreate(savedInstanceState);
 		Logger.i("INTENT", getIntent().toString());
 		File file = new File(Environment.getExternalStorageDirectory(),"moneycat");
