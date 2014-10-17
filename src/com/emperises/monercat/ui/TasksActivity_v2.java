@@ -56,6 +56,17 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 			}
 		}
 	};
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		if(hasFocus){
+			Logger.i("KEY", "TaskActivity 界面出现");
+			mAdPager.startAutoScroll();
+		} else {
+			Logger.i("KEY", "TaskActivity 界面消失");
+			mAdPager.stopAutoScroll();
+		}
+	}
 	private List<ZcmAdertising> mLoopAdInfos;
 
 	@Override

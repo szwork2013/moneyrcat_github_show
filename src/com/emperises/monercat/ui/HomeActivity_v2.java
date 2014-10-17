@@ -44,47 +44,81 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 public class HomeActivity_v2 extends BaseActivity implements
 		OnPageChangeListener, OnItemClickListener {
 	private MyAdAdapter mAdListAdapter;
-//	private static final int REFRESH_COMPLETE = 1;
-//	private static final int START_AUTO_VIEWPAGER = 2;
-//	private Handler mHandler = new Handler() {
-//		@Override
-//		public void handleMessage(Message msg) {
-//			super.handleMessage(msg);
-//			switch (msg.what) {
-//			case REFRESH_COMPLETE:
-//				mPullListView.onRefreshComplete();
-//				break;
-//			case START_AUTO_VIEWPAGER:
-//				mAdPager.startAutoScroll();
-//				break;
-//			default:
-//				break;
-//			}
-//		}
-//	};
+	// private static final int REFRESH_COMPLETE = 1;
+	// private static final int START_AUTO_VIEWPAGER = 2;
+	// private Handler mHandler = new Handler() {
+	// @Override
+	// public void handleMessage(Message msg) {
+	// super.handleMessage(msg);
+	// switch (msg.what) {
+	// case REFRESH_COMPLETE:
+	// mPullListView.onRefreshComplete();
+	// break;
+	// case START_AUTO_VIEWPAGER:
+	// mAdPager.startAutoScroll();
+	// break;
+	// default:
+	// break;
+	// }
+	// }
+	// };
 	private LinearLayout mPagerIndexLayout;
 	private AutoScrollViewPager mAdPager;
 	private long mExitTime;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Logger.i("Activity", "HomeActivity_v2");
 		setContentView(R.layout.activity_home_v2);
 		Util.checkUpdateVersion(this, SERVER_URL_UPDATE_VERSION);
-		
+
 	}
-	  public boolean onKeyDown(int keyCode, KeyEvent event) {
-          if (keyCode == KeyEvent.KEYCODE_BACK) {
-                  if ((System.currentTimeMillis() - mExitTime) > 2000) {
-                          showToast("再按一次退出程序!");
-                          mExitTime = System.currentTimeMillis();
-                  } else {
-                          finish();
-                  }
-                  return true;
-          }
-          return super.onKeyDown(keyCode, event);
-}
+
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if ((System.currentTimeMillis() - mExitTime) > 2000) {
+				showToast("再按一次退出程序!");
+				mExitTime = System.currentTimeMillis();
+			} else {
+				finish();
+			}
+			return true;
+		}
+
+		return super.onKeyDown(keyCode, event);
+	}
+
+//	@Override
+//	protected void onStop() {
+//		super.onStop();
+//		Logger.i("KEY", "HomeActivity onStop 程序进入后台");
+//		//停止自动滑动
+//		mAdPager.stopAutoScroll();
+//	}
+//	@Override
+//	protected void onResume() {
+//		super.onResume();
+//		Logger.i("KEY", "HomeActivity onResume 程序进入后台");
+//		mAdPager.startAutoScroll();
+//	}
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		if(hasFocus){
+			Logger.i("KEY", "HomeActivity 界面出现");
+			mAdPager.startAutoScroll();
+		} else {
+			Logger.i("KEY", "HomeActivity 界面消失");
+			mAdPager.stopAutoScroll();
+		}
+	}
+//	@Override
+//	protected void onPause() {
+//		Logger.i("KEY", "HomeActivity onPause 页面暂停");
+//		mAdPager.stopAutoScroll();
+//		super.onPause();
+//	}
 	@Override
 	protected void initViews() {
 		HeaderImageEvent.getInstance().addHeaderImageListener(this);
@@ -97,7 +131,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 		mPagerIndexLayout = (LinearLayout) homeHeaderItem
 				.findViewById(R.id.pageControlLayout);
 		mPullListView = (PullToRefreshListView) findViewById(R.id.adListView);
-		
+
 		mPullListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
 
 			@Override
@@ -105,10 +139,10 @@ public class HomeActivity_v2 extends BaseActivity implements
 				mAdPager.stopAutoScroll();
 				initViewPager();
 				initAdList();
-				updateBalance();//刷新的时候更新余额
+				updateBalance();// 刷新的时候更新余额
 			}
 		});
-//		mMXButton = (Button) homeHeaderItem.findViewById(R.id.mingxi_button);
+		// mMXButton = (Button) homeHeaderItem.findViewById(R.id.mingxi_button);
 		mAdPager = (AutoScrollViewPager) homeHeaderItem
 				.findViewById(R.id.adPager);
 		mPullListView.setOnItemClickListener(this);
@@ -122,15 +156,13 @@ public class HomeActivity_v2 extends BaseActivity implements
 	}
 
 	private ImagePagerAdapter mImagePagerAdapter;
+
 	private void initViewPager() {
 		AjaxParams params = new AjaxParams();
 		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 		params.put("type", "0");
 		getHttpClient().post(SERVER_URL_LOOPAD, params,
 				new AjaxCallBack<String>() {
-
-
-
 
 					@Override
 					public void onSuccess(String t) {
@@ -158,8 +190,6 @@ public class HomeActivity_v2 extends BaseActivity implements
 						super.onSuccess(t);
 					}
 
-					
-
 					@Override
 					public void onFailure(Throwable t, int errorNo,
 							String strMsg) {
@@ -169,14 +199,14 @@ public class HomeActivity_v2 extends BaseActivity implements
 				});
 
 	}
+
 	/**
 	 * 改变首页的小圆点数量
 	 */
 	private void changeSmallIndexBg() {
 		for (int i = 0; i < mLoopAdInfos.size(); i++) {
 			// 添加小圆点
-			ImageView pageControlChild = new ImageView(
-					HomeActivity_v2.this);
+			ImageView pageControlChild = new ImageView(HomeActivity_v2.this);
 			if (i == 0) {
 				pageControlChild
 						.setBackgroundResource(R.drawable.circle_selected);
@@ -185,14 +215,12 @@ public class HomeActivity_v2 extends BaseActivity implements
 						.setBackgroundResource(R.drawable.circle_noraml);
 			}
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-					LayoutParams.WRAP_CONTENT,
-					LayoutParams.WRAP_CONTENT);
-			params.leftMargin = Util.px2dip(20,
-					HomeActivity_v2.this);
-			mPagerIndexLayout.addView(pageControlChild,
-					params);
+					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+			params.leftMargin = Util.px2dip(20, HomeActivity_v2.this);
+			mPagerIndexLayout.addView(pageControlChild, params);
 		}
 	}
+
 	private void initMyInfo() {
 		// 初始化用户信息
 		AjaxParams params = new AjaxParams();
@@ -208,13 +236,16 @@ public class HomeActivity_v2 extends BaseActivity implements
 						if (user != null && user.getVal() != null) {
 							getDatabaseInterface().saveMyInfo(user.getVal(),
 									HomeActivity_v2.this);
-							//保存用户头像地址
-							setStringtForKey(LOCAL_CONFIGKEY_HEADER_IMAGE_URL, user.getVal().getuImage());
-							//发出一次头像变更事件
-							HeaderImageEvent.getInstance().fireHeaderChangeImageEvent(user.getVal().getuImage());
+							// 保存用户头像地址
+							setStringtForKey(LOCAL_CONFIGKEY_HEADER_IMAGE_URL,
+									user.getVal().getuImage());
+							// 发出一次头像变更事件
+							HeaderImageEvent.getInstance()
+									.fireHeaderChangeImageEvent(
+											user.getVal().getuImage());
 						}
-//						//显示头像
-//						displayHeaderImage(mHeaderImage,mHeaderWH,mHeaderWH);
+						// //显示头像
+						// displayHeaderImage(mHeaderImage,mHeaderWH,mHeaderWH);
 						// 初始化控件的值
 						TextView nickName = (TextView) homeHeaderItem
 								.findViewById(R.id.yue_nickname);
@@ -222,7 +253,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 								.findViewById(R.id.yue_tel);
 						nickName.setText(user.getVal().getUname());
 						tel.setText(user.getVal().getUtelephone());
-						
+
 					}
 
 					@Override
@@ -244,8 +275,9 @@ public class HomeActivity_v2 extends BaseActivity implements
 		super.onBalanceChange(currentBalance);
 		TextView balance = (TextView) homeHeaderItem
 				.findViewById(R.id.yue_balance);
-		float ci = Float.parseFloat(currentBalance) / 100; 
-		balance.setText("余额:" + currentBalance + getString(R.string.m_gold)+"("+ci+"元)");
+		float ci = Float.parseFloat(currentBalance) / 100;
+		balance.setText("余额:" + currentBalance + getString(R.string.m_gold)
+				+ "(" + ci + "元)");
 	}
 
 	/**
@@ -292,7 +324,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 		showNetErrorToast(strMsg, t);
 		mErrorHit.setVisibility(View.VISIBLE);
 		mProgressBar.setVisibility(View.GONE);
-		
+
 	}
 
 	private final static int ITEM_VIEW_TYPE_DEFAULT = 0;
@@ -352,8 +384,8 @@ public class HomeActivity_v2 extends BaseActivity implements
 					holder.adTitle = (TextView) view.findViewById(R.id.adTitle);
 					holder.adDescription = (TextView) view
 							.findViewById(R.id.adDescription);
-//					holder.adRecommendText = (TextView) view
-//							.findViewById(R.id.adRecommendText);// 推荐
+					// holder.adRecommendText = (TextView) view
+					// .findViewById(R.id.adRecommendText);// 推荐
 					holder.adBalanceText = (TextView) view
 							.findViewById(R.id.adBalanceText);// 点击
 					view.setTag(holder);
@@ -365,7 +397,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 			if (getItemViewType(position) == ITEM_VIEW_TYPE_DEFAULT) {
 				ZcmAdertising info = mAdInfos.get(position - 1);
 				Logger.i("ICON", info.getAdIcon());
-				
+
 				getFinalBitmap().display(holder.adIcon, info.getAdIcon());
 				holder.adTitle.setText(info.getAdTitle());
 				holder.adDescription.setText(info.getAdContent());
@@ -407,7 +439,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 	}
 
 	private int currentIndex = 0;
-//	private Button mMXButton;
+	// private Button mMXButton;
 	private List<ZcmAdertising> mAdInfos = new ArrayList<ZcmAdertising>();
 	private List<ZcmAdertising> mLoopAdInfos = new ArrayList<ZcmAdertising>();
 	private PullToRefreshListView mPullListView;
@@ -436,8 +468,8 @@ public class HomeActivity_v2 extends BaseActivity implements
 				.getItem(position - 1);
 		i.putExtra(INTENT_KEY_ADINFO, itemInfo);
 		String url = itemInfo.getAdUrl();
-		if(!TextUtils.isEmpty(url)){
-			Logger.i("URL", "AD URL:"+itemInfo.getAdUrl());
+		if (!TextUtils.isEmpty(url)) {
+			Logger.i("URL", "AD URL:" + itemInfo.getAdUrl());
 			startActivityWithAnimation(i);
 		}
 
@@ -451,7 +483,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 			startActivity(new Intent(this, DuiHuanActivity.class));
 			break;
 		case R.id.wodeyue:
-			
+
 			break;
 		case R.id.error_hit:
 			mErrorHit.setVisibility(View.GONE);
