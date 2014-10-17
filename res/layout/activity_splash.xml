@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="5dp"
         android:orientation="vertical" >
 
         <TextView
@@ -18,17 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="6dp"
-            android:text="当前版本:V1.6"
-            android:textColor="@color/background"
-            android:textSize="10sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="6dp"
-            android:text="上海宸崛科技有限公司"
+            android:layout_marginBottom="4dp"
+            android:text="Beta Version V1.7"
             android:textColor="@color/background"
             android:textSize="10sp" />
 
@@ -36,9 +27,21 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="招财喵 © 2014. Emperises Group"
             android:textColor="@color/background"
+            android:layout_marginBottom="4dp"
             android:textSize="10sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="4dp"
+            android:text="此应用内所有相关内容最终解释权归上海宸崛信息技术有限公司所有"
+            android:textColor="@color/background"
+            android:textSize="10sp" />
+
+        
     </LinearLayout>
 
 </RelativeLayout>
