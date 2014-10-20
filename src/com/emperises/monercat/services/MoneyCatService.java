@@ -24,14 +24,15 @@ public class MoneyCatService extends Service implements LocalConfigKey , UrlPost
 	}
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		
-		String flg = intent.getStringExtra(INTENT_SERVICE_FLG);
-		if(LOCAL_CONFIG_KEY_UPLOAD_LOGS.equals(flg)){
-			//上传LOG
-			String logPath = intent.getStringExtra(INTENT_KEY_LOG_PATH);
-			File path = new File(logPath);
-			if(!TextUtils.isEmpty(logPath) && path.exists()){
-				uploadLogs(path);
+		if( intent != null){
+			String flg = intent.getStringExtra(INTENT_SERVICE_FLG);
+			if(LOCAL_CONFIG_KEY_UPLOAD_LOGS.equals(flg)){
+				//上传LOG
+				String logPath = intent.getStringExtra(INTENT_KEY_LOG_PATH);
+				File path = new File(logPath);
+				if(!TextUtils.isEmpty(logPath) && path.exists()){
+					uploadLogs(path);
+				}
 			}
 		}
 		return super.onStartCommand(intent, flags, startId);

@@ -103,7 +103,6 @@ public class Util {
 		return tm.getDeviceId();
 	}
 	public static String getLocalTelNumber(){
-		//TODO:获取本地手机号码
 		return "";
 	}
 	/**

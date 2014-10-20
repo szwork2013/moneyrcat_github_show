@@ -41,7 +41,6 @@ public class SplashActivity extends OtherBaseActivity {
 		CrashHandler.getInstance().init(getApplicationContext());
 		startService(new Intent(this,MoneyCatService.class));
 		super.onCreate(savedInstanceState);
-		Logger.i("INTENT", getIntent().toString());
 		File file = new File(Environment.getExternalStorageDirectory(),"moneycat");
 		if(!file.exists()){
 				file.mkdir();

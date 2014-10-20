@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmMessage;
+import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -118,6 +119,7 @@ public class ActivityMessageList extends OtherBaseActivity implements OnRefreshL
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Logger.i("INTENT", getIntent().toUri(0));
 		setContentView(R.layout.activity_message_list);
 		setCurrentTitle("加载中..");
 	}

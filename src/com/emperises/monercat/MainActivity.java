@@ -22,6 +22,7 @@ import com.emperises.monercat.ui.MoreActivity;
 import com.emperises.monercat.ui.TasksActivity_v2;
 import com.emperises.monercat.ui.WoDeTabActivity;
 import com.emperises.monercat.ui.v3.ActivityMessageList;
+import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.PushUtils;
 
 @SuppressWarnings("deprecation")
@@ -33,6 +34,7 @@ public class MainActivity extends ActivityGroup implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Logger.i("INTENT", getIntent().toUri(0));
 		setContentView(R.layout.activity_main);
 		PushUtils.startPush(this);
 		titleIds = new String[] { getResources().getString(R.string.tasktitle), getResources().getString(R.string.tasktitle_v2),getResources().getString(R.string.my), getResources().getString(R.string.more) };

@@ -68,5 +68,6 @@
     <string name="copyright">版本信息</string>
     <string name="hezuo">商务合作</string>
     <string name="yuebuzu">余额不足</string>
+    <string name="_myinfo_title">我的信息</string>
 
 </resources>

@@ -13,7 +13,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 
 import com.baidu.android.pushservice.CustomPushNotificationBuilder;
 import com.baidu.android.pushservice.PushConstants;
@@ -43,15 +42,10 @@ public class PushUtils {
 				PushUtils.getMetaValue(context, "api_key"));
 		// Push: 如果想基于地理位置推送，可以打开支持地理位置的推送的开关
 		PushManager.enableLbs(context);
-		String tel = Util.getLocalTelNumber();
 		String deviceId = Util.getDeviceId(context);
-		if (!TextUtils.isEmpty(tel)) {
 			List<String> tags = new ArrayList<String>();
-			tags.add(tel);
 			tags.add(deviceId);
 			PushManager.setTags(context, tags);
-		}
-
 		Resources resource = context.getResources();
 		String pkgName = context.getPackageName();
 		CustomPushNotificationBuilder cBuilder = new CustomPushNotificationBuilder(

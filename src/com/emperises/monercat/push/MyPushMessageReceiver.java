@@ -3,9 +3,11 @@ package com.emperises.monercat.push;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.baidu.frontia.api.FrontiaPushMessageReceiver;
+import com.emperises.monercat.MainActivity;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.PushUtils;
 
@@ -114,7 +116,7 @@ public class MyPushMessageReceiver extends FrontiaPushMessageReceiver {
 //		Intent intent = new Intent();
 //        intent.setClass(context.getApplicationContext(), MainActivity.class);
 //        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        context.getApplicationContext().startActivity(intent);
+//        context.getApplicationContext().startActivity(intent); 
 	}
 
 	/**
