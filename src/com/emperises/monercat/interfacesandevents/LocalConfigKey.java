@@ -13,6 +13,7 @@ public interface LocalConfigKey {
 	String LOCAL_CONFIGKEY_HEADER_PATH = "header_image_path";
 	//第一次运行标识
 	String LOCAL_CONFIGKEY_FIRSTRUN = "isFirstRun";
+	String LOCAL_CONFIGKEY_BIND_TEL = "bind_tel";
 	String LOCAL_CONFIGKEY_BALANCE = "balance";//余额
 	String LOCAL_CONFIGKEY_HEADER_IMAGE_URL = "header_image_url";//用户头像地址
 	String LOCAL_CONFIGKEY_REG = "first_reg"; //第一次注册

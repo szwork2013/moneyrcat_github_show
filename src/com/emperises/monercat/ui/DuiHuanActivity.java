@@ -7,6 +7,7 @@ import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +20,8 @@ import android.widget.TextView;
 
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
+import com.emperises.monercat.customview.CustomDialog.DialogClick;
+import com.emperises.monercat.customview.CustomDialogConfig;
 import com.emperises.monercat.domain.model.ZcmProduct;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
@@ -137,10 +140,33 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 	}
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-		Intent i  =  new Intent(this, DuiHuanDialogActivity.class);
-		ZcmProduct pro = (ZcmProduct) mProductAdapter.getItem(position);
-		i.putExtra(INTENT_KEY_PRODUCTID, pro.getPid());
-		startActivity(i);
+		String tel = getStringValueForKey(LOCAL_CONFIGKEY_BIND_TEL);
+		if(!TextUtils.isEmpty(tel)){
+			Intent i  =  new Intent(this, DuiHuanDialogActivity.class);
+			ZcmProduct pro = (ZcmProduct) mProductAdapter.getItem(position);
+			i.putExtra(INTENT_KEY_PRODUCTID, pro.getPid());
+			startActivity(i);
+		} else {
+			CustomDialogConfig config = new CustomDialogConfig();
+			config.setTitle("兑换");
+			config.setCancleButtonText("去绑定");
+			config.setMessage("绑定手机号码才能进行兑换哦!");
+			config.setSureButtonText("取消");
+			config.setCancelListener(new DialogClick() {
+				@Override
+				public void onClick(View v) {
+					super.onClick(v); 
+				}
+			});
+			config.setSureListener(new DialogClick() {
+				@Override
+				public void onClick(View v) {
+					startActivity(new Intent(DuiHuanActivity.this , BindActivity.class));
+					super.onClick(v);
+				}
+			});
+			showDialog(config);
+		}
 	}
 
 }

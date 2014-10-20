@@ -279,7 +279,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		EditMyInfoEvent.getInstance().addEditInfoListener(this);
 	}
 
-	private void showDialog(CustomDialogConfig config) {
+	protected void showDialog(CustomDialogConfig config) {
 		DialogManager.getInstance(this, config).show();
 	}
 

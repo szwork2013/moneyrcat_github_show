@@ -105,12 +105,14 @@ public class HomeActivity_v2 extends BaseActivity implements
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
-		if(hasFocus){
-			Logger.i("KEY", "HomeActivity 界面出现");
-			mAdPager.startAutoScroll();
-		} else {
-			Logger.i("KEY", "HomeActivity 界面消失");
-			mAdPager.stopAutoScroll();
+		if(mAdPager != null){
+			if(hasFocus){
+				Logger.i("KEY", "HomeActivity 界面出现");
+				mAdPager.startAutoScroll();
+			} else {
+				Logger.i("KEY", "HomeActivity 界面消失");
+				mAdPager.stopAutoScroll();
+			}
 		}
 	}
 //	@Override

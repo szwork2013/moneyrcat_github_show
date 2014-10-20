@@ -111,6 +111,8 @@ public class BindActivity extends OtherBaseActivity {
 						Intent i = new Intent(BindActivity.this, BindActivity_1.class);
 						i.putExtra(INTENT_KEY_TEL, tel);
 						startActivity(i);
+						//保存手机号码
+						setStringtForKey(LOCAL_CONFIGKEY_BIND_TEL, tel);
 					}
 					super.onSuccess(t);
 				} 
