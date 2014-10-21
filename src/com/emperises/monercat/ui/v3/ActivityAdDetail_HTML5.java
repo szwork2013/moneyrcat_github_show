@@ -98,11 +98,18 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 		mAdWebView.loadUrl(info.getAdUrl());
 		mAdWebView.setWebViewClient(new WebViewClient() {
 			@Override
+			public void onReceivedError(WebView view, int errorCode,
+					String description, String failingUrl) {
+				//加载失败
+				super.onReceivedError(view, errorCode, description, failingUrl);
+			}
+			@Override
 			public void onPageFinished(WebView view, String url) {
 				super.onPageFinished(view, url);
 			}
 		});
 		mAdWebView.setWebChromeClient(new WebChromeClient() {
+		
 			@Override
 			public void onProgressChanged(WebView view, int newProgress) {
 				Logger.i("PROGRESS", newProgress+"");
