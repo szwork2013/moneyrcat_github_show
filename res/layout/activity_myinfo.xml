@@ -123,7 +123,6 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="21dp"
             android:src="@drawable/right_arrow" />
-        
     </RelativeLayout>
 
     <View
@@ -157,6 +156,7 @@
             android:layout_toRightOf="@+id/textView3222"
             android:text="13244422122"
             android:textColor="@color/textcontent" />
+
         <ImageView
             android:id="@+id/imageView322"
             android:layout_width="wrap_content"
@@ -199,6 +199,7 @@
             android:layout_toRightOf="@+id/textView322"
             android:text="1223"
             android:textColor="@color/textcontent" />
+
         <ImageView
             android:id="@+id/imageView31123"
             android:layout_width="wrap_content"
@@ -239,6 +240,7 @@
             android:layout_marginLeft="25dp"
             android:layout_toRightOf="@+id/textView5"
             android:background="@drawable/qrcode" />
+
         <ImageView
             android:id="@+id/imageView36"
             android:layout_width="wrap_content"
@@ -253,5 +255,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0.5dp"
         android:background="@color/line" />
+
+    
 
 </LinearLayout>

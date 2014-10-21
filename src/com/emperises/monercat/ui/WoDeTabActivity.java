@@ -80,7 +80,6 @@ public class WoDeTabActivity extends BaseActivity {
 		case R.id.chaozhiduihuan:
 			startActivityWithAnimation(new Intent(this, DuiHuanActivity.class));
 			break;
-
 		default:
 			break;
 		}

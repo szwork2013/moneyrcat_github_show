@@ -9,4 +9,5 @@ public interface NativeJavaScriptCallBackInterface {
 	void JsRefresh();
 	void JsUploadImage();
 	void JsStartActivity(String className);
+	void JsOnError();
 }

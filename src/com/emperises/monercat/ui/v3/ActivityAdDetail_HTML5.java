@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -20,16 +21,20 @@ import android.widget.ProgressBar;
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmAdertising;
+import com.emperises.monercat.domain.model.ZcmUser;
+import com.emperises.monercat.interfacesandevents.NativeJavaScriptCallBackInterface;
 import com.emperises.monercat.interfacesandevents.NativeJavaScriptImpl;
 import com.emperises.monercat.interfacesandevents.NativeJavaScriptImpl.ResCallBack;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
+import com.google.gson.Gson;
 
 @SuppressLint({ "NewApi", "SetJavaScriptEnabled" })
-public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
+public class ActivityAdDetail_HTML5 extends OtherBaseActivity implements NativeJavaScriptCallBackInterface{
 
 	private WebView mAdWebView;
 	private ImageView mShareButton;
+	private String mErrorBeforeUrl;
 	private Handler mHandler = new Handler();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,19 +76,7 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 		webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
 		webview.setHorizontalScrollBarEnabled(false);
 		webview.setVerticalScrollBarEnabled(false);
-		mNativeJavaScriptImpl = new NativeJavaScriptImpl(this,mAdWebView,info.getAdId());
-		mNativeJavaScriptImpl.setRefreshCallBack(new ResCallBack() {
-			@Override
-			public void onRefresh() {
-				mHandler.post(new Runnable() {
-					@Override
-					public void run() {
-						mAdWebView.loadUrl(mAdWebView.getUrl());
-					}
-				});
-			}
-		});
-		webview.addJavascriptInterface(mNativeJavaScriptImpl, "zcmJavaCallBack");
+		webview.addJavascriptInterface(this, "zcmJavaCallBack");
 	}
 
 	@Override
@@ -100,8 +93,10 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 			@Override
 			public void onReceivedError(WebView view, int errorCode,
 					String description, String failingUrl) {
+				mErrorBeforeUrl = view.getUrl();//记录错误发生之前的URL
 				//加载失败
 				super.onReceivedError(view, errorCode, description, failingUrl);
+				mAdWebView.loadUrl("file:///android_asset/error.html");
 			}
 			@Override
 			public void onPageFinished(WebView view, String url) {
@@ -176,7 +171,6 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 	private final static int FILECHOOSER_RESULTCODE = 1;
 	private ZcmAdertising info;
 	private ProgressBar mProgressBar;
-	private NativeJavaScriptImpl mNativeJavaScriptImpl;
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -205,5 +199,68 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity {
 		default:
 			break;
 		}
+	}
+	
+	/**
+	 * 以下是java回调js代码
+	 */
+	@JavascriptInterface
+	@Override
+	public String JsGetDeviceId() {
+		Logger.i("JS", "callback getdevicesid");
+		return Util.getDeviceId(this);
+	}
+
+	@JavascriptInterface
+	@Override
+	public String JsGetPersonalInformation() {
+		Logger.i("JS", "callback JsGetPersonalInformation");
+		ZcmUser user = getDatabaseInterface().getMyInfo();
+		String json =  new Gson().toJson(user);
+		return json;
+	}
+	@JavascriptInterface
+	@Override
+	public void JsUpdateBalance() {
+		Logger.i("JS", "callback JsUpdateBalance");
+		updateBalance();
+	}
+	@JavascriptInterface 
+	@Override
+	public void JsRefresh() {
+		mAdWebView.loadUrl(mAdWebView.getUrl());
+	}
+	@JavascriptInterface
+	@Override
+	public String JsGetAdId() {
+		
+		return info.getAdId();
+	}
+	@JavascriptInterface
+	@Override
+	public void JsUploadImage() {
+		//获取当前的广告ID
+		Intent i = new Intent(this,UploadImageActivity.class);
+		i.putExtra("adId", info.getAdId());
+		startActivity(i);
+	}
+	@JavascriptInterface
+	@Override
+	public void JsStartActivity(String className) {
+		Class<?> classIntent;
+		try {
+			classIntent = Class.forName(className);
+			Intent i = new Intent(this, classIntent);
+			startActivity(i);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			Logger.e("ERROR", "class no found",e);
+		}
+		
+	}
+	@Override
+	public void JsOnError() {
+		mAdWebView.loadUrl(mErrorBeforeUrl);
+		Logger.i("ERROR", "因为网页加载错误,所以出现这个信息");
 	}
 }

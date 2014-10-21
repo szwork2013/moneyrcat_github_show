@@ -54,7 +54,7 @@ public class CustomToast extends Toast {
 		result.setDuration(Toast.LENGTH_SHORT);
 		final SoundPool soundPool = new SoundPool(5,AudioManager.STREAM_MUSIC,0);
 		final Map<Integer, Integer> soundMap = new HashMap<Integer, Integer>();  
-		soundMap.put(1, soundPool.load(context, R.raw.gold_effect, 1));
+//		soundMap.put(1, soundPool.load(context, R.raw.gold_effect, 1));
 		soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() {
 			
 			@Override

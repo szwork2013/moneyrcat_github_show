@@ -86,5 +86,9 @@ public class NativeJavaScriptImpl implements NativeJavaScriptCallBackInterface{
 		}
 		
 	}
+	@Override
+	public void JsOnError() {
+		Logger.i("ERROR", "因为网页加载错误,所以出现这个信息");
+	}
 	
 }
