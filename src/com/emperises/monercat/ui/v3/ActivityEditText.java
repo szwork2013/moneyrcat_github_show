@@ -35,6 +35,8 @@ public class ActivityEditText extends OtherBaseActivity {
 			mEditText.setInputType(EditorInfo.TYPE_CLASS_PHONE);
 		} else if (editType == R.id.editinfo_nickname) {
 			mEditText.setFilters(new  InputFilter[]{ new  InputFilter.LengthFilter(10)});
+		} else if (editType == R.id.editinfo_nickname) {
+			mEditText.setFilters(new  InputFilter[]{ new  InputFilter.LengthFilter(25)});
 		} 
 	}
 
