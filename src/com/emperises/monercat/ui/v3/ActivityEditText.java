@@ -1,6 +1,7 @@
 package com.emperises.monercat.ui.v3;
 
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -33,7 +34,7 @@ public class ActivityEditText extends OtherBaseActivity {
 		if(editType == R.id.editinfo_age){
 			mEditText.setInputType(EditorInfo.TYPE_CLASS_PHONE);
 		} else if (editType == R.id.editinfo_nickname) {
-			mEditText.setMaxWidth(7);
+			mEditText.setFilters(new  InputFilter[]{ new  InputFilter.LengthFilter(10)});
 		} 
 	}
 

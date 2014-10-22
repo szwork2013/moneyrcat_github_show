@@ -207,10 +207,6 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 			break;
 		case R.id.editinfo_gender:
 			showGenderDialog();
-			// i.putExtra(INTENT_KEY_EDIT_TYPE, R.id.editinfo_gender);
-			// i.putExtra(INTENT_KEY_EDIT_VALUE,
-			// mGenderText.getText().toString());
-			// startActivity(i);
 			break;
 		case R.id.editinfo_nickname:
 			i.putExtra(INTENT_KEY_EDIT_TYPE, R.id.editinfo_nickname);
@@ -219,12 +215,6 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 			startActivity(i);
 			break;
 		case R.id.editinfo_done_button:
-
-			// //修改完成将数据插入到数据库中
-			// mAddressText.setText(info.getUaddress());
-			// mAgeText.setText(info.getUage());
-			// mGenderText.setText(info.getUsex());
-			// mNicknameText.setText(info.getUname());
 			String mAddress = mAddressText.getText().toString();
 			String mAge = mAgeText.getText().toString();
 			String mGend = mGenderText.getText().toString();

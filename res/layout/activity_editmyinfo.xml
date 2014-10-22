@@ -71,7 +71,7 @@
             android:layout_alignBottom="@+id/textView3222"
             android:layout_alignParentRight="true"
             android:layout_marginRight="47dp"
-            android:text="暴走青年"
+            android:text="暴走青年暴走青年啊啊"
             android:singleLine="true"
             android:ellipsize="end"
             android:textColor="@color/textcontent" />
