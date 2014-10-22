@@ -46,7 +46,7 @@ public class CustomDialog extends OtherBaseActivity implements CustomDialogClick
 				mDialogSureButton.setText(config.getSureButtonText());
 			}
 			if(!TextUtils.isEmpty(config.getCancleButtonText())){
-				mDialogSureButton.setText(config.getCancleButtonText());
+				mDialogCancleButton.setText(config.getCancleButtonText());
 			}
 		}
 	}

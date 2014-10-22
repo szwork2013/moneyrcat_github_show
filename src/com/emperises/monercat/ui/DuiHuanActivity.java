@@ -142,25 +142,27 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 		
 	}
 	private void showDuihuanDialog( final int position){
-		AlertDialog.Builder b = new AlertDialog.Builder(this);
+		
 		ZcmProduct pro = (ZcmProduct) mProductAdapter.getItem(position);
-		b.setTitle("确定要兑换吗?");
-		b.setMessage("您当前兑换的商品是“" + pro.getPname()+"”,兑换申请提交成功之后将会扣除相应的喵币。");
-		b.setPositiveButton("取消", new OnClickListener() {
-			
+		CustomDialogConfig config = new CustomDialogConfig();
+		config.setSureButtonText("兑换");
+		config.setCancleButtonText("取消");
+		config.setTitle("兑换");
+		config.setSureListener(new DialogClick() {
 			@Override
-			public void onClick(DialogInterface arg0, int arg1) {
-			}
-		});
-		b.setNegativeButton("兑换", new OnClickListener() {
-			
-			@Override
-			public void onClick(DialogInterface arg0, int arg1) {
+			public void onClick(View v) {
+				super.onClick(v);
 				duihuan(position);
-				
 			}
 		});
-		b.show();
+		config.setCancelListener(new DialogClick() {
+			@Override
+			public void onClick(View v) {
+				super.onClick(v);
+			}
+		});
+		config.setMessage("您当前兑换的商品是“" + pro.getPname()+"”,兑换申请提交成功之后将会扣除相应的喵币。");
+		showDialog(config);
 	}
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
@@ -177,9 +179,9 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 		} else {
 			CustomDialogConfig config = new CustomDialogConfig();
 			config.setTitle("兑换");
-			config.setCancleButtonText("去绑定");
+			config.setCancleButtonText("取消");
 			config.setMessage("绑定手机号码才能进行兑换哦!");
-			config.setSureButtonText("取消");
+			config.setSureButtonText("绑定");
 			config.setCancelListener(new DialogClick() {
 				@Override
 				public void onClick(View v) {
