@@ -5,7 +5,10 @@ import java.util.List;
 
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -138,8 +141,33 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 		TextView duihuanBalance;
 		
 	}
+	private void showDuihuanDialog( final int position){
+		AlertDialog.Builder b = new AlertDialog.Builder(this);
+		ZcmProduct pro = (ZcmProduct) mProductAdapter.getItem(position);
+		b.setTitle("确定要兑换吗?");
+		b.setMessage("您当前兑换的商品是“" + pro.getPname()+"”,兑换申请提交成功之后将会扣除相应的喵币。");
+		b.setPositiveButton("取消", new OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+			}
+		});
+		b.setNegativeButton("兑换", new OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				duihuan(position);
+				
+			}
+		});
+		b.show();
+	}
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+		showDuihuanDialog(position);	
+	}
+
+	private void duihuan (int position) {
 		String tel = getStringValueForKey(LOCAL_CONFIGKEY_BIND_TEL);
 		if(!TextUtils.isEmpty(tel)){
 			Intent i  =  new Intent(this, DuiHuanDialogActivity.class);

@@ -2,6 +2,10 @@ package com.emperises.monercat.ui;
 
 import net.tsz.afinal.http.AjaxParams;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -81,12 +85,13 @@ public class DuiHuanDialogActivity extends OtherBaseActivity {
 		super.onFail(t, errorNo, strMsg);
 		showNetErrorToast(strMsg, t);
 	}
+	
 	@Override
 	public void onClick(View v) {
 		super.onClick(v);
 		switch (v.getId()) {
 		case R.id.commit_bt:
-			duihuan();
+				duihuan();
 			break;
 		case R.id.closeButton:
 			finish();
