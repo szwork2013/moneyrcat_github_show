@@ -38,7 +38,9 @@ public class SplashActivity extends OtherBaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		//初始化异常捕获模块
-		CrashHandler.getInstance().init(getApplicationContext());
+		if(!Logger.DEBUG){
+			CrashHandler.getInstance().init(getApplicationContext());
+		}
 		startService(new Intent(this,MoneyCatService.class));
 		super.onCreate(savedInstanceState);
 		File file = new File(Environment.getExternalStorageDirectory(),"moneycat");
