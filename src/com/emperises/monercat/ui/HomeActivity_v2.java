@@ -241,6 +241,9 @@ public class HomeActivity_v2 extends BaseActivity implements
 							// 保存用户头像地址
 							setStringtForKey(LOCAL_CONFIGKEY_HEADER_IMAGE_URL,
 									user.getVal().getuImage());
+							setStringtForKey(LOCAL_CONFIGKEY_BIND_TEL,
+									user.getVal().getUtelephone());
+							
 							// 发出一次头像变更事件
 							HeaderImageEvent.getInstance()
 									.fireHeaderChangeImageEvent(
@@ -281,7 +284,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 		balance.setText("余额:" + currentBalance + getString(R.string.m_gold)
 				+ "(" + ci + "元)");
 	}
-
+ 
 	/**
 	 * 初始化广告列表
 	 */

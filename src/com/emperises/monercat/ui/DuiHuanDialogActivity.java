@@ -72,7 +72,7 @@ public class DuiHuanDialogActivity extends OtherBaseActivity {
 			//如果兑换成功
 			finish();
 			//重新加载余额
-			
+			updateBalance();
 		}
 		showToast(obj.getResultMsg());
 	}

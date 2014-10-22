@@ -69,28 +69,30 @@ import com.umeng.socialize.weixin.media.WeiXinShareContent;
 @SuppressLint("NewApi")
 public abstract class BaseActivity extends Activity implements OnClickListener,
 		HttpInterface, LocalConfigKey, HeaderImageChangeInterface,
-		BalanceInterface, EditMyInfoInterface , UrlPostInterface , LogTag{
+		BalanceInterface, EditMyInfoInterface, UrlPostInterface, LogTag {
 
 	private FinalHttp mFinalHttp;
 	private TextView titleText;
 	private SharedPreferences sp;
+
 	protected FinalBitmap getFinalBitmap() {
 		FinalBitmap f = FinalBitmap.create(this);
 		return f;
 	}
+
 	@Override
 	public void onHeaderImageChange(String path) {
-		
-//		Logger.i("HEADER", "path:"+path);
-//		ImageView header = (ImageView) findViewById(R.id.myheaderimage);
-//		ImageView headerInfo = (ImageView) findViewById(R.id.headerImage);
-//		Bitmap image = BitmapFactory.decodeFile(path);
-//		if (header != null) {
-//			header.setImageBitmap(image);
-//		}
-//		if (headerInfo != null) {
-//			headerInfo.setImageBitmap(image);
-//		}
+
+		// Logger.i("HEADER", "path:"+path);
+		// ImageView header = (ImageView) findViewById(R.id.myheaderimage);
+		// ImageView headerInfo = (ImageView) findViewById(R.id.headerImage);
+		// Bitmap image = BitmapFactory.decodeFile(path);
+		// if (header != null) {
+		// header.setImageBitmap(image);
+		// }
+		// if (headerInfo != null) {
+		// headerInfo.setImageBitmap(image);
+		// }
 	}
 
 	// 余额改变时
@@ -98,31 +100,32 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	public void onBalanceChange(String currentBalance) {
 		TextView ye = (TextView) findViewById(R.id.yue_balance);
 		if (ye != null) {
-			float ci = Float.parseFloat(currentBalance) / 100; 
-			ye.setText("余额:" + currentBalance + getString(R.string.m_gold)+"("+ci+"元)");
-			Logger.i("BALANCE", "余额改变:" + currentBalance + getString(R.string.m_gold)+"("+ci+"元)");
+			float ci = Float.parseFloat(currentBalance) / 100;
+			ye.setText("余额:" + currentBalance + getString(R.string.m_gold)
+					+ "(" + ci + "元)");
+			Logger.i("BALANCE", "余额改变:" + currentBalance
+					+ getString(R.string.m_gold) + "(" + ci + "元)");
 		}
 	}
 
 	// 获得头像资源id
-//	protected int getHeadImageResId() {
-//		int resId = getIntValueForKey(LOCAL_CONFIGKEY_HEADER_RESID);
-//		if (resId == 0) {
-//			resId = R.drawable.test_headimage1;
-//			setIntForKey(LOCAL_CONFIGKEY_HEADER_RESID,
-//					R.drawable.test_headimage1);
-//		}
-//		return resId;
-//	}
+	// protected int getHeadImageResId() {
+	// int resId = getIntValueForKey(LOCAL_CONFIGKEY_HEADER_RESID);
+	// if (resId == 0) {
+	// resId = R.drawable.test_headimage1;
+	// setIntForKey(LOCAL_CONFIGKEY_HEADER_RESID,
+	// R.drawable.test_headimage1);
+	// }
+	// return resId;
+	// }
 	protected String getHeadImageResPath() {
 		return getStringValueForKey(LOCAL_CONFIGKEY_HEADER_PATH);
 	}
+
 	protected String getHeadImageResUrl() {
 		return getStringValueForKey(LOCAL_CONFIGKEY_HEADER_IMAGE_URL);
 	}
-	
 
-	
 	// 查询当前余额
 	protected String queryLocalBalance() {
 		ZcmUser info = getMyInfoForDatabase();
@@ -135,37 +138,40 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		return currentBalance;
 	}
 
-
-
-
-	//获取余额并存储到本地数据库中
-		public void updateBalance() {
-			AjaxParams params = new AjaxParams();
-			params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
-			getHttpClient().post(SERVER_URL_BALANCE, params,new AjaxCallBack<String>(){
-				@Override
-				public void onSuccess(String t) {
-					super.onSuccess(t);
-					Logger.i(TAG_HTTP, t);
-					//将余额写入数据库
-					BalanceMode ret = new Gson().fromJson(t, BalanceMode.class);
-					String currentBalance = "";
-					if(ret != null){
-						currentBalance = ret.getVal();
+	// 获取余额并存储到本地数据库中
+	public void updateBalance() {
+		AjaxParams params = new AjaxParams();
+		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
+		getHttpClient().post(SERVER_URL_BALANCE, params,
+				new AjaxCallBack<String>() {
+					@Override
+					public void onSuccess(String t) {
+						super.onSuccess(t);
+						Logger.i(TAG_HTTP, t);
+						// 将余额写入数据库
+						BalanceMode ret = new Gson().fromJson(t,
+								BalanceMode.class);
+						String currentBalance = "0.0";
+						if (ret != null) {
+							currentBalance = ret.getVal();
+							ZcmUser info = new ZcmUser();
+							info.setBalance(currentBalance);
+							getDatabaseInterface().saveMyInfo(info,
+									BaseActivity.this);
+							// 发起余额变更事件
+							BalanceEvent.getInstance().fireBalanceChange(
+									currentBalance);
+						}
 					}
-					ZcmUser info = new ZcmUser();
-					info.setBalance(currentBalance + "");
-					getDatabaseInterface().saveMyInfo(info,BaseActivity.this);
-					//发起余额变更事件
-					BalanceEvent.getInstance().fireBalanceChange(currentBalance);
-				}
-				@Override
-				public void onFailure(Throwable t, int errorNo, String strMsg) {
-					super.onFailure(t, errorNo, strMsg);
-					showNetErrorToast(strMsg,t);
-				}
-			});
-		}
+
+					@Override
+					public void onFailure(Throwable t, int errorNo,
+							String strMsg) {
+						super.onFailure(t, errorNo, strMsg);
+						showNetErrorToast(strMsg, t);
+					}
+				});
+	}
 
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -208,9 +214,9 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		showToast(R.string.commitsuccess);
 	}
 
-	protected void showNetErrorToast(String msg , Throwable t ) {
+	protected void showNetErrorToast(String msg, Throwable t) {
 		showToast(R.string.NET_ERROR);
-		Logger.e("ERROR", msg,t);
+		Logger.e("ERROR", msg, t);
 	}
 
 	@Override
@@ -252,16 +258,17 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	protected void setShareInfo() {
 		setZcmShareInfo();
 	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		sp = getSharedPreferences("config", MODE_PRIVATE);
-		float oldVersion = getFloatValueForKey(VERSION); 
+		float oldVersion = getFloatValueForKey(VERSION);
 		float currentVersion = Util.getLocalVersionCode(this);
-		if(currentVersion > oldVersion){
-			//判断是否是新版本
-			//如果上一个版本数据库存在就删除掉
+		if (currentVersion > oldVersion) {
+			// 判断是否是新版本
+			// 如果上一个版本数据库存在就删除掉
 			File mDbPath = getDatabasePath("moneycat.db");
-			if(mDbPath.exists()){
+			if (mDbPath.exists()) {
 				mDbPath.delete();
 			}
 		}
@@ -275,7 +282,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		}
 		// testDB(d.getDatabase());
 		mFinalHttp = new FinalHttp();
-		
+
 		EditMyInfoEvent.getInstance().addEditInfoListener(this);
 	}
 
@@ -337,15 +344,16 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 
 	protected SQLiteDatabase getDatabase() {
 		return mDatabase.getDatabase();
-		
+
 	}
 
 	private String shareUrl;
-	private String shareTitle;  
-	private String shareContent; 
+	private String shareTitle;
+	private String shareContent;
 	private String shareLogoUrl;
-	//分享招财瞄
-	protected void openShareForZcm(){
+
+	// 分享招财瞄
+	protected void openShareForZcm() {
 		shareUrl = getString(R.string.http_www_emperises_com_);
 		shareTitle = getString(R.string.share_title);
 		shareContent = getString(R.string.share_content);
@@ -353,27 +361,35 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		resetShareSdk();
 		openShare();
 	}
-	//设置默认的分享信息
+
+	// 设置默认的分享信息
 	protected void setZcmShareInfo() {
 		shareUrl = getString(R.string.http_www_emperises_com_);
 		shareTitle = getString(R.string.share_title);
 		shareContent = getString(R.string.share_content);
 		shareLogoUrl = "http://115.28.136.194:8086/zcm/ex/img/share_logo.png";
 	}
+
 	protected void setShareLogoUrl(String url) {
 		this.shareLogoUrl = url;
 	}
+
 	protected void setShareUrl(String url) {
 		this.shareUrl = url;
 	}
+
 	protected void setShareTitle(String title) {
 		this.shareTitle = title;
 	}
+
 	protected void setShareContent(String content) {
 		this.shareContent = content;
 	}
-	//重新加载SDK
+
+	// 重新加载SDK
 	protected void resetShareSdk() {
+		// 清理接口事件
+		mController.getConfig().cleanListeners();
 		// QQ好友
 		UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(this, "1101962112",
 				"RY1S5XEVSVnjx3B7");
@@ -412,7 +428,6 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		wxCircleHandler.setToCircle(true);
 		wxCircleHandler.addToSocialSDK();
 
-		
 		// 为了保证人人分享成功且能够在PC上正常显示，请设置website
 		mController.setAppWebSite(SHARE_MEDIA.RENREN, shareUrl);
 		// 设置分享到微信的内容, 图片类型
@@ -423,7 +438,6 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		weixinContent.setShareContent(shareContent);
 		weixinContent.setShareImage(mUMImgBitmap);
 		mController.setShareMedia(weixinContent);
-
 		// 设置朋友圈分享的内容
 		CircleShareContent circleMedia = new CircleShareContent();
 		circleMedia.setTitle(shareTitle);
@@ -432,20 +446,20 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		circleMedia.setShareImage(new UMImage(this, shareLogoUrl));// TODO:改为网页LOGO图片
 		mController.setShareMedia(circleMedia);
 
-		//新浪分享内容
+		// 新浪分享内容
 		SinaShareContent sinaContent = new SinaShareContent();
 		sinaContent.setTitle(shareTitle);
 		sinaContent.setTargetUrl(shareUrl);
-		sinaContent.setShareContent(shareContent  + "\n详情点击:"+shareUrl);
+		sinaContent.setShareContent(shareContent + "\n详情点击:" + shareUrl);
 		sinaContent.setShareImage(new UMImage(this, shareLogoUrl));
 		mController.setShareMedia(sinaContent);
-		
+
 		TencentWbShareContent tencentContent = new TencentWbShareContent();
 		tencentContent.setTitle(shareTitle);
 		tencentContent.setTargetUrl(shareUrl);
 		tencentContent.setShareImage(new UMImage(this, shareLogoUrl));
 		// 设置分享到腾讯微博的文字内容
-		tencentContent.setShareContent(shareContent + "\n详情点击:"+shareUrl);
+		tencentContent.setShareContent(shareContent + "\n详情点击:" + shareUrl);
 		// 设置分享到腾讯微博的多媒体内容
 		mController.setShareMedia(tencentContent);
 		// 设置分享图片，参数2为图片的url.
@@ -453,12 +467,12 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	}
 
 	protected boolean isFirstRun() {
-		if(!getBoleanValueForKey(LOCAL_CONFIGKEY_FIRSTRUN)){
+		if (!getBoleanValueForKey(LOCAL_CONFIGKEY_FIRSTRUN)) {
 			setBooleanForKey(LOCAL_CONFIGKEY_FIRSTRUN, true);
 			return true;
 		}
 		return false;
-				
+
 	}
 
 	protected void openShare() {
@@ -480,7 +494,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	protected void startRequest() {
 	}
 
-	protected void startRequest(String url , AjaxParams params) {
+	protected void startRequest(String url, AjaxParams params) {
 		mFinalHttp.post(url, params, new HttpRequest(this));
 	}
 
@@ -501,7 +515,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 			List<DomainObject> objs = new ArrayList<DomainObject>();
 			objs.add(z);
 			getDatabaseInterface().insertDataForObjs(objs);
-			
+
 		}
 	}
 
@@ -519,27 +533,31 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 
 	}
 
-	protected void displayHeaderImage(ImageView imageView,int w , int h) {
+	protected void displayHeaderImage(ImageView imageView, int w, int h) {
 		String path = getHeadImageResPath();
-		if(!TextUtils.isEmpty(path) && new File(path).exists()){
-			//如果有本地头像
+		if (!TextUtils.isEmpty(path) && new File(path).exists()) {
+			// 如果有本地头像
 			Bitmap image = BitmapFactory.decodeFile(path);
 			imageView.setImageBitmap(image);
 		} else {
-			//显示网络头像
+			// 显示网络头像
 			String uri = getStringValueForKey(LOCAL_CONFIGKEY_HEADER_IMAGE_URL);
-			//默认头像
-			Bitmap defaultHeader = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-			Bitmap onlineImageCache = getFinalBitmap().getBitmapFromDiskCache(uri);
-			if(onlineImageCache == null){//如果没有本地缓存
-				Logger.i("CACHE", "没有缓存"+imageView.toString());
-				getFinalBitmap().display(imageView, uri,w,h,defaultHeader,defaultHeader);
+			// 默认头像
+			Bitmap defaultHeader = BitmapFactory.decodeResource(getResources(),
+					R.drawable.ic_launcher);
+			Bitmap onlineImageCache = getFinalBitmap().getBitmapFromDiskCache(
+					uri);
+			if (onlineImageCache == null) {// 如果没有本地缓存
+				Logger.i("CACHE", "没有缓存" + imageView.toString());
+				getFinalBitmap().display(imageView, uri, w, h, defaultHeader,
+						defaultHeader);
 			} else {
-				Logger.i("CACHE", "有缓存："+imageView.toString());
+				Logger.i("CACHE", "有缓存：" + imageView.toString());
 				imageView.setImageBitmap(onlineImageCache);
 			}
 		}
 	}
+
 	// 顶部信息
 	private void setBaseHeaderInfo() {
 		Logger.i("HEADER", "setBaseHeaderInfo");
@@ -562,7 +580,8 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 			});
 			String currentBalance = queryLocalBalance();
 			float ci = Float.parseFloat(currentBalance) / 100;
-			ye.setText("余额:" + currentBalance + getString(R.string.m_gold)+"("+ci+"元)");
+			ye.setText("余额:" + currentBalance + getString(R.string.m_gold)
+					+ "(" + ci + "元)");
 			tel.setText(info.getUtelephone());
 			nickname.setText(info.getUname());
 		}
@@ -575,7 +594,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 
 	@Override
 	public void onFail(Throwable t, int errorNo, String strMsg) {
-//		mProgressDialog.dismiss();
+		// mProgressDialog.dismiss();
 	}
 
 	@Override
@@ -585,7 +604,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 
 	@Override
 	public void onHttpStart() {
-//		mProgressDialog = showBaseProgressDialog();
+		// mProgressDialog = showBaseProgressDialog();
 	}
 
 	protected ProgressDialog showBaseProgressDialog() {
@@ -637,7 +656,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		super.onDestroy();
 		HeaderImageEvent.getInstance().removeListener(this);
 		BalanceEvent.getInstance().removeListener(this);
-		EditMyInfoEvent.getInstance().removeListener(this); 
+		EditMyInfoEvent.getInstance().removeListener(this);
 	}
 
 	@Override

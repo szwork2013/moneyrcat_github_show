@@ -32,6 +32,8 @@ public class ActivityEditText extends OtherBaseActivity {
 		editType = getIntent().getIntExtra(INTENT_KEY_EDIT_TYPE, 0);
 		if(editType == R.id.editinfo_age){
 			mEditText.setInputType(EditorInfo.TYPE_CLASS_PHONE);
+		} else if (editType == R.id.editinfo_nickname) {
+			mEditText.setMaxWidth(7);
 		} 
 	}
 
