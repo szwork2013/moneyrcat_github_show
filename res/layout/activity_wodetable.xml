@@ -95,7 +95,7 @@
                     android:background="@drawable/wodeguanggao" />
 
                 <TextView
-                    android:id="@+id/mytab_nickname"
+                    android:id="@+id/mytab_nickname222"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -105,7 +105,7 @@
                     android:textColor="@color/texttitle" />
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageView2221"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

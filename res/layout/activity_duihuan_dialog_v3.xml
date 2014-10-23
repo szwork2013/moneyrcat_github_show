@@ -64,6 +64,7 @@
                 android:text="姓名"
                 android:textColor="@color/texttitle" />
             <EditText
+                android:inputType="text"
                 android:id="@+id/duihuan_name"
                 android:singleLine="true"
                 android:layout_width="fill_parent"
@@ -121,7 +122,7 @@
                 android:layout_alignParentTop="true"
                 android:singleLine="true"
                 android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/textView222"
+                android:layout_toRightOf="@+id/textView22211"
                 android:background="@drawable/commit_bt_normal"
                 android:textColor="@color/texttitle"
                 android:textSize="13sp"
@@ -129,7 +130,7 @@
                 android:ems="10" />
 
             <TextView
-                android:id="@+id/textView222"
+                android:id="@+id/textView22211"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -145,6 +146,7 @@
             android:layout_marginTop="10dp" >
 
             <EditText
+                android:inputType="text"
                 android:id="@+id/duihuan_address"
                 android:layout_width="fill_parent"
                 android:layout_marginRight="20dp"
