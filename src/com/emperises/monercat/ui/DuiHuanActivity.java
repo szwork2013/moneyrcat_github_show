@@ -5,12 +5,10 @@ import java.util.List;
 
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -23,9 +21,8 @@ import android.widget.TextView;
 
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
-import com.emperises.monercat.customview.CustomDialog.DialogClick;
-import com.emperises.monercat.customview.CustomDialogConfig;
 import com.emperises.monercat.domain.model.ZcmProduct;
+import com.emperises.monercat.ui.v3.ActivityProdInfoHtml5;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
@@ -89,6 +86,7 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 		mMXButton.setText("兑换记录");
 		mMXButton.setVisibility(View.GONE);
 		mDefaultLable = (TextView) findViewById(R.id.default_lable);
+		
 	}
 
 	class MyAdapter extends BaseAdapter {
@@ -125,9 +123,10 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 				view.setTag(holder);
 			}
 			ZcmProduct pro = mProductInfos.get(position);
-			getFinalBitmap().display(holder.duihuanIcon, pro.getPlogo());
+			Bitmap load = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+			getFinalBitmap().display(holder.duihuanIcon,pro.getPlogo(),load,load);
 			holder.duihuanTitle.setText(pro.getPname());
-			holder.duihuanCount.setText("剩余:"+pro.getPnum());
+			holder.duihuanCount.setText("数量:"+pro.getPnum());
 			holder.duihuanBalance.setText(pro.getPprice()+getString(R.string.m_gold));
 			return view;
 		}
@@ -141,62 +140,13 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 		TextView duihuanBalance;
 		
 	}
-	private void showDuihuanDialog( final int position){
-		
-		ZcmProduct pro = (ZcmProduct) mProductAdapter.getItem(position);
-		CustomDialogConfig config = new CustomDialogConfig();
-		config.setSureButtonText("兑换");
-		config.setCancleButtonText("取消");
-		config.setTitle("兑换");
-		config.setSureListener(new DialogClick() {
-			@Override
-			public void onClick(View v) {
-				super.onClick(v);
-				duihuan(position);
-			}
-		});
-		config.setCancelListener(new DialogClick() {
-			@Override
-			public void onClick(View v) {
-				super.onClick(v);
-			}
-		});
-		config.setMessage("您当前兑换的商品是“" + pro.getPname()+"”,兑换申请提交成功之后将会扣除相应的喵币。");
-		showDialog(config);
-	}
+
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-		showDuihuanDialog(position);	
-	}
-
-	private void duihuan (int position) {
-		String tel = getStringValueForKey(LOCAL_CONFIGKEY_BIND_TEL);
-		if(!TextUtils.isEmpty(tel)){
-			Intent i  =  new Intent(this, DuiHuanDialogActivity.class);
-			ZcmProduct pro = (ZcmProduct) mProductAdapter.getItem(position);
-			i.putExtra(INTENT_KEY_PRODUCTID, pro.getPid());
-			startActivity(i);
-		} else {
-			CustomDialogConfig config = new CustomDialogConfig();
-			config.setTitle("兑换");
-			config.setCancleButtonText("取消");
-			config.setMessage("绑定手机号码才能进行兑换哦!");
-			config.setSureButtonText("绑定");
-			config.setCancelListener(new DialogClick() {
-				@Override
-				public void onClick(View v) {
-					super.onClick(v); 
-				}
-			});
-			config.setSureListener(new DialogClick() {
-				@Override
-				public void onClick(View v) {
-					startActivity(new Intent(DuiHuanActivity.this , BindActivity.class));
-					super.onClick(v);
-				}
-			});
-			showDialog(config);
-		}
+		Intent i = new Intent(this,ActivityProdInfoHtml5.class);
+		ZcmProduct pro = (ZcmProduct) mProductAdapter.getItem(position);
+		i.putExtra(INTENT_KEY_PRODUCINFO,pro );
+		startActivity(i);
 	}
 
 }

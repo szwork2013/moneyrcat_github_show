@@ -21,12 +21,14 @@ public interface LocalConfigKey {
 	String LOCAL_CONFIGKEY_DUIHUAN_TEL = "duihuan_tel"; //兑换手机
 	String LOCAL_CONFIGKEY_DUIHUAN_ADDR = "duihuan_addr"; //兑换地址
 	
+	
 	String INTENT_KEY_EDIT_TYPE = "edit_type"; //编辑标识
 	String INTENT_KEY_EDIT_VALUE = "edit_value"; //编辑内容
 	String INTENT_KEY_ADINFO = "adinfo"; //广告信息
 	String INTENT_KEY_TIXIAN_ID = "tixian_id";//提现id
 	String INTENT_KEY_TEL = "tel";
 	String INTENT_KEY_PRODUCTID = "productid";
+	String INTENT_KEY_PRODUCINFO = "prodinfo"; //兑换地址
 	//URL 参数key
 	String POST_KEY_DEVICESID = "udevicesId";
 	

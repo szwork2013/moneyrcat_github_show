@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="#E5E5E5"
     android:orientation="vertical" >
 
     <include layout="@layout/back_header" />
@@ -12,8 +12,8 @@
         android:id="@+id/duihuanListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="#cdcdcd"
-        android:dividerHeight="0.5dp" >
+        android:divider="@null"
+         >
     </ListView>
     <TextView
         android:id="@+id/default_lable" 

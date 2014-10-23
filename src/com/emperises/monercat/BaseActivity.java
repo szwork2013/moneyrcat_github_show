@@ -74,6 +74,8 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	private FinalHttp mFinalHttp;
 	private TextView titleText;
 	private SharedPreferences sp;
+	protected int mWindowScreenW = 0;
+	protected int mWindowScreenH = 0;
 
 	protected FinalBitmap getFinalBitmap() {
 		FinalBitmap f = FinalBitmap.create(this);
@@ -261,6 +263,9 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+//		int[] s = getWindowScreenWH(this);
+//		mWindowScreenW = s[0];
+//		mWindowScreenH = s[1];
 		sp = getSharedPreferences("config", MODE_PRIVATE);
 		float oldVersion = getFloatValueForKey(VERSION);
 		float currentVersion = Util.getLocalVersionCode(this);

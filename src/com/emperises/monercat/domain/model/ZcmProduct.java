@@ -39,7 +39,7 @@ public class ZcmProduct extends BaseObject{
 	private String paddUser="";
 	private String pTotalNum = "";
 	private List<ZcmProduct> rows;
-
+	private String pUrl="";
 	public String getPtype() {
 		return ptype;
 	}
@@ -134,6 +134,14 @@ public class ZcmProduct extends BaseObject{
 
 	public void setpTotalNum(String pTotalNum) {
 		this.pTotalNum = pTotalNum;
+	}
+
+	public String getpUrl() {
+		return pUrl;
+	}
+
+	public void setpUrl(String pUrl) {
+		this.pUrl = pUrl;
 	}
 
 

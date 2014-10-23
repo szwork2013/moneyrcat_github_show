@@ -31,7 +31,6 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.emperises.monercat.R;
 import com.emperises.monercat.customview.CustomDialog.DialogClick;

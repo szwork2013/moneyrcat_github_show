@@ -23,8 +23,6 @@ import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmAdertising;
 import com.emperises.monercat.domain.model.ZcmUser;
 import com.emperises.monercat.interfacesandevents.NativeJavaScriptCallBackInterface;
-import com.emperises.monercat.interfacesandevents.NativeJavaScriptImpl;
-import com.emperises.monercat.interfacesandevents.NativeJavaScriptImpl.ResCallBack;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
@@ -113,8 +111,6 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity implements NativeJ
 				if(newProgress == 100){
 					mProgressBar.setVisibility(View.GONE);
 					setCurrentTitle(getString(R.string.ad_hteml5_title));
-					//获取新的余额信息
-					updateBalance();
 				}
 				super.onProgressChanged(view, newProgress);
 			}
@@ -258,9 +254,22 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity implements NativeJ
 		}
 		
 	}
+	@JavascriptInterface
 	@Override
 	public void JsOnError() {
 		mAdWebView.loadUrl(mErrorBeforeUrl);
 		Logger.i("ERROR", "因为网页加载错误,所以出现这个信息");
+	}
+	@JavascriptInterface
+	@Override
+	public String JsGetProdInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@JavascriptInterface
+	@Override
+	public void JsStartDuiHuanDialog() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -36,7 +36,7 @@ public class BindActivity_1 extends OtherBaseActivity {
 		case R.id.bind_done_button:
 			//存储本地绑定标志
 			setBooleanForKey(LOCAL_CONFIGKEY_BIND_FLG, true);
-			startActivity(new Intent(this,MainActivity.class));
+			finish();
 			break;
 		case R.id.bind_jump_safe_button:
 			startActivity(new Intent(this,BindActivity_Safe.class));

@@ -63,6 +63,7 @@
     <string name="m_gold">喵币</string>
     <string name="loading">获取中...</string>
     <string name="ad_hteml5_title">任务说明</string>
+    <string name="prod_hteml5_title">商品详情</string>
     <string name="_get_fail">获取失败</string>
     <string name="about">关于我们</string>
     <string name="copyright">版本信息</string>
