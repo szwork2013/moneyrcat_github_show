@@ -20,7 +20,11 @@ public interface LocalConfigKey {
 	String LOCAL_CONFIGKEY_DUIHUAN_NAME = "duihuan_name"; //兑换名字
 	String LOCAL_CONFIGKEY_DUIHUAN_TEL = "duihuan_tel"; //兑换手机
 	String LOCAL_CONFIGKEY_DUIHUAN_ADDR = "duihuan_addr"; //兑换地址
-	
+	String LOCAL_CONFIGKEY_SAFE_NAME = "safe_addr"; //安全信息姓名
+	String LOCAL_CONFIGKEY_SAFE_NUMBER = "tel_addr"; //安全信息身份证
+	String LOCAL_CONFIGKEY_BANK_ADDR = "bank_addr"; //银行卡开户行地址
+	String LOCAL_CONFIGKEY_BANK_NAME = "bank_name"; //银行卡名字
+	String LOCAL_CONFIGKEY_BANK_CARD = "bank_card"; //银行卡号码
 	
 	String INTENT_KEY_EDIT_TYPE = "edit_type"; //编辑标识
 	String INTENT_KEY_EDIT_VALUE = "edit_value"; //编辑内容

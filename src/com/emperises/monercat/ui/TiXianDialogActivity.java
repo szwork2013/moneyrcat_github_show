@@ -32,6 +32,12 @@ public class TiXianDialogActivity extends OtherBaseActivity {
 		mNameText = (TextView) findViewById(R.id.tixian_name);
 		mBankIdText = (TextView) findViewById(R.id.bank_id);
 		mBankAddressText = (TextView) findViewById(R.id.bank_address);
+		String name = getStringValueForKey(LOCAL_CONFIGKEY_BANK_NAME);
+		String addr = getStringValueForKey(LOCAL_CONFIGKEY_BANK_ADDR);
+		String card = getStringValueForKey(LOCAL_CONFIGKEY_BANK_CARD);
+		mNameText.setText(name);
+		mBankAddressText.setText(addr);
+		mBankIdText.setText(card);
 		tixianId = getIntent().getStringExtra(INTENT_KEY_TIXIAN_ID);
 	}
 	@Override
@@ -45,6 +51,7 @@ public class TiXianDialogActivity extends OtherBaseActivity {
 		if(obj != null){
 			if(obj.getResultCode().equals(HTTP_RESULE_SUCCESS)){
 				tixianTitle.setText("提交成功");
+				//保存上次提交的信息
 				showCommitOkToast();
 				//更新余额
 				updateBalance();
@@ -82,6 +89,9 @@ public class TiXianDialogActivity extends OtherBaseActivity {
 		String bankAddr = mBankAddressText.getText().toString();//开户行
 		String name = mNameText.getText().toString();
 		String bankNumber = mBankIdText.getText().toString();
+		setStringtForKey(LOCAL_CONFIGKEY_BANK_ADDR, bankAddr);
+		setStringtForKey(LOCAL_CONFIGKEY_BANK_CARD, bankNumber);
+		setStringtForKey(LOCAL_CONFIGKEY_BANK_NAME, name);
 		if (!TextUtils.isEmpty(bankNumber) && !TextUtils.isEmpty(bankAddr) && !TextUtils.isEmpty(name) ) {
 			AjaxParams params = new AjaxParams();
 			params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
@@ -90,7 +100,6 @@ public class TiXianDialogActivity extends OtherBaseActivity {
 			params.put("uname", name);
 			params.put("pid", tixianId);
 			startRequest(SERVER_URL_TIXIAN, params);
-			showToast("提现时错误,请检查输入的金额是否正确");
 			finish();
 		} else {
 			showToast("信息不完整");

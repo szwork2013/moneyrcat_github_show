@@ -71,6 +71,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_height="30dp"
                 android:layout_alignParentTop="true"
+                android:maxLength="10"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@+id/textView2"
                 android:background="@drawable/commit_bt_normal"
@@ -78,36 +79,7 @@
                 android:textSize="13sp"
                 android:ems="10" />
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" >
-
-
-            <TextView
-                android:id="@+id/textView222"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:text="数量"
-                android:textColor="@color/texttitle" />
-            <EditText
-                android:id="@+id/duihuan_count"
-                android:singleLine="true"
-                android:layout_width="fill_parent"
-                android:layout_marginRight="20dp"
-                android:layout_height="30dp"
-                android:layout_alignParentTop="true"
-                android:inputType="number"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/textView222"
-                android:background="@drawable/commit_bt_normal"
-                android:textColor="@color/texttitle"
-                android:textSize="13sp"
-                android:ems="10" />
-        </RelativeLayout>
+        
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -126,6 +98,7 @@
                 android:background="@drawable/commit_bt_normal"
                 android:textColor="@color/texttitle"
                 android:textSize="13sp"
+                android:maxLength="11"
                 android:inputType="number"
                 android:ems="10" />
 
@@ -156,7 +129,8 @@
                 android:layout_toRightOf="@+id/textView3"
                 android:background="@drawable/commit_bt_normal"
                 android:textColor="@color/texttitle"
-                android:textSize="13sp"
+                android:textSize="10sp"
+                android:maxLength="25"
                 android:singleLine="true"
                 android:ems="10" />
 
@@ -171,14 +145,66 @@
                 android:textColor="@color/texttitle" />
         </RelativeLayout>
 
+<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
 
+
+            <TextView
+                android:id="@+id/textView222"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="数量"
+                android:textColor="@color/texttitle" />
+            <EditText
+                android:id="@+id/duihuan_count"
+                android:singleLine="true"
+                android:layout_width="123dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:inputType="number"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/textView222"
+                android:background="@drawable/commit_bt_normal"
+                android:textColor="@color/texttitle"
+                android:text="1"
+                android:textSize="13sp"
+                android:ems="10" />
+
+            <Button
+                android:id="@+id/add"
+                android:layout_width="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="30dp"
+                android:layout_toRightOf="@+id/dec"
+                android:background="@drawable/commit_bt_selector"
+                android:onClick="onClick"
+                android:text="+"
+                android:textColor="@color/texttitle" />
+
+            <Button
+                android:id="@+id/dec"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_toRightOf="@+id/duihuan_count"
+                android:background="@drawable/commit_bt_selector"
+                android:onClick="onClick"
+                android:layout_marginLeft="10dp"
+                android:text="-"
+                android:textColor="@color/texttitle" />
+
+        </RelativeLayout>
 
         <Button
             android:id="@+id/commit_bt"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/commit_bt_selector"
             android:textColor="@color/texttitle"

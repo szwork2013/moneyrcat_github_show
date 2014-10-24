@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.emperises.monercat.MainActivity;
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmUser;
@@ -35,7 +34,6 @@ public class BindActivity_1 extends OtherBaseActivity {
 		switch (v.getId()) {
 		case R.id.bind_done_button:
 			//存储本地绑定标志
-			setBooleanForKey(LOCAL_CONFIGKEY_BIND_FLG, true);
 			finish();
 			break;
 		case R.id.bind_jump_safe_button:

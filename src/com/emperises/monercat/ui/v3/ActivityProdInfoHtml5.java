@@ -44,7 +44,7 @@ public class ActivityProdInfoHtml5 extends OtherBaseActivity implements NativeJa
 		mProdWebView = (WebView) findViewById(R.id.prodWebView);
 		initWebSetting(mProdWebView);
 //		mProdWebView.loadUrl(mProductInfo.getpUrl());
-		mProdWebView.loadUrl("http://192.168.1.118:8888/zcm/ex/zcm/duihuan.html");
+		mProdWebView.loadUrl("http://115.28.136.194:8088/zcm/ex/zcm/duihuan.html");
 	}
 	private String mErrorBeforeUrl;
 	private void initWebSetting(final WebView webview) {
@@ -180,26 +180,29 @@ public class ActivityProdInfoHtml5 extends OtherBaseActivity implements NativeJa
 			i.putExtra(INTENT_KEY_PRODUCINFO, mProductInfo);
 			startActivity(i);
 		} else {
-			CustomDialogConfig config = new CustomDialogConfig();
-			config.setTitle("兑换");
-			config.setCancleButtonText("取消");
-			config.setMessage("绑定手机号码才能进行兑换哦!");
-			config.setSureButtonText("绑定");
-			config.setCancelListener(new DialogClick() {
-				@Override
-				public void onClick(View v) {
-					super.onClick(v); 
-				}
-			});
-			config.setSureListener(new DialogClick() {
-				@Override
-				public void onClick(View v) {
-					startActivity(new Intent(ActivityProdInfoHtml5.this , BindActivity.class));
-					super.onClick(v);
-				}
-			});
-			showDialog(config);
+			showBindDialog();
 		}
+	}
+	private void showBindDialog() {
+		CustomDialogConfig config = new CustomDialogConfig();
+		config.setTitle("兑换");
+		config.setCancleButtonText("取消");
+		config.setMessage("绑定手机号码才能进行兑换哦!");
+		config.setSureButtonText("绑定");
+		config.setCancelListener(new DialogClick() {
+			@Override
+			public void onClick(View v) {
+				super.onClick(v); 
+			}
+		});
+		config.setSureListener(new DialogClick() {
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(ActivityProdInfoHtml5.this , BindActivity.class));
+				super.onClick(v);
+			}
+		});
+		showDialog(config);
 	}
 	
 }

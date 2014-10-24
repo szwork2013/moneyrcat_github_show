@@ -2,6 +2,7 @@ package com.emperises.monercat.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.emperises.monercat.BaseActivity;
@@ -45,6 +46,13 @@ public class MoreActivity extends BaseActivity {
 			break;
 		case R.id.copyright_info:
 			startActivity(new Intent(this, CopyRightActivity.class));
+			break;
+		case R.id.more_safe:
+			if(TextUtils.isEmpty(getStringValueForKey(LOCAL_CONFIGKEY_SAFE_NAME))){
+				startActivity(new Intent(this, BindActivity_Safe.class));
+			} else {
+				showToast("您已经绑定过安全信息!");
+			}
 			break;
 		default:
 			break;

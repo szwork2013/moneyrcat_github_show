@@ -113,6 +113,7 @@ public class BindActivity extends OtherBaseActivity {
 						startActivity(i);
 						//保存手机号码
 						setStringtForKey(LOCAL_CONFIGKEY_BIND_TEL, tel);
+						setBooleanForKey(LOCAL_CONFIGKEY_BIND_FLG, true);
 						finish();
 					}
 					super.onSuccess(t);

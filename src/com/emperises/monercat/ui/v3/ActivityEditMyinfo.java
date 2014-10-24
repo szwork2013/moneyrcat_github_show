@@ -259,12 +259,7 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 		dialog.show();
 	}
 
-	private String replaceAgeStringEmpty(String age) {
-		if (age.contains("岁")) {
-			age = age.replace("岁", "");
-		}
-		return age;
-	}
+	
 
 	private void saveMyInfo() {
 

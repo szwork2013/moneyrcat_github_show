@@ -81,6 +81,13 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		FinalBitmap f = FinalBitmap.create(this);
 		return f;
 	}
+	
+	protected String replaceAgeStringEmpty(String age) {
+		if (!TextUtils.isEmpty(age) && age.contains("岁")) {
+			age = age.replace("岁", "");
+		}
+		return age;
+	}
 
 	@Override
 	public void onHeaderImageChange(String path) {

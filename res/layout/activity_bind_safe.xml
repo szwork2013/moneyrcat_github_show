@@ -54,7 +54,7 @@
             android:layout_marginTop="10dp" >
 
             <EditText
-                android:id="@+id/editText1"
+                android:id="@+id/safe_name"
                 android:layout_width="fill_parent"
                 android:layout_height="30dp"
                 android:layout_alignParentTop="true"
@@ -63,6 +63,8 @@
                 android:layout_toRightOf="@+id/textView2"
                 android:background="@drawable/commit_bt_normal"
                 android:ems="10"
+                android:maxLength="10"
+                android:singleLine="true"
                 android:textColor="@color/texttitle"
                 android:textSize="13sp" />
 
@@ -83,7 +85,7 @@
             android:layout_marginTop="10dp" >
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/safe_number"
                 android:layout_width="fill_parent"
                 android:layout_height="30dp"
                 android:layout_alignParentTop="true"
@@ -92,7 +94,10 @@
                 android:layout_toRightOf="@+id/textView3"
                 android:background="@drawable/commit_bt_normal"
                 android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:maxLines="18"
                 android:textColor="@color/texttitle"
+                android:digits="0123456789Xx"
                 android:textSize="13sp" />
 
             <TextView
@@ -110,13 +115,13 @@
             android:id="@+id/commit_bt"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/commit_bt_selector"
             android:onClick="onClick"
-            android:textColor="@color/texttitle"
-            android:text="提交" />
+            android:text="提交"
+            android:textColor="@color/texttitle" />
 
         <TextView
             android:layout_width="fill_parent"

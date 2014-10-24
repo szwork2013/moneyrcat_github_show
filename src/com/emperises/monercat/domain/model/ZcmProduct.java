@@ -40,6 +40,7 @@ public class ZcmProduct extends BaseObject{
 	private String pTotalNum = "";
 	private List<ZcmProduct> rows;
 	private String pUrl="";
+	private String p_max_dh_num;
 	public String getPtype() {
 		return ptype;
 	}
@@ -142,6 +143,14 @@ public class ZcmProduct extends BaseObject{
 
 	public void setpUrl(String pUrl) {
 		this.pUrl = pUrl;
+	}
+
+	public String getP_max_dh_num() {
+		return p_max_dh_num;
+	}
+
+	public void setP_max_dh_num(String p_max_dh_num) {
+		this.p_max_dh_num = p_max_dh_num;
 	}
 
 

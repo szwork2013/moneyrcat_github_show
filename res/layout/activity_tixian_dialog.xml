@@ -66,6 +66,8 @@
                 android:background="@drawable/commit_bt_normal"
                 android:textColor="@color/texttitle"
                 android:textSize="13sp"
+                android:maxLength="10"
+                android:singleLine="true"
                 android:ems="10" />
 
             <TextView
@@ -95,6 +97,7 @@
                 android:background="@drawable/commit_bt_normal"
                 android:textColor="@color/texttitle"
                 android:inputType="number"
+                android:maxLength="25"
                 android:textSize="13sp"
                 android:ems="10" />
 
@@ -124,6 +127,7 @@
                 android:layout_toRightOf="@+id/textView4"
                 android:textColor="@color/texttitle"
                 android:textSize="13sp"
+                android:maxLength="25"
                 android:background="@drawable/commit_bt_normal"
                 android:ems="10" />
 
