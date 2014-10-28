@@ -243,7 +243,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 									user.getVal().getuImage());
 							setStringtForKey(LOCAL_CONFIGKEY_BIND_TEL,
 									user.getVal().getUtelephone());
-							
+							setStringtForKey(LOCAL_CONFIGKEY_SAFE_NUMBER,user.getVal().getUidentity());
 							// 发出一次头像变更事件
 							HeaderImageEvent.getInstance()
 									.fireHeaderChangeImageEvent(

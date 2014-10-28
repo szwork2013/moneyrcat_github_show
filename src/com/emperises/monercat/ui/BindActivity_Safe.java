@@ -7,7 +7,6 @@ import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.TextureView;
 import android.view.View;
 import android.widget.EditText;
 
@@ -42,14 +41,10 @@ public class BindActivity_Safe extends OtherBaseActivity {
 		final String number = mSafeNumber.getText().toString();
 		if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(number)) {
 			AjaxParams params = new AjaxParams();
-			ZcmUser mInfo = getDatabaseInterface().getMyInfo();
 			params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
 			params.put("action_type", "0");
-			params.put("uidentity", number);
-			params.put("uname", name);
-			params.put("usex", mInfo.getUsex());
-			params.put("uadress", mInfo.getUaddress());
-			params.put("uage", replaceAgeStringEmpty(mInfo.getUage()));
+			params.put("uidentity", number);//身份证
+			params.put("uzsname", name);//姓名
 			try {
 				params.put("file", new File(""));
 			} catch (FileNotFoundException e) { 

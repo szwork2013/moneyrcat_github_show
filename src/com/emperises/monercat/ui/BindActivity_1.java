@@ -2,6 +2,7 @@ package com.emperises.monercat.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -37,7 +38,12 @@ public class BindActivity_1 extends OtherBaseActivity {
 			finish();
 			break;
 		case R.id.bind_jump_safe_button:
-			startActivity(new Intent(this,BindActivity_Safe.class));
+			String number = getStringValueForKey(LOCAL_CONFIGKEY_SAFE_NUMBER);
+			if(TextUtils.isEmpty(number)){
+				startActivity(new Intent(this,BindActivity_Safe.class));
+			} else {
+				showToast("您已经完善过安全信息。");
+			}
 			break;
 
 		default:
