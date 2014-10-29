@@ -39,7 +39,7 @@ public class DuiHuanDialogActivity extends OtherBaseActivity implements OnLongCl
 	@Override
 	protected void initViews() {
 		super.initViews();
-		mDuihuanTitle = (TextView) findViewById(R.id.duihuan_title);
+		mDuihuanTitle = (TextView) findViewById(R.id.duihuanTitle);
 		mDuihuanAddress = (EditText) findViewById(R.id.duihuan_address);
 		mDuihuanName = (EditText) findViewById(R.id.duihuan_name);
 		mDuihuanTel = (EditText) findViewById(R.id.duihuan_tel_edit);

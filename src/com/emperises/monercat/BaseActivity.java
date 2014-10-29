@@ -592,7 +592,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 				}
 			});
 			String currentBalance = queryLocalBalance();
-			float ci = Float.parseFloat(currentBalance) / 100;
+ 			float ci = Float.parseFloat(currentBalance) / 100;
 			ye.setText("余额:" + currentBalance + getString(R.string.m_gold)
 					+ "(" + ci + "元)");
 			tel.setText(info.getUtelephone());
