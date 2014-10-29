@@ -521,14 +521,14 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	abstract protected void initViews();
 
 	private void initBaseData() {
-		if (!getBoleanValueForKey(LOCAL_CONFIGKEY_DATEBASE_INSERT_FLG)) {
+		if (isFirstRun()) {
 			// 个人信息不在数据库中不能被初始化两次
 			ZcmUser z = new ZcmUser();
 			z.setUdevicesId(Util.getDeviceId(this));
 			List<DomainObject> objs = new ArrayList<DomainObject>();
 			objs.add(z);
 			getDatabaseInterface().insertDataForObjs(objs);
-			setBooleanForKey(LOCAL_CONFIGKEY_DATEBASE_INSERT_FLG, true);
+//			setBooleanForKey(LOCAL_CONFIGKEY_DATEBASE_INSERT_FLG, true);
 		}
 	}
 

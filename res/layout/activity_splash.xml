@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
-            android:text="Beta Version V1.8"
+            android:text="Beta Version V1.9"
             android:textColor="@color/background"
             android:textSize="10sp" />
 
