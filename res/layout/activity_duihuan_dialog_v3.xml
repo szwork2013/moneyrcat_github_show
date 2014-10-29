@@ -217,7 +217,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
-            android:text="*请仔细填写以上信息,以便于收到商品"
+            android:text="*请仔细填写以上信息,以便于收到商品,实物物品会通过快递方式发送。"
             android:textColor="@color/textcontent" />
 
         <View
