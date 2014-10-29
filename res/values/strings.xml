@@ -70,5 +70,11 @@
     <string name="hezuo">商务合作</string>
     <string name="yuebuzu">余额不足</string>
     <string name="_myinfo_title">我的信息</string>
+    <string name="duihuan_str">兑换</string>
+    <string name="loading_dialog">请求中...</string>
+    <string name="edit_myinfo_titel_str">编辑信息</string>
+    <string name="upload_image_title_str">上传图片</string>
+    <string name="please_select_image_toast">请选择图片!</string>
+    <string name="upload_image_loading_str">您的任务已经完成提交，小喵正在玩命儿审核中，敬请期待</string>
 
 </resources>

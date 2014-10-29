@@ -8,6 +8,7 @@ import net.tsz.afinal.http.AjaxParams;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -126,7 +127,14 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 			Bitmap load = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
 			getFinalBitmap().display(holder.duihuanIcon,pro.getPlogo(),load,load);
 			holder.duihuanTitle.setText(pro.getPname());
-			holder.duihuanCount.setText("数量:"+pro.getPnum());
+			int n = Integer.parseInt(pro.getPnum());
+			if(n != 0){
+				holder.duihuanCount.setText("数量:"+pro.getPnum());
+				holder.duihuanCount.setTextColor(Color.parseColor("#777777"));
+			} else {
+				holder.duihuanCount.setTextColor(Color.parseColor("#A1272B"));
+				holder.duihuanCount.setText("缺货");
+			}
 			holder.duihuanBalance.setText(pro.getPprice()+getString(R.string.m_gold));
 			return view;
 		}
@@ -143,10 +151,22 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-		Intent i = new Intent(this,ActivityProdInfoHtml5.class);
 		ZcmProduct pro = (ZcmProduct) mProductAdapter.getItem(position);
-		i.putExtra(INTENT_KEY_PRODUCINFO,pro );
-		startActivity(i);
+		float currentBalance = Float.parseFloat(queryLocalBalance());
+		float price = Float.parseFloat(pro.getPprice());
+		if (currentBalance < price) {
+			showToast(R.string.yuebuzu);
+		} else {
+			Intent i = new Intent(this,ActivityProdInfoHtml5.class);
+			
+			int num = Integer.parseInt(pro.getPnum());
+			if(num != 0){
+				i.putExtra(INTENT_KEY_PRODUCINFO,pro );
+				startActivity(i);
+			} else {
+				showToast("此商品暂时缺货!");
+			}
+		}
 	}
 
 }

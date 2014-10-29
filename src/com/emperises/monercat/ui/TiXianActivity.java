@@ -18,10 +18,9 @@ import android.widget.TextView;
 
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
-import com.emperises.monercat.customview.CustomDialogConfig;
 import com.emperises.monercat.customview.CustomDialog.DialogClick;
+import com.emperises.monercat.customview.CustomDialogConfig;
 import com.emperises.monercat.domain.model.ZcmProduct;
-import com.emperises.monercat.ui.v3.ActivityProdInfoHtml5;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
 

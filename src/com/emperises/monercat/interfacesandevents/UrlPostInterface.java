@@ -8,8 +8,8 @@ public interface UrlPostInterface {
 	String HTTP_RESULE_SUCCESS = "00";
 	//服务器IP地址
 	String SERVER_ADDRESS  = "115.28.136.194";
-	String SERVER_PORT = "8088";
-//	String SERVER_PORT = "8086";
+//	String SERVER_PORT = "8088";
+	String SERVER_PORT = "8086";
 	String  BASE_URL = "http://"+SERVER_ADDRESS+":"+SERVER_PORT+"/zcm/";
 	//注册
 	String SERVER_URL_REG = BASE_URL + "user/bind_devices.do";  

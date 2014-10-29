@@ -251,7 +251,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 						}
 						// //显示头像
 						// displayHeaderImage(mHeaderImage,mHeaderWH,mHeaderWH);
-						// 初始化控件的值
+						// 初始化控件的值 
 						TextView nickName = (TextView) homeHeaderItem
 								.findViewById(R.id.yue_nickname);
 						TextView tel = (TextView) homeHeaderItem

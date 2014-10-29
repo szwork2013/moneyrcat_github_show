@@ -18,12 +18,12 @@
             android:layout_marginTop="10dp" >
 
             <TextView
-                android:id="@+id/tixianTitle"
+                android:id="@+id/duihuanTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:text="兑换"
+                android:text="@string/duihuan_str"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/texttitle" />
 

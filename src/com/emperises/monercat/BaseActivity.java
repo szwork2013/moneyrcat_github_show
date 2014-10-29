@@ -81,7 +81,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		FinalBitmap f = FinalBitmap.create(this);
 		return f;
 	}
-	
+
 	protected String replaceAgeStringEmpty(String age) {
 		if (!TextUtils.isEmpty(age) && age.contains("岁")) {
 			age = age.replace("岁", "");
@@ -270,9 +270,9 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-//		int[] s = getWindowScreenWH(this);
-//		mWindowScreenW = s[0];
-//		mWindowScreenH = s[1];
+		// int[] s = getWindowScreenWH(this);
+		// mWindowScreenW = s[0];
+		// mWindowScreenH = s[1];
 		sp = getSharedPreferences("config", MODE_PRIVATE);
 		float oldVersion = getFloatValueForKey(VERSION);
 		float currentVersion = Util.getLocalVersionCode(this);
@@ -521,8 +521,8 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	abstract protected void initViews();
 
 	private void initBaseData() {
-		if(getBoleanValueForKey(LOCAL_CONFIGKEY_DATEBASE_INSERT_FLG)){
-			//个人信息不在数据库中不能被初始化两次
+		if (!getBoleanValueForKey(LOCAL_CONFIGKEY_DATEBASE_INSERT_FLG)) {
+			// 个人信息不在数据库中不能被初始化两次
 			ZcmUser z = new ZcmUser();
 			z.setUdevicesId(Util.getDeviceId(this));
 			List<DomainObject> objs = new ArrayList<DomainObject>();

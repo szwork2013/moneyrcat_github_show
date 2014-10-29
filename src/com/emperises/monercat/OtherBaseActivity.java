@@ -46,6 +46,11 @@ public class OtherBaseActivity extends BaseActivity {
 			titleText.setText(title);
 		}
 	}
+	protected void setCurrentTitle(int resId) {
+		if(titleText != null){
+			titleText.setText(getString(resId));
+		}
+	}
 	protected void setTitleHide(int hide) {
 		if(backButton != null){
 			RelativeLayout p = (RelativeLayout) backButton.getParent();

@@ -36,7 +36,7 @@ public class UploadImageActivity extends OtherBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_upload);
-		setCurrentTitle("上传图片");
+		setCurrentTitle(R.string.upload_image_title_str);
 		mAdId = getIntent().getStringExtra("adId");
 	}
 
@@ -52,7 +52,7 @@ public class UploadImageActivity extends OtherBaseActivity {
 
 	private void upload(){
 		if(mUploadImagePath == null){
-			showToast("请选择图片!");
+			showToast(R.string.please_select_image_toast);
 		} else {
 			//开始上传
 			AjaxParams params = new AjaxParams();
@@ -72,7 +72,7 @@ public class UploadImageActivity extends OtherBaseActivity {
 						mSelectedImage.setEnabled(true);
 						mUploadSelected.setEnabled(true);
 						if(HTTP_RESULE_SUCCESS.equals(d.getResultCode())){
-							showToast("您的任务已经完成提交，小喵正在玩命儿审核中，敬请期待");
+							showToast(R.string.upload_image_loading_str);
 							finish();
 						} else {
 							showToast(d.getResultMsg());

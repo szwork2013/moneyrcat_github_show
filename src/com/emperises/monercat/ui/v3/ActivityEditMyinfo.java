@@ -60,7 +60,7 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_editmyinfo);
-		setCurrentTitle("编辑信息");
+		setCurrentTitle(R.string.edit_myinfo_titel_str);
 
 	}
 
@@ -282,10 +282,12 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 					public void onStart() {
 						super.onStart();
 						mCommitButton.setClickable(false);
+						setCurrentTitle(R.string.loading_dialog);
 					}
 
 					@Override
 					public void onSuccess(String t) {
+						setCurrentTitle(R.string.edit_myinfo_titel_str);
 						mCommitButton.setClickable(true);
 						Logger.i("USERINFO", t);
 						DomainObject ret = new Gson().fromJson(t,
@@ -310,6 +312,7 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 					public void onFailure(Throwable t, int errorNo,
 							String strMsg) {
 						super.onFailure(t, errorNo, strMsg);
+						setCurrentTitle(R.string.edit_myinfo_titel_str);
 						Logger.e("ERROR", strMsg, t);
 						showNetErrorToast(strMsg, t);
 						mCommitButton.setClickable(true);

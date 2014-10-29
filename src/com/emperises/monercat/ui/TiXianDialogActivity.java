@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.emperises.monercat.OtherBaseActivity;
@@ -20,6 +21,7 @@ public class TiXianDialogActivity extends OtherBaseActivity {
 	private TextView mNameText;
 	private TextView mBankIdText;
 	private TextView mBankAddressText;
+	private Button mCommitBt;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,6 +31,7 @@ public class TiXianDialogActivity extends OtherBaseActivity {
 	@Override
 	protected void initViews() {
 		tixianTitle = (TextView) findViewById(R.id.tixianTitle);
+		mCommitBt = (Button) findViewById(R.id.commit_bt);
 		mNameText = (TextView) findViewById(R.id.tixian_name);
 		mBankIdText = (TextView) findViewById(R.id.bank_id);
 		mBankAddressText = (TextView) findViewById(R.id.bank_address);
@@ -43,10 +46,12 @@ public class TiXianDialogActivity extends OtherBaseActivity {
 	@Override
 	public void onHttpStart() {
 		super.onHttpStart();
-		tixianTitle.setText(getString(R.string.loading));
+		tixianTitle.setText(getString(R.string.loading_dialog));
+		mCommitBt.setClickable(false);
 	}
 	@Override
 	public void onFinished(String content) {
+		mCommitBt.setClickable(true);
 		DomainObject obj = new Gson().fromJson(content, DomainObject.class);
 		if(obj != null){
 			if(obj.getResultCode().equals(HTTP_RESULE_SUCCESS)){
@@ -67,8 +72,8 @@ public class TiXianDialogActivity extends OtherBaseActivity {
 	public void onFail(Throwable t, int errorNo, String strMsg) {
 		super.onFail(t, errorNo, strMsg);
 		showNetErrorToast(strMsg, t);
-		tixianTitle.setTextColor(Color.parseColor("#770A13"));
-		tixianTitle.setText("提交失败");
+		tixianTitle.setText(R.string.errortoast);
+		mCommitBt.setClickable(true);
 	}
 	@Override
 	public void onClick(View v) {

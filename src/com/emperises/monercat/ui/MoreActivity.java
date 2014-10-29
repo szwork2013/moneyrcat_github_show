@@ -48,7 +48,7 @@ public class MoreActivity extends BaseActivity {
 			startActivity(new Intent(this, CopyRightActivity.class));
 			break;
 		case R.id.more_safe:
-			if(TextUtils.isEmpty(getStringValueForKey(LOCAL_CONFIGKEY_SAFE_NAME))){
+			if(TextUtils.isEmpty(getStringValueForKey(LOCAL_CONFIGKEY_SAFE_NUMBER))){
 				startActivity(new Intent(this, BindActivity_Safe.class));
 			} else {
 				showToast("您已经绑定过安全信息!");

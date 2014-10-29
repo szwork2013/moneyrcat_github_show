@@ -19,7 +19,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="19dp"
-            android:text="完善安全信息"
+            android:text="安全信息"
             android:textColor="@color/texttitle" />
 
         <ImageView
