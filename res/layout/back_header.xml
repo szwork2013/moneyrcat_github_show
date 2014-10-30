@@ -35,5 +35,19 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@drawable/share" />
+        <Button
+            android:onClick="onClick"
+            android:id="@+id/back_rightItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="13sp"
+            android:visibility="gone"
+            android:text="兑换记录"
+            android:layout_marginRight="10dp"
+            android:background="#00000000"
+            android:textColor="#ffffffff"
+             />
 
 </RelativeLayout>

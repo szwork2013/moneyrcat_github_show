@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmProduct;
+import com.emperises.monercat.ui.v3.ActivityDuihuanHistory;
 import com.emperises.monercat.ui.v3.ActivityProdInfoHtml5;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
@@ -45,6 +46,7 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 
 	private MyAdapter mProductAdapter;
 	private TextView mDefaultLable;
+	private Button mRightButton;
 	private void initProductData() {
 		AjaxParams params = new AjaxParams();
 		params.put(POST_KEY_DEVICESID, Util.getDeviceId(this));
@@ -81,6 +83,8 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 	@Override
 	protected void initViews() {
 		mDuiHuanListView = (ListView) findViewById(R.id.duihuanListView);
+		mRightButton = (Button) findViewById(R.id.back_rightItem);
+		mRightButton.setVisibility(View.VISIBLE);
 		mDuiHuanListView.setAdapter(new MyAdapter());
 		mDuiHuanListView.setOnItemClickListener(this);
 		mMXButton = (Button) findViewById(R.id.mingxi_button);
@@ -90,6 +94,17 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 		
 	}
 
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.back_rightItem:
+			startActivity(new Intent(this , ActivityDuihuanHistory.class));
+			break;
+
+		default:
+			break;
+		}
+	}
 	class MyAdapter extends BaseAdapter {
 
 		@Override
