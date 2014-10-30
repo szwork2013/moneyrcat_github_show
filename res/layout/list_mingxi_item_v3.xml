@@ -13,7 +13,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/transDate"
         android:text="广告点击"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:textColor="@color/texttitle"
         android:textSize="14sp" />
 

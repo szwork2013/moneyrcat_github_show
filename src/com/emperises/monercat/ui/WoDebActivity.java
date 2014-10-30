@@ -19,7 +19,6 @@ import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.AdInfoV3;
 import com.emperises.monercat.domain.model.ZcmAdertising;
-import com.emperises.monercat.ui.HomeActivity.ViewHolder;
 import com.emperises.monercat.ui.v3.ActivityAdDetail_HTML5;
 import com.emperises.monercat.ui.v3.ActivityShenLinJiLu;
 import com.emperises.monercat.utils.Logger;
@@ -125,6 +124,10 @@ public class WoDebActivity extends OtherBaseActivity implements
 
 	}
 
+	static class ViewHolder {
+		ImageView adIcon;
+		TextView adTitle;
+	}
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 		Intent i = new Intent(this, ActivityAdDetail_HTML5.class);

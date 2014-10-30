@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -36,32 +37,11 @@ import com.emperises.monercat.ui.v3.ActivityAdDetail_HTML5;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 @SuppressLint("NewApi")
 public class HomeActivity_v2 extends BaseActivity implements
-		OnPageChangeListener, OnItemClickListener {
+		OnPageChangeListener, OnItemClickListener ,SwipeRefreshLayout.OnRefreshListener{
 	private MyAdAdapter mAdListAdapter;
-	// private static final int REFRESH_COMPLETE = 1;
-	// private static final int START_AUTO_VIEWPAGER = 2;
-	// private Handler mHandler = new Handler() {
-	// @Override
-	// public void handleMessage(Message msg) {
-	// super.handleMessage(msg);
-	// switch (msg.what) {
-	// case REFRESH_COMPLETE:
-	// mPullListView.onRefreshComplete();
-	// break;
-	// case START_AUTO_VIEWPAGER:
-	// mAdPager.startAutoScroll();
-	// break;
-	// default:
-	// break;
-	// }
-	// }
-	// };
 	private LinearLayout mPagerIndexLayout;
 	private AutoScrollViewPager mAdPager;
 	private long mExitTime;
@@ -115,15 +95,11 @@ public class HomeActivity_v2 extends BaseActivity implements
 			}
 		}
 	}
-//	@Override
-//	protected void onPause() {
-//		Logger.i("KEY", "HomeActivity onPause 页面暂停");
-//		mAdPager.stopAutoScroll();
-//		super.onPause();
-//	}
 	@Override
 	protected void initViews() {
 		HeaderImageEvent.getInstance().addHeaderImageListener(this);
+		mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_layout);
+		mRefreshLayout.setOnRefreshListener(this);
 		mErrorHit = (Button) findViewById(R.id.error_hit);
 		mProgressBar = (ProgressBar) findViewById(R.id.progress);
 		homeHeaderItem = (LinearLayout) getLayoutInflater().inflate(
@@ -132,18 +108,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 				.findViewById(R.id.myheaderimage);
 		mPagerIndexLayout = (LinearLayout) homeHeaderItem
 				.findViewById(R.id.pageControlLayout);
-		mPullListView = (PullToRefreshListView) findViewById(R.id.adListView);
-
-		mPullListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
-
-			@Override
-			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-				mAdPager.stopAutoScroll();
-				initViewPager();
-				initAdList();
-				updateBalance();// 刷新的时候更新余额
-			}
-		});
+		mPullListView = (ListView) findViewById(R.id.adListView);
 		// mMXButton = (Button) homeHeaderItem.findViewById(R.id.mingxi_button);
 		mAdPager = (AutoScrollViewPager) homeHeaderItem
 				.findViewById(R.id.adPager);
@@ -317,7 +282,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 			mPullListView.setAdapter(mAdListAdapter);
 			Logger.i("ADAPTER", "设置适配器");
 		}
-		mPullListView.onRefreshComplete();
+		mRefreshLayout.setRefreshing(false);
 		mProgressBar.setVisibility(View.GONE);
 		mErrorHit.setVisibility(View.GONE);
 	}
@@ -325,7 +290,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 	@Override
 	public void onFail(Throwable t, int errorNo, String strMsg) {
 		super.onFail(t, errorNo, strMsg);
-		mPullListView.onRefreshComplete();
+		mRefreshLayout.setRefreshing(false);
 		showNetErrorToast(strMsg, t);
 		mErrorHit.setVisibility(View.VISIBLE);
 		mProgressBar.setVisibility(View.GONE);
@@ -396,6 +361,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 					view.setTag(holder);
 
 				} else if (getItemViewType(position) == ITEM_VIEW_TYPE_PAGER) {
+					mPullListView.setDividerHeight(0);
 					view = homeHeaderItem;
 				}
 			}
@@ -447,12 +413,13 @@ public class HomeActivity_v2 extends BaseActivity implements
 	// private Button mMXButton;
 	private List<ZcmAdertising> mAdInfos = new ArrayList<ZcmAdertising>();
 	private List<ZcmAdertising> mLoopAdInfos = new ArrayList<ZcmAdertising>();
-	private PullToRefreshListView mPullListView;
+	private ListView mPullListView;
 	private LinearLayout homeHeaderItem;
 	private ProgressBar mProgressBar;
 	private Button mErrorHit;
 	private ImageView mHeaderImage;
 	private int mHeaderWH;
+	private SwipeRefreshLayout mRefreshLayout;
 
 	private void changeIndexBg(int currentPosition) {
 		for (int i = 0; i < mPagerIndexLayout.getChildCount(); i++) {
@@ -499,6 +466,14 @@ public class HomeActivity_v2 extends BaseActivity implements
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void onRefresh() {
+		mAdPager.stopAutoScroll();
+		initViewPager();
+		initAdList();
+		updateBalance();// 刷新的时候更新余额	
 	}
 
 }

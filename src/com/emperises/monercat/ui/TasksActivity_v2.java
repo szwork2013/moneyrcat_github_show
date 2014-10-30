@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -33,12 +34,9 @@ import com.emperises.monercat.ui.v3.ActivityAdDetail_HTML5;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 public class TasksActivity_v2 extends OtherBaseActivity implements
-		OnItemClickListener, OnPageChangeListener {
+		OnItemClickListener, OnPageChangeListener ,SwipeRefreshLayout.OnRefreshListener{
 	private LinearLayout mPagerIndexLayout;
 	private AutoScrollViewPager mAdPager;
 
@@ -49,7 +47,7 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 			super.handleMessage(msg);
 			switch (msg.what) {
 			case REFRESH_COMPLETE:
-				mPullListView.onRefreshComplete();
+				mRefreshLayout.setRefreshing(false);
 				break;
 			default:
 				break;
@@ -79,19 +77,13 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 
 	@Override
 	protected void initViews() {
+		mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_layout);
+		mRefreshLayout.setOnRefreshListener(this);
 		mErrorHit = (Button) findViewById(R.id.error_hit);
 		progress = (ProgressBar) findViewById(R.id.progress);
 		mHeaderPager = (LinearLayout) getLayoutInflater().inflate(
 				R.layout.task_header_item_pager, null);
-		mPullListView = (PullToRefreshListView) findViewById(R.id.adListView);
-		mPullListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
-
-			@Override
-			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-				initTaskInfos();
-				initViewPager();
-			}
-		});
+		mPullListView = (ListView) findViewById(R.id.adListView);
 		mPagerIndexLayout = (LinearLayout) mHeaderPager
 				.findViewById(R.id.pageControlLayout);
 		mAdListAdapter = new MyAdAdapter();
@@ -129,7 +121,7 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 							mPullListView.setAdapter(mAdListAdapter);
 							Logger.i("LIST", mAdTaskInfos.size() + "");
 						}
-						mPullListView.onRefreshComplete();
+						mRefreshLayout.setRefreshing(false);
 						super.onSuccess(t);
 						progress.setVisibility(View.GONE);
 						mErrorHit.setVisibility(View.GONE);
@@ -140,7 +132,7 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 							String strMsg) {
 						super.onFailure(t, errorNo, strMsg);
 						showNetErrorToast(strMsg, t);
-						mPullListView.onRefreshComplete();
+						mRefreshLayout.setRefreshing(false);
 						mErrorHit.setVisibility(View.VISIBLE);
 						progress.setVisibility(View.GONE);
 					}
@@ -311,12 +303,13 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 	}
 
 	private int currentIndex = 0;
-	private PullToRefreshListView mPullListView;
+	private ListView mPullListView;
 
 	private MyAdAdapter mAdListAdapter;
 	private LinearLayout mHeaderPager;
 	private ProgressBar progress;
 	private Button mErrorHit;
+	private SwipeRefreshLayout mRefreshLayout;
 
 	private void changeIndexBg(int currentPosition) {
 		for (int i = 0; i < mPagerIndexLayout.getChildCount(); i++) {
@@ -341,5 +334,11 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void onRefresh() {
+		initTaskInfos();
+		initViewPager();
 	}
 }

@@ -1,40 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-     >
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-        android:id="@+id/adListView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:divider="#cdcdcd"
-        android:scrollbars="none" >
-    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+    android:orientation="vertical"
+    android:background="@color/background" >
 
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+    <RelativeLayout
+        android:background="@color/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-    <Button
-        android:id="@+id/error_hit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:layout_centerVertical="true"
-        android:background="#555D696B"
-        android:drawableTop="@drawable/ic_launcher"
-        android:onClick="onClick"
-        android:visibility="gone"
-        android:textColor="#C80019"
-        android:text="加载失败!点击重新加载!"
-         />
+            <ListView
+                android:id="@+id/adListView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:divider="#cdcdcd"
+                android:scrollbars="none" >
+            </ListView>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
-</RelativeLayout>
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
+        <Button
+            android:id="@+id/error_hit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="#555D696B"
+            android:drawableTop="@drawable/ic_launcher"
+            android:onClick="onClick"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:text="加载失败!点击重新加载!"
+            android:textColor="#C80019"
+            android:visibility="gone" />
+    </RelativeLayout>
+</LinearLayout>

@@ -7,6 +7,7 @@ import net.tsz.afinal.http.AjaxParams;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -20,14 +21,11 @@ import com.emperises.monercat.domain.model.ZcmMessage;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 
-public class ActivityMessageList extends OtherBaseActivity implements OnRefreshListener<ListView>{
+public class ActivityMessageList extends OtherBaseActivity implements SwipeRefreshLayout.OnRefreshListener{
 
-	private PullToRefreshListView mPullToRefreshListView;
+	private ListView mListView;
 	private List<ZcmMessage> mMessages = new ArrayList<ZcmMessage>();
 	private static final int REFRESH_COMPLETE = 1;
 	private Handler mHandler = new Handler(){
@@ -36,13 +34,14 @@ public class ActivityMessageList extends OtherBaseActivity implements OnRefreshL
 			super.handleMessage(msg);
 			switch (msg.what) {
 			case REFRESH_COMPLETE:
-				mPullToRefreshListView.onRefreshComplete();
+				mRefreshLayout.setRefreshing(false);
 				break;
 			default:
 				break;
 			}
 		}
 	};
+	private SwipeRefreshLayout mRefreshLayout;
 	private void getMessageList(){
 		AjaxParams params = new AjaxParams();
 		params.put("devicesId", Util.getDeviceId(this));
@@ -57,17 +56,17 @@ public class ActivityMessageList extends OtherBaseActivity implements OnRefreshL
 	public void onFail(Throwable t, int errorNo, String strMsg) {
 		showNetErrorToast(strMsg, t);
 		setCurrentTitle("加载失败");
-		mPullToRefreshListView.onRefreshComplete();
+		mRefreshLayout.setRefreshing(false);
 	}
 	@Override
 	public void onFinished(String content) {
 		ZcmMessage message = new Gson().fromJson(content, ZcmMessage.class);
 		if(message != null && message.getRows().size() > 0){
 			mMessages = message.getRows();
-			mPullToRefreshListView.setAdapter(new MyAdAdapter());
+			mListView.setAdapter(new MyAdAdapter());
 		}
 		setCurrentTitle("消息列表");
-		mPullToRefreshListView.onRefreshComplete();
+		mRefreshLayout.setRefreshing(false);
 	}
 	class MyAdAdapter extends BaseAdapter{
 
@@ -126,13 +125,14 @@ public class ActivityMessageList extends OtherBaseActivity implements OnRefreshL
 	@Override
 	protected void initViews() {
 		super.initViews();
-		mPullToRefreshListView = (PullToRefreshListView) findViewById(R.id.messageListView);
-		mPullToRefreshListView.setAdapter(new MyAdAdapter());
-		mPullToRefreshListView.setOnRefreshListener(this);
+		mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_layout);
+		mRefreshLayout.setOnRefreshListener(this);
+		mListView = (ListView) findViewById(R.id.messageListView);
+		mListView.setAdapter(new MyAdAdapter());
 		getMessageList();
 	}
 	@Override
-	public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+	public void onRefresh() {
 		getMessageList();
 	}
 }

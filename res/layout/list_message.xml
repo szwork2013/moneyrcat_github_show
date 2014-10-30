@@ -22,10 +22,13 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/message_image"
         android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@+id/message_time"
         android:layout_toRightOf="@+id/message_image"
-        android:textSize="16sp"
+        android:text="中国电信"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:textColor="@color/texttitle"
-        android:text="中国电信" />
+        android:textSize="14sp" />
 
     <TextView
         android:textColor="@color/textcontent"
@@ -35,6 +38,7 @@
         android:layout_alignBottom="@+id/message_title"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
+        android:textSize="10sp"
         android:text="2014年10月28日" />
 
     <TextView
