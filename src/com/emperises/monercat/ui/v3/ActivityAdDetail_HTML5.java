@@ -234,8 +234,15 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity implements NativeJ
 	}
 	@JavascriptInterface
 	@Override
+	public void JsUploadImage(int haveDes) {
+		Intent i = new Intent(this,UploadImageActivity.class);
+		i.putExtra("des", haveDes);//是否需要输入描述
+		i.putExtra("adId", info.getAdId());
+		startActivity(i);
+	}
+	@JavascriptInterface
+	@Override
 	public void JsUploadImage() {
-		//获取当前的广告ID
 		Intent i = new Intent(this,UploadImageActivity.class);
 		i.putExtra("adId", info.getAdId());
 		startActivity(i);

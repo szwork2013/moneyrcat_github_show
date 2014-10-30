@@ -132,9 +132,10 @@ public class ActivityProdInfoHtml5 extends OtherBaseActivity implements NativeJa
 	}
 	@JavascriptInterface
 	@Override
-	public void JsUploadImage() {
+	public void JsUploadImage(int des) {
 		
 	}
+	
 	@JavascriptInterface
 	@Override
 	public void JsStartActivity(String className) {
@@ -203,6 +204,11 @@ public class ActivityProdInfoHtml5 extends OtherBaseActivity implements NativeJa
 			}
 		});
 		showDialog(config);
+	}
+	@JavascriptInterface
+	@Override
+	public void JsUploadImage() {
+		
 	}
 	
 }

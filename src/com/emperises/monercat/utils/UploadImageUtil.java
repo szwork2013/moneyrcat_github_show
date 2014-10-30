@@ -1,6 +1,5 @@
 package com.emperises.monercat.utils;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
@@ -8,9 +7,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
-import android.util.Base64;
+import android.text.TextUtils;
 
 public class UploadImageUtil {
 
@@ -36,17 +39,17 @@ public class UploadImageUtil {
 	 * @param filePath
 	 * @return
 	 */
-	public static String bitmapToString(String filePath) {
-
-		Bitmap bm = getSmallBitmap(filePath);
-		
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		bm.compress(Bitmap.CompressFormat.JPEG, 40, baos);
-		byte[] b = baos.toByteArray();
-		
-		return Base64.encodeToString(b, Base64.DEFAULT);
-		
-	}
+//	public static String bitmapToString(String filePath) {
+//
+//		Bitmap bm = getSmallBitmap(filePath);
+//		
+//		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//		bm.compress(Bitmap.CompressFormat.JPEG, 40, baos);
+//		byte[] b = baos.toByteArray();
+//		
+//		return Base64.encodeToString(b, Base64.DEFAULT);
+//		
+//	}
 
 	/**
 	 * 计算图片的缩放值
@@ -90,18 +93,42 @@ public class UploadImageUtil {
 	 * @param imagesrc
 	 * @return
 	 */
-	public static Bitmap getSmallBitmap(String filePath) {
+	public static Bitmap getSmallBitmap(String filePath , String text) {
 		final BitmapFactory.Options options = new BitmapFactory.Options();
 		options.inJustDecodeBounds = true;
 		BitmapFactory.decodeFile(filePath, options);
-
+		
 		// Calculate inSampleSize
 		options.inSampleSize = calculateInSampleSize(options, 320, 480);
 
 		// Decode bitmap with inSampleSize set
 		options.inJustDecodeBounds = false;
-
-		return BitmapFactory.decodeFile(filePath, options);
+		Bitmap b = BitmapFactory.decodeFile(filePath, options).copy(Bitmap.Config.ARGB_8888, true);
+		if(!TextUtils.isEmpty(text)){
+			String lin1 = "";
+			String lin2 = "";
+			Canvas c = new Canvas(b);
+			Paint p = new Paint();
+			p.setShadowLayer(10, 5, 2, Color.parseColor("#2E0088"));
+			p.setColor(Color.parseColor("#880001"));
+			p.setTextSize(30);
+			p.setAntiAlias(true);
+			p.setTypeface(Typeface.DEFAULT_BOLD);
+			if(text.length() > 10){
+				StringBuffer sb1 = new StringBuffer(text);
+				sb1.delete(10, text.length());
+				lin1 = sb1.toString();
+				
+				StringBuffer sb2 = new StringBuffer(text);
+				sb2.delete(0, 10);
+				lin2 = sb2.toString();
+				c.drawText(lin1, 30, 30, p);
+				c.drawText(lin2, 30, 70, p);
+			} else {
+				c.drawText(text, 30, 30, p);
+			}
+		}
+		return b;
 	}
 
 	/**

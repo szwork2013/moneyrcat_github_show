@@ -6,9 +6,10 @@ public interface NativeJavaScriptCallBackInterface {
 	String JsGetPersonalInformation();//获得个人信息
 	String JsGetAdId();
 	String JsGetProdInfo();
-	void JsStartDuiHuanDialog();
+	void 	JsStartDuiHuanDialog();
 	void   JsUpdateBalance();//更新余额
 	void JsRefresh();
+	void JsUploadImage(int haveDescription);
 	void JsUploadImage();
 	void JsStartActivity(String className);
 	void JsOnError();

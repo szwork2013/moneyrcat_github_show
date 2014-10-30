@@ -14,6 +14,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
@@ -38,11 +39,14 @@ public class UploadImageActivity extends OtherBaseActivity {
 		setContentView(R.layout.activity_upload);
 		setCurrentTitle(R.string.upload_image_title_str);
 		mAdId = getIntent().getStringExtra("adId");
+		mHaveDes = getIntent().getIntExtra("des", 0);
+		
 	}
 
 	@Override
 	protected void initViews() {
 		super.initViews();
+		mDesEditText = (EditText) findViewById(R.id.desEditText);
 		mUploadSelected = (Button) findViewById(R.id.upload_image_bt);
 		mUploadImage = (ImageView) findViewById(R.id.uploadImage);
 		mSelectedImage = (Button) findViewById(R.id.select_image_bt);
@@ -115,7 +119,17 @@ public class UploadImageActivity extends OtherBaseActivity {
 			break;
 		case R.id.select_image_bt:
 			//选择图片
-			selectedPhoto();
+			String des = mDesEditText.getText().toString();
+			if(mHaveDes > 0){
+				//必须要输入描述
+				if(!TextUtils.isEmpty(des)){
+					selectedPhoto();
+				} else {
+					showToast("请您输入描述!描述是任务审核通过的关键!");
+				}
+			} else {
+				selectedPhoto();
+			}
 			break;
 			
 		default:
@@ -125,6 +139,8 @@ public class UploadImageActivity extends OtherBaseActivity {
 	private static final int FLAG_CHOOSE_IMG = 5;
 	private ProgressBar mPorgressBar;
 	private String mAdId;
+	private int mHaveDes;
+	private EditText mDesEditText;
 
 	// 图库选择
 	private void selectedPhoto() {
@@ -152,7 +168,8 @@ public class UploadImageActivity extends OtherBaseActivity {
 							.getColumnIndex(MediaStore.Images.Media.DATA));
 					cursor.close();
 					Logger.i("PATH", "选择的图片:"+path);
-					Bitmap image = UploadImageUtil.getSmallBitmap(path);
+					String text = mDesEditText.getText().toString();
+					Bitmap image = UploadImageUtil.getSmallBitmap(path,text);
 					mUploadImage.setImageBitmap(image);
 					//保存图片
 					mUploadImagePath = UploadImageUtil.saveImage(image, path);
