@@ -13,7 +13,7 @@
         android:layout_height="35dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/wodeyue_yueheader_marginleft"
         android:background="@drawable/ic_launcher"
         android:onClick="onClick" />
 
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="@dimen/wodeyue_yuebutton_marginright"
         android:orientation="horizontal" >
 
         <TextView
@@ -43,9 +43,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:textSize="12sp"
-            android:text="余额:4.8 元"
-            android:textColor="#6e7d83" />
+            android:text="余额:48700瞄币(400.87元)"
+            android:textColor="#6e7d83"
+            android:textSize="@dimen/wodeyue_yuetext_testsize" />
 
         <Button
             android:id="@+id/mingxi_button"
@@ -54,11 +54,11 @@
             android:layout_height="28dp"
             android:background="#F2C21C"
             android:onClick="onClick"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="兑换"
+            android:paddingLeft="@dimen/wodeyue_yuebutton_paddingleft"
+            android:paddingRight="@dimen/wodeyue_yuebutton_paddingright"
+            android:text="@string/_duihuan_button_text"
             android:textColor="#ffffff"
-            android:textSize="13sp" />
+            android:textSize="@dimen/wodeyue_yuebutton_textsize" />
     </LinearLayout>
 
     <TextView
@@ -67,18 +67,18 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/myheaderimage"
         android:layout_alignLeft="@+id/yue_nickname"
-        android:text="未填写手机号码"
+        android:text="13263485448"
         android:textColor="#6e7d83"
-        android:textSize="10sp" />
+        android:textSize="@dimen/wodeyue_phone_testsize" />
 
     <TextView
         android:id="@+id/yue_nickname"
-        android:layout_marginLeft="3dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
         android:layout_toRightOf="@+id/myheaderimage"
-        android:text="未填写昵称"
+        android:text="Griace"
         android:textColor="#6e7d83"
-        android:textSize="13sp" />
+        android:textSize="@dimen/wodeyue_name_testsize" />
 
 </RelativeLayout>

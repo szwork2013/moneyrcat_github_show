@@ -109,8 +109,8 @@ public class UploadImageUtil {
 			String lin2 = "";
 			Canvas c = new Canvas(b);
 			Paint p = new Paint();
-			p.setShadowLayer(10, 5, 2, Color.parseColor("#2E0088"));
-			p.setColor(Color.parseColor("#880001"));
+			p.setShadowLayer(4, 5, 2, Color.parseColor("#2E0088"));
+			p.setColor(Color.parseColor("#389C2B"));
 			p.setTextSize(30);
 			p.setAntiAlias(true);
 			p.setTypeface(Typeface.DEFAULT_BOLD);

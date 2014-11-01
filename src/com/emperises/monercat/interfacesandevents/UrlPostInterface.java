@@ -12,7 +12,7 @@ public interface UrlPostInterface {
 	String SERVER_PORT = "8086";
 	String  BASE_URL = "http://"+SERVER_ADDRESS+":"+SERVER_PORT+"/zcm/";
 	//注册
-	String SERVER_URL_REG = BASE_URL + "user/bind_devices.do";  
+	String SERVER_URL_REG = BASE_URL + "user/bind_devices.do";  //绑定
 	String SERVER_URL_BALANCE = BASE_URL + "user/query_user_balance.do";//获取余额 
 	String SERVER_URL_ADLIST = BASE_URL + "advert/query_advert.do"; //获取广告列表
 	String SERVER_URL_UPDATE_VERSION = BASE_URL  + "/app/query_new_version.do";//版本更新
@@ -31,4 +31,5 @@ public interface UrlPostInterface {
 	String SERVER_URL_MESSAGELIST = BASE_URL + "/messages/query_msgs.do";//查询消息列表
 	String SERVER_URL_FEEDBACK = BASE_URL + "/feedback/add.do";//提交意见反馈
 	String SERVER_URL_UPLOAD_LOG_FILE = BASE_URL + "user/upload_user_log_file.do";//提交log文件
+	String SERVER_URL_DUIHUANHISTORY = BASE_URL + "/duihuan/query_logs.do"; //查询兑换记录
 }

@@ -9,6 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/custom_dialog_lr_margin"
+        android:layout_marginRight="@dimen/custom_dialog_lr_margin"
         android:background="@drawable/dialog_bg"
         android:orientation="vertical" >
 

@@ -270,7 +270,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// int[] s = getWindowScreenWH(this);
+		 getWindowScreenWH(this);
 		// mWindowScreenW = s[0];
 		// mWindowScreenH = s[1];
 		sp = getSharedPreferences("config", MODE_PRIVATE);

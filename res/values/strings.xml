@@ -76,5 +76,10 @@
     <string name="upload_image_title_str">上传图片</string>
     <string name="please_select_image_toast">请选择图片!</string>
     <string name="upload_image_loading_str">您的任务已经完成提交，小喵正在玩命儿审核中，敬请期待</string>
+    <string name="app_copy_right_des">此应用内所有相关内容最终解释权归上海宸崛信息技术有限公司所有</string>
+    <string name="app_copy_right">招财喵 © 2014. Emperises Group</string>
+    <string name="app_copy_right_version">Beta Version V1.9</string>
+    <string name="_duihuan_button_text">兑换</string>
+    <string name="duihuan_history">兑换记录</string>
 
 </resources>

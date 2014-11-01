@@ -9,6 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/duihuan_dialog_lr_margin"
+        android:layout_marginRight="@dimen/duihuan_dialog_lr_margin"
         android:background="@drawable/dialog_bg"
         android:orientation="vertical" >
 
@@ -163,7 +165,7 @@
             <EditText
                 android:id="@+id/duihuan_count"
                 android:singleLine="true"
-                android:layout_width="123dp"
+                android:layout_width="@dimen/duihuan_count_edittext_width"
                 android:layout_height="30dp"
                 android:layout_alignParentTop="true"
                 android:inputType="number"
@@ -178,7 +180,7 @@
             <Button
                 android:id="@+id/add"
                 android:layout_width="40dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="@dimen/duihuan_adddec_margin"
                 android:layout_height="30dp"
                 android:layout_toRightOf="@+id/dec"
                 android:background="@drawable/commit_bt_selector"
@@ -193,7 +195,7 @@
                 android:layout_toRightOf="@+id/duihuan_count"
                 android:background="@drawable/commit_bt_selector"
                 android:onClick="onClick"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="@dimen/duihuan_adddec_margin"
                 android:text="-"
                 android:textColor="@color/texttitle" />
 

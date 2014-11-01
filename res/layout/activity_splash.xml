@@ -19,27 +19,27 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
-            android:text="Beta Version V1.9"
+            android:text="@string/app_copy_right_version"
             android:textColor="@color/background"
-            android:textSize="10sp" />
+            android:textSize="@dimen/splash_dimen_textsize" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="招财喵 © 2014. Emperises Group"
+            android:text="@string/app_copy_right"
             android:textColor="@color/background"
             android:layout_marginBottom="4dp"
-            android:textSize="10sp" />
+            android:textSize="@dimen/splash_dimen_textsize" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
-            android:text="此应用内所有相关内容最终解释权归上海宸崛信息技术有限公司所有"
+            android:text="@string/app_copy_right_des"
             android:textColor="@color/background"
-            android:textSize="10sp" />
+            android:textSize="@dimen/splash_dimen_textsize" />
 
         
     </LinearLayout>

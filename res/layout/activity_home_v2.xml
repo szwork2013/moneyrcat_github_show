@@ -22,7 +22,6 @@
                 android:scrollbars="none" >
             </ListView>
         </android.support.v4.widget.SwipeRefreshLayout>
-
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="wrap_content"

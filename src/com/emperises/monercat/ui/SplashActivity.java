@@ -1,9 +1,13 @@
 package com.emperises.monercat.ui;
 
 import java.io.File;
+import java.util.UUID;
 
 import net.tsz.afinal.http.AjaxParams;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -31,31 +35,32 @@ public class SplashActivity extends OtherBaseActivity {
 		@Override
 		public void handleMessage(Message msg) {
 			reg();
-			
+
 		}
 	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		//初始化异常捕获模块
-		if(!Logger.DEBUG){
+		// 初始化异常捕获模块
+		if (!Logger.DEBUG) {
 			CrashHandler.getInstance().init(getApplicationContext());
 		}
-		startService(new Intent(this,MoneyCatService.class));
+		startService(new Intent(this, MoneyCatService.class));
 		super.onCreate(savedInstanceState);
-		File file = new File(Environment.getExternalStorageDirectory(),"moneycat");
-		if(!file.exists()){
-				file.mkdir();
+		File file = new File(Environment.getExternalStorageDirectory(),
+				"moneycat");
+		if (!file.exists()) {
+			file.mkdir();
 		}
 		setContentView(R.layout.activity_splash);
-		//创建一个SD卡文件夹
-		//检测是否是真机
+		// 创建一个SD卡文件夹
+		// 检测是否是真机
 		String deviceId = Util.getDeviceId(this);
-		if(TextUtils.isEmpty(deviceId) || deviceId.equals("00000000000000")){
-			//如果不是真机设备，直接返回
+		if (TextUtils.isEmpty(deviceId) || deviceId.equals("00000000000000")) {
+			// 如果不是真机设备，直接返回
 			showToast("设备不支持!");
 			finish();
-		}else{
+		} else {
 			// 注册ID
 			new Thread(new Runnable() {
 				@Override
@@ -65,51 +70,64 @@ public class SplashActivity extends OtherBaseActivity {
 				}
 			}).start();
 		}
-		
+
 	}
 
 	private void reg() {
 		if (!Util.checkNetWorkStatus(this)) {
-			showDialog(getString(R.string.hit), getString(R.string.NET_ERROR), new DialogClick() {
-				@Override
-				public void onClick(View v) {
-					finish();
-					super.onClick(v);
-				}
-			}, new DialogClick() {
-				@Override
-				public void onClick(View v) {
-					finish();
-					super.onClick(v);
-				}
-			});
+			showDialog(getString(R.string.hit), getString(R.string.NET_ERROR),
+					new DialogClick() {
+						@Override
+						public void onClick(View v) {
+							finish();
+							super.onClick(v);
+						}
+					}, new DialogClick() {
+						@Override
+						public void onClick(View v) {
+							finish();
+							super.onClick(v);
+						}
+					});
 			return;
 		}
 		if (getBoleanValueForKey(LOCAL_CONFIGKEY_REG)) {
 			// 如果注册过
 			startHome();
-			
+
 		} else {
 			AjaxParams params = new AjaxParams();
-			params.put(POST_KEY_DEVICESID, Util.getDeviceId(SplashActivity.this));
+			params.put(POST_KEY_DEVICESID,
+					Util.getDeviceId(SplashActivity.this));
+			String channelId = "0";
+			try {
+				ApplicationInfo appInfo = SplashActivity.this.getPackageManager()
+                        .getApplicationInfo(getPackageName(),
+                PackageManager.GET_META_DATA);
+				channelId = appInfo.metaData.getString("channel_id");
+				
+				Logger.i("CHANNEL", "当前渠道:"+channelId);
+			} catch (NameNotFoundException e) {
+				e.printStackTrace(); 
+			} 
+			params.put("uqdSrc", channelId);
 			startRequest(SERVER_URL_REG, params);
 		}
 	}
 
-	
-	private void startHome() { 
-		float oldVersion = getFloatValueForKey(VERSION); 
-		float currentVersion = Util.getLocalVersionCode(this); 
-		if(currentVersion > oldVersion){
-			//判断版本号
+	private void startHome() {
+		float oldVersion = getFloatValueForKey(VERSION);
+		float currentVersion = Util.getLocalVersionCode(this);
+		if (currentVersion > oldVersion) {
+			// 判断版本号
 			setFloatForKey(VERSION, currentVersion);
-			//如果有新版本让第一次运行生效
+			// 如果有新版本让第一次运行生效
 			setBooleanForKey(LOCAL_CONFIGKEY_FIRSTRUN, false);
 			startActivity(new Intent(SplashActivity.this, WelcomeActivity.class));
 		} else {
 			startActivity(new Intent(SplashActivity.this, MainActivity.class));
 		}
-		
+
 		finish();
 	}
 
@@ -120,8 +138,10 @@ public class SplashActivity extends OtherBaseActivity {
 		if (obj != null && obj.getResultCode().equals(HTTP_RESULE_SUCCESS)) {
 			// 如果注册成功
 			setBooleanForKey(LOCAL_CONFIGKEY_REG, true);
-			Toast.makeText(this, "恭喜，你已加入喵星人行列，代号No."+obj.getVal(), Toast.LENGTH_LONG).show();;
-		} 
+			Toast.makeText(this, "恭喜，你已加入喵星人行列，代号No." + obj.getVal(),
+					Toast.LENGTH_LONG).show();
+			;
+		}
 		startHome();
 		Logger.i(TAG_HTTP, content);
 	}
@@ -129,7 +149,7 @@ public class SplashActivity extends OtherBaseActivity {
 	@Override
 	public void onFail(Throwable t, int errorNo, String strMsg) {
 		super.onFail(t, errorNo, strMsg);
-		showNetErrorToast(strMsg,t);
+		showNetErrorToast(strMsg, t);
 		Logger.e(TAG_HTTP, strMsg, t);
 		setBooleanForKey(LOCAL_CONFIGKEY_REG, false);
 		finish();

@@ -43,13 +43,14 @@
                     android:id="@+id/mytab_genderageaddr"
                     android:layout_width="fill_parent"
                     android:layout_marginRight="30dp"
+                    android:text="1111"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/headerImage"
                     android:layout_alignLeft="@+id/mytab_nickname"
                     android:singleLine="true"
                     android:ellipsize="end"
                     android:textColor="@color/textcontent"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/wodetab_info_addr_textsize" />
 
                 <TextView
                     android:id="@+id/mytab_nickname"
@@ -60,17 +61,19 @@
                     android:layout_toRightOf="@+id/headerImage"
                     android:text="流金岁月"
                     android:textColor="#000000"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/wodetab_info_nickname_textsize"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/mytab_tel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="1111"
+                    android:layout_marginTop="5dp"
                     android:layout_alignLeft="@+id/mytab_genderageaddr"
-                    android:layout_centerVertical="true"
+                    android:layout_below="@+id/mytab_nickname"
                     android:textColor="@color/textcontent"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/wodetab_info_phone_textsize" />
             </RelativeLayout>
 
             <View

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 1280 X 720  -->
+    <dimen name="splash_dimen_textsize">10sp</dimen><!-- 启动页面字体 -->
+    <dimen name="wodeyue_name_testsize">13sp</dimen><!-- 我的余额名称字体 -->
+    <dimen name="wodeyue_phone_testsize">10sp</dimen><!-- 电话号码字体 -->
+    <dimen name="wodeyue_yuetext_testsize">12sp</dimen><!-- 余额字体 -->
+    <dimen name="wodeyue_yuebutton_paddingleft">10dp</dimen>
+    <dimen name="wodeyue_yuebutton_paddingright">10dp</dimen>
+    <dimen name="wodeyue_yuebutton_textsize">13sp</dimen>
+    <dimen name="wodeyue_yueheader_marginleft">10dp</dimen>
+    <dimen name="wodeyue_yuebutton_marginright">10dp</dimen>
+    <dimen name="list_aditem_title_textsize">17sp</dimen>
+    <dimen name="list_aditem_content_textsize">11sp</dimen>
+    <dimen name="list_aditem_balance_textsize">12sp</dimen>
+	<dimen name="list_aditem_headimage_wh">60dp</dimen>   
+	 <dimen name="list_aditem_headimage_margin_top">10dp</dimen>
+	 <dimen name="list_aditem_adcontent_margin_top">3dp</dimen>
+	 <dimen name="wodetab_info_nickname_textsize">20sp</dimen>
+	 <dimen name="wodetab_info_phone_textsize">12sp</dimen>
+	 <dimen name="wodetab_info_addr_textsize">12sp</dimen>
+	 <dimen name="wode_myinfo_nickname_textsize">18sp</dimen>
+	 <dimen name="tixian_item_title_textsize">30sp</dimen>
+	 <dimen name="tixian_item_des_margintop">14dp</dimen>
+	 <dimen name="tixian_item_count_textsize">10sp</dimen>
+	 <dimen name="duihuan_adddec_margin">10dp</dimen>
+	 <dimen name="dialog_lr_margin">10dp</dimen>
+	 <dimen name="bind_dialog_lr_margin">10dp</dimen>
+	 <dimen name="duihuan_dialog_lr_margin">0dp</dimen>
+	 <dimen name="custom_dialog_lr_margin">0dp</dimen>
+	 <dimen name="duihuan_count_edittext_width">123dp</dimen>
+</resources>

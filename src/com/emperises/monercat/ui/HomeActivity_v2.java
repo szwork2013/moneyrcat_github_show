@@ -213,16 +213,13 @@ public class HomeActivity_v2 extends BaseActivity implements
 							HeaderImageEvent.getInstance()
 									.fireHeaderChangeImageEvent(
 											user.getVal().getuImage());
+							TextView nickName = (TextView) homeHeaderItem
+									.findViewById(R.id.yue_nickname);
+							TextView tel = (TextView) homeHeaderItem
+									.findViewById(R.id.yue_tel);
+							nickName.setText(user.getVal().getUname());
+							tel.setText(user.getVal().getUtelephone());
 						}
-						// //显示头像
-						// displayHeaderImage(mHeaderImage,mHeaderWH,mHeaderWH);
-						// 初始化控件的值 
-						TextView nickName = (TextView) homeHeaderItem
-								.findViewById(R.id.yue_nickname);
-						TextView tel = (TextView) homeHeaderItem
-								.findViewById(R.id.yue_tel);
-						nickName.setText(user.getVal().getUname());
-						tel.setText(user.getVal().getUtelephone());
 
 					}
 
@@ -437,7 +434,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 			long id) {
 		Intent i = new Intent(this, ActivityAdDetail_HTML5.class);
 		ZcmAdertising itemInfo = (ZcmAdertising) mAdListAdapter
-				.getItem(position - 1);
+				.getItem(position);
 		i.putExtra(INTENT_KEY_ADINFO, itemInfo);
 		String url = itemInfo.getAdUrl();
 		if (!TextUtils.isEmpty(url)) {
