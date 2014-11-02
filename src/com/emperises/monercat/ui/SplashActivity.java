@@ -104,7 +104,7 @@ public class SplashActivity extends OtherBaseActivity {
 				ApplicationInfo appInfo = SplashActivity.this.getPackageManager()
                         .getApplicationInfo(getPackageName(),
                 PackageManager.GET_META_DATA);
-				channelId = appInfo.metaData.getString("channel_id");
+				channelId = appInfo.metaData.getInt("channel_id", 0) + "";
 				
 				Logger.i("CHANNEL", "当前渠道:"+channelId);
 			} catch (NameNotFoundException e) {
