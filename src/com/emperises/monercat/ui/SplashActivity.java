@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import com.emperises.monercat.BuildConfig;
 import com.emperises.monercat.MainActivity;
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
@@ -41,6 +42,7 @@ public class SplashActivity extends OtherBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Logger.i("DEBUG",BuildConfig.DEBUG+"");
 		// 初始化异常捕获模块
 		if (!Logger.DEBUG) {
 			CrashHandler.getInstance().init(getApplicationContext());

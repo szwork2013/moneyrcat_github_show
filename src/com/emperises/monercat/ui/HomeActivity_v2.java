@@ -432,9 +432,9 @@ public class HomeActivity_v2 extends BaseActivity implements
 	@Override
 	public void onItemClick(AdapterView<?> pView, View itemView, int position,
 			long id) {
+		Logger.i("POSITION", "current :"+position);
 		Intent i = new Intent(this, ActivityAdDetail_HTML5.class);
-		ZcmAdertising itemInfo = (ZcmAdertising) mAdListAdapter
-				.getItem(position);
+		ZcmAdertising itemInfo = (ZcmAdertising) mAdInfos.get(position - 1);
 		i.putExtra(INTENT_KEY_ADINFO, itemInfo);
 		String url = itemInfo.getAdUrl();
 		if (!TextUtils.isEmpty(url)) {

@@ -132,20 +132,10 @@ public class DuiHuanDialogActivity extends OtherBaseActivity {
 		super.onClick(v);
 		switch (v.getId()) {
 		case R.id.add:
-			int max = Integer.parseInt(mProdInfo.getP_max_dh_num());
-			if(mProductCount != max){
-				//如果总数超过余额总数
-				mProductCount ++; 
-				if((mProductCount * Float.parseFloat(mProdInfo.getPprice())) < mCurrentBalance){
-					mDuihuanCountText.setText(mProductCount+"");
-				}
-			}
+			addProdCount();
 			break;
 		case R.id.dec:
-			if(mProductCount != 1){
-				mProductCount --;
-				mDuihuanCountText.setText(mProductCount+"");
-			}
+			resetProdCount();
 			break;
 			
 		case R.id.commit_bt:
@@ -156,6 +146,12 @@ public class DuiHuanDialogActivity extends OtherBaseActivity {
 			break;
 		default:
 			break;
+		}
+	}
+	private void resetProdCount() {
+		if(mProductCount != 1){
+			mProductCount --;
+			mDuihuanCountText.setText(mProductCount+"");
 		}
 	}
 //	@Override
@@ -177,4 +173,14 @@ public class DuiHuanDialogActivity extends OtherBaseActivity {
 //		}
 //		return true ;
 //	}
+	private void addProdCount() {
+		int max = Integer.parseInt(mProdInfo.getP_max_dh_num());
+		if(mProductCount != max){
+			//如果总数超过余额总数
+			mProductCount ++; 
+			if((mProductCount * Float.parseFloat(mProdInfo.getPprice())) < mCurrentBalance){
+				mDuihuanCountText.setText(mProductCount+"");
+			}
+		}
+	}
 }
