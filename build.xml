@@ -8,7 +8,7 @@
          It contains the path to the SDK. It should *NOT* be checked into
          Version Control Systems.
     -->
-
+ 
     <property file="local.properties" />
 
     <!--
