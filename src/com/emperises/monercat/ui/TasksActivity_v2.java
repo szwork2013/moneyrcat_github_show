@@ -275,8 +275,8 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 			long arg3) {
 		Intent i = new Intent(this, ActivityAdDetail_HTML5.class);
-		ZcmAdertising itemInfo = (ZcmAdertising) mAdListAdapter
-				.getItem(position - 1);
+		
+		ZcmAdertising itemInfo = (ZcmAdertising) mAdTaskInfos.get(position - 1);
 		i.putExtra(INTENT_KEY_ADINFO, itemInfo);
 		startActivityWithAnimation(i);
 	}
