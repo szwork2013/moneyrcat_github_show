@@ -24,9 +24,9 @@
 	 <dimen name="tixian_item_des_margintop">14dp</dimen>
 	 <dimen name="tixian_item_count_textsize">10sp</dimen>
 	 <dimen name="duihuan_adddec_margin">10dp</dimen>
-	 <dimen name="dialog_lr_margin">10dp</dimen>
 	 <dimen name="bind_dialog_lr_margin">10dp</dimen>
 	 <dimen name="duihuan_dialog_lr_margin">0dp</dimen>
-	 <dimen name="custom_dialog_lr_margin">0dp</dimen>
-	 <dimen name="duihuan_count_edittext_width">123dp</dimen>
+     <dimen name="duihuan_count_edittext_width">123dp</dimen>
+     <dimen name="custom_dialog_lr_margin">0dp</dimen>
+     <dimen name="dialog_lr_margin">10dp</dimen>
 </resources>
