@@ -8,9 +8,9 @@ import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
-import android.webkit.WebViewClient;
 import android.webkit.WebSettings.RenderPriority;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.emperises.monercat.OtherBaseActivity;

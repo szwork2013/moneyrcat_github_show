@@ -114,7 +114,37 @@
                 android:text="手机"
                 android:textColor="@color/texttitle" />
         </RelativeLayout>
+<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
 
+            <EditText
+                android:id="@+id/duihuan_qq_edit"
+                android:layout_width="fill_parent"
+                android:layout_marginRight="20dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:singleLine="true"
+                android:layout_marginLeft="27dp"
+                android:layout_toRightOf="@+id/textView22211qq"
+                android:background="@drawable/commit_bt_normal"
+                android:textColor="@color/texttitle"
+                android:textSize="13sp"
+                android:maxLength="11"
+                android:inputType="number"
+                android:ems="10" />
+
+            <TextView
+                android:id="@+id/textView22211qq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="QQ"
+                android:textColor="@color/texttitle" />
+        </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,7 +176,6 @@
                 android:text="地址"
                 android:textColor="@color/texttitle" />
         </RelativeLayout>
-
 <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

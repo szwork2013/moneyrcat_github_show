@@ -4,9 +4,10 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
+import android.webkit.WebSettings.RenderPriority;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.webkit.WebSettings.RenderPriority;
+
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 

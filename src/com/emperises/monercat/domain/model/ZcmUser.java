@@ -7,8 +7,6 @@
 
 package com.emperises.monercat.domain.model;
 
-import java.math.BigDecimal;
-
 import android.text.TextUtils;
 
 public class ZcmUser extends BaseObject{

@@ -3,11 +3,9 @@ package com.emperises.monercat.push;
 import java.util.List;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 
 import com.baidu.frontia.api.FrontiaPushMessageReceiver;
-import com.emperises.monercat.MainActivity;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.PushUtils;
 

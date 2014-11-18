@@ -13,7 +13,6 @@ import android.widget.EditText;
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.DomainObject;
-import com.emperises.monercat.domain.model.ZcmUser;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;

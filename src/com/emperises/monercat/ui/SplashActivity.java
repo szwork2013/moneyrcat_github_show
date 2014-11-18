@@ -1,7 +1,6 @@
 package com.emperises.monercat.ui;
 
 import java.io.File;
-import java.util.UUID;
 
 import net.tsz.afinal.http.AjaxParams;
 import android.content.Intent;

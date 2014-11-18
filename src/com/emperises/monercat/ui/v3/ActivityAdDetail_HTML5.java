@@ -224,7 +224,14 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity implements NativeJ
 	@JavascriptInterface 
 	@Override
 	public void JsRefresh() {
-		mAdWebView.loadUrl(mAdWebView.getUrl());
+		Logger.i("REF", "点击了刷新");
+		mHandler.post(new Runnable() {
+			
+			@Override
+			public void run() {
+				mAdWebView.loadUrl(mAdWebView.getUrl());
+			}
+		});
 	}
 	@JavascriptInterface
 	@Override

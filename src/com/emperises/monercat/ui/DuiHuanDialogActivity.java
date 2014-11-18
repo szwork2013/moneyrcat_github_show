@@ -30,6 +30,7 @@ public class DuiHuanDialogActivity extends OtherBaseActivity {
 	private TextView mDuihuanTitle;
 	private Button mCommitBt;
 	private float mCurrentBalance;
+	private EditText mQQEdit;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class DuiHuanDialogActivity extends OtherBaseActivity {
 	@Override
 	protected void initViews() {
 		super.initViews();
+		mQQEdit = (EditText) findViewById(R.id.duihuan_qq_edit);
 		mCurrentBalance = Float.parseFloat(queryLocalBalance());
 		mDuihuanTitle = (TextView) findViewById(R.id.duihuanTitle);
 		mDuihuanAddress = (EditText) findViewById(R.id.duihuan_address);
@@ -81,7 +83,7 @@ public class DuiHuanDialogActivity extends OtherBaseActivity {
 		String address = mDuihuanAddress.getText().toString();
 		String tel = mDuihuanTel.getText().toString();
 		String count = mDuihuanCountText.getText().toString();
-		
+		String qq = mQQEdit.getText().toString();
 		if(TextUtils.isEmpty(name) || TextUtils.isEmpty(tel)){
 			showToast("您的信息不完整");
 		} else {
@@ -96,6 +98,7 @@ public class DuiHuanDialogActivity extends OtherBaseActivity {
 			params.put("uname", name);
 			params.put("uaddress", address);
 			params.put("num", count);
+			params.put("dh_qq", qq);
 			startRequest(SERVER_URL_DUIHUAN_DEFAULT_INFO, params);
 		}
 	}

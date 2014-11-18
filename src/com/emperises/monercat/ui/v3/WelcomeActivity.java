@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
@@ -16,7 +15,6 @@ import android.widget.ImageView;
 import com.emperises.monercat.MainActivity;
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
-import com.emperises.monercat.ui.SplashActivity;
 
 public class WelcomeActivity extends OtherBaseActivity {
 

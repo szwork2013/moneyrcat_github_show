@@ -369,8 +369,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 				getFinalBitmap().display(holder.adIcon, info.getAdIcon());
 				holder.adTitle.setText(info.getAdTitle());
 				holder.adDescription.setText(info.getAdContent());
-				holder.adBalanceText.setText("剩余:" + info.getAd_award_balance()
-						+ getString(R.string.m_gold));
+				holder.adBalanceText.setText(info.getAd_desc());
 			}
 			Logger.i("VIEW", "getView");
 			return view;

@@ -43,7 +43,7 @@ public class ZcmAdertising extends BaseObject{
 	private String adStartTime;
     // 任务结束时间 	
 	private String adEndTime;
-	
+	private String ad_desc;
 
 	public void setAdId(String value) {
 		this.adId = value;
@@ -167,6 +167,14 @@ public class ZcmAdertising extends BaseObject{
 
 	public void setAd_award_balance(String ad_award_balance) {
 		this.adAwardBalance = ad_award_balance;
+	}
+
+	public String getAd_desc() {
+		return ad_desc;
+	}
+
+	public void setAd_desc(String ad_desc) {
+		this.ad_desc = ad_desc;
 	}
 }
 

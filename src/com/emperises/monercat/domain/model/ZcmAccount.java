@@ -7,7 +7,6 @@
 
 package com.emperises.monercat.domain.model;
 
-import java.math.BigDecimal;
 
 public class ZcmAccount extends BaseObject{
 	

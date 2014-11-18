@@ -93,6 +93,7 @@ public class ActivityDuihuanHistory extends OtherBaseActivity {
 				view.setTag(holder);
 			}
 			DuihuanHistory history = mDuihuanHistroyList.get(position);
+			holder.prodName.setText(history.getDhPname());
 			holder.addr.setText("收货地址:"+history.getDhAddress());
 			holder.createTime.setText(history.getDhCreateTime());
 			holder.name.setText("收货人:"+history.getDhUname());
