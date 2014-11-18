@@ -225,9 +225,6 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity implements NativeJ
 	@JavascriptInterface 
 	@Override
 	public void JsRefresh() {
-		Intent i = new Intent(ActivityAdDetail_HTML5.this,GalleryUrlActivity.class);
-		i.putExtra("url", "http://www.baidu.com/img/bdlogo.png");
-		startActivity(i);
 		mHandler.post(new Runnable() {
 			
 			@Override
@@ -294,6 +291,8 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity implements NativeJ
 	@Override
 	public void JsStartBrowseActivity(String filePath) {
 		//开启图片浏览界面
-		
+		Intent i = new Intent(ActivityAdDetail_HTML5.this,GalleryUrlActivity.class);
+		i.putExtra("url", filePath);
+		startActivity(i);		
 	}
 }
