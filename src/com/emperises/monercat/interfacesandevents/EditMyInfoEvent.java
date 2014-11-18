@@ -55,6 +55,13 @@ public class EditMyInfoEvent {
 			}
 		}
 	}
+	public void fireTelEditEvent(String tel){
+		for(EditMyInfoInterface listener : mListeners){
+			if(listener != null){
+				listener.onPhoneNumberChangeAfter(tel);
+			}
+		}
+	}
 	public void removeListener(EditMyInfoInterface listener){
 		mListeners.remove(listener);
 	}

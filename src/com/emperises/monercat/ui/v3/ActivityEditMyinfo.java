@@ -33,6 +33,7 @@ import com.emperises.monercat.domain.DomainObject;
 import com.emperises.monercat.domain.model.ZcmUser;
 import com.emperises.monercat.interfacesandevents.EditMyInfoInterface;
 import com.emperises.monercat.interfacesandevents.HeaderImageEvent;
+import com.emperises.monercat.ui.BindActivity;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
@@ -109,9 +110,17 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 	}
 
 	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		if (hasFocus) {
+			
+		}
+	}
+	@Override
 	protected void initViews() {
 		super.initViews();
 		ZcmUser info = getMyInfoForDatabase();
+		mInfoTel = (TextView) findViewById(R.id.myinfo_tel_text);
 		mHeadImage = (ImageView) findViewById(R.id.editinfo_headerimage);
 		int wh = Util.dip2px(50, this);
 		displayHeaderImage(mHeadImage, wh, wh);
@@ -121,6 +130,8 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 		mNicknameText = (TextView) findViewById(R.id.editinfo_nicknametext);
 		mInfo = getDatabaseInterface().getMyInfo();
 		mCommitButton = (Button) findViewById(R.id.editinfo_done_button);
+		String tel = info.getUtelephone();
+		mInfoTel.setText(tel);
 		if (info != null) {
 			mAddressText.setText(info.getUaddress());
 			mAgeText.setText(info.getUage());
@@ -219,8 +230,9 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 			String mAge = mAgeText.getText().toString();
 			String mGend = mGenderText.getText().toString();
 			String mNickname = mNicknameText.getText().toString();
-			if (!TextUtils.isEmpty(mAddress) && !TextUtils.isEmpty(mAge) && !TextUtils.isEmpty(mGend)
-					&& !TextUtils.isEmpty(mNickname)) {
+			boolean bindFlg = getBoleanValueForKey(LOCAL_CONFIGKEY_BIND_FLG);
+			if (!TextUtils.isEmpty(mAddress.trim()) && !TextUtils.isEmpty(mAge.trim()) && !TextUtils.isEmpty(mGend.trim())
+					&& !TextUtils.isEmpty(mNickname.trim()) && bindFlg) {
 				saveMyInfo();
 			} else {
 				showToast("您填写的信息不完整!"); 
@@ -229,6 +241,9 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 		case R.id.editinfo_headerimage_layout:
 			showSelectedHeaderImageDialog();
 			break;
+		case R.id.myinfo_tel:
+			startActivity(new Intent(this , BindActivity.class));
+		break;
 		default:
 			break;
 		}
@@ -239,6 +254,7 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 	private ImageView mHeadImage;
 	private String mHeaderFilePath = "";
 	private Button mCommitButton;
+	private TextView mInfoTel;
 
 	private void showGenderDialog() {
 		final String[] items = getResources().getStringArray(R.array.sexitem);
@@ -345,6 +361,11 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 		mInfo.setUaddress(address);
 	}
 
+	@Override
+	public void onPhoneNumberChangeAfter(String tel) {
+		super.onPhoneNumberChangeAfter(tel);
+		mInfoTel.setText(tel);
+	}
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();

@@ -137,47 +137,9 @@
             android:layout_height="0.5dp"
             android:background="@color/line" />
 
-        <RelativeLayout
-            android:id="@+id/myinfo_tel"
-            android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/white_selector"
-            android:onClick="onClick" >
+        
 
-            <TextView
-                android:id="@+id/textView3222"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="12dp"
-                android:text="手机号码"
-                android:textColor="@color/texttitle" />
-
-            <TextView
-                android:id="@+id/myinfo_tel_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/textView3222"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/textView3222"
-                android:text="13244422122"
-                android:textColor="@color/textcontent" />
-
-            <ImageView
-                android:id="@+id/imageView322"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="21dp"
-                android:src="@drawable/right_arrow" />
-        </RelativeLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/line" />
+     
 
         <RelativeLayout
             android:id="@+id/myinfo_mylink"

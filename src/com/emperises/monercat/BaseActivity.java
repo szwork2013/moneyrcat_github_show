@@ -702,4 +702,8 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		// TODO Auto-generated method stub
 
 	}
+	@Override
+	public void onPhoneNumberChangeAfter(String tel) {
+		
+	}
 }

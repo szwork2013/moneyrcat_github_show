@@ -11,7 +11,6 @@ import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmUser;
 import com.emperises.monercat.interfacesandevents.HeaderImageEvent;
-import com.emperises.monercat.ui.BindActivity;
 import com.emperises.monercat.ui.MingXiActivity;
 import com.emperises.monercat.utils.Util;
 
@@ -21,7 +20,6 @@ public class ActivityMyInfo extends OtherBaseActivity {
 	private TextView mInfoNicknameText;
 	private TextView mCurrentBalance;
 	private TextView mGenderAgeAddr;
-	private TextView mTel;
 	private TextView mRecommendCode;
 	private int wh;
 
@@ -49,7 +47,6 @@ public class ActivityMyInfo extends OtherBaseActivity {
 		mCurrentBalance.setText(queryLocalBalance()+getString(R.string.m_gold));
 		mGenderAgeAddr = (TextView) findViewById(R.id.myinfo_normalinfo);
 		mRecommendCode = (TextView) findViewById(R.id.myinfo_recommend_code);
-		mTel = (TextView) findViewById(R.id.myinfo_tel_text);
 		setMyInfo();
 	}
 
@@ -62,7 +59,7 @@ public class ActivityMyInfo extends OtherBaseActivity {
 			mRecommendCode.setText(info.getUtgm());
 			mGenderAgeAddr.setText(gender+age+addr);
 			mInfoNicknameText.setText(info.getUname());
-			mTel.setText(info.getUtelephone());
+			
 		}
 	}
 
@@ -82,9 +79,9 @@ public class ActivityMyInfo extends OtherBaseActivity {
 		case R.id.myinfo_edit:
 			startActivity(new Intent(this , ActivityEditMyinfo.class));
 			break;
-		case R.id.myinfo_tel:
-				startActivity(new Intent(this , BindActivity.class));
-			break;
+//		case R.id.myinfo_tel:
+//				startActivity(new Intent(this , BindActivity.class));
+//			break;
 		default:
 			break;
 		}

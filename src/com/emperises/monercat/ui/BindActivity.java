@@ -16,6 +16,7 @@ import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.DomainObject;
 import com.emperises.monercat.domain.model.SmsCode;
+import com.emperises.monercat.interfacesandevents.EditMyInfoEvent;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
@@ -114,6 +115,7 @@ public class BindActivity extends OtherBaseActivity {
 						//保存手机号码
 						setStringtForKey(LOCAL_CONFIGKEY_BIND_TEL, tel);
 						setBooleanForKey(LOCAL_CONFIGKEY_BIND_FLG, true);
+						EditMyInfoEvent.getInstance().fireTelEditEvent(tel);
 						finish();
 					}
 					super.onSuccess(t);

@@ -9,4 +9,5 @@ public interface EditMyInfoInterface {
 	void onNickNameEditAfter(String nickNmae);
 	void onGenderEditAfter(String gender);
 	void onAddressEditAfter(String address);
+	void onPhoneNumberChangeAfter(String tel);
 }
