@@ -210,6 +210,11 @@ public class ActivityProdInfoHtml5 extends OtherBaseActivity implements NativeJa
 	public void JsUploadImage() {
 		
 	}
+	@Override
+	public void JsStartBrowseActivity(String filePath) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
 

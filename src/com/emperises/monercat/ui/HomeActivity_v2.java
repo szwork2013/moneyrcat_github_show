@@ -469,6 +469,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 		mAdPager.stopAutoScroll();
 		initViewPager();
 		initAdList();
+		initMyInfo();
 		updateBalance();// 刷新的时候更新余额	
 	}
 

@@ -13,5 +13,6 @@ public interface NativeJavaScriptCallBackInterface {
 	void JsUploadImage();
 	void JsStartActivity(String className);
 	void JsOnError();
+	void JsStartBrowseActivity(String filePath);
 	
 }

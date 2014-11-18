@@ -23,6 +23,7 @@ import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmAdertising;
 import com.emperises.monercat.domain.model.ZcmUser;
 import com.emperises.monercat.interfacesandevents.NativeJavaScriptCallBackInterface;
+import com.emperises.monercat.utils.GalleryUrlActivity;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
@@ -224,12 +225,15 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity implements NativeJ
 	@JavascriptInterface 
 	@Override
 	public void JsRefresh() {
-		Logger.i("REF", "点击了刷新");
+		Intent i = new Intent(ActivityAdDetail_HTML5.this,GalleryUrlActivity.class);
+		i.putExtra("url", "http://www.baidu.com/img/bdlogo.png");
+		startActivity(i);
 		mHandler.post(new Runnable() {
 			
 			@Override
 			public void run() {
 				mAdWebView.loadUrl(mAdWebView.getUrl());
+				
 			}
 		});
 	}
@@ -284,6 +288,12 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity implements NativeJ
 	@Override
 	public void JsStartDuiHuanDialog() {
 		// TODO Auto-generated method stub
+		
+	}
+	@JavascriptInterface
+	@Override
+	public void JsStartBrowseActivity(String filePath) {
+		//开启图片浏览界面
 		
 	}
 }

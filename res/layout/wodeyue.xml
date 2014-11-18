@@ -67,7 +67,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/myheaderimage"
         android:layout_alignLeft="@+id/yue_nickname"
-        android:text="13263485448"
         android:textColor="#6e7d83"
         android:textSize="@dimen/wodeyue_phone_testsize" />
 
@@ -77,7 +76,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="3dp"
         android:layout_toRightOf="@+id/myheaderimage"
-        android:text="Griace"
         android:textColor="#6e7d83"
         android:textSize="@dimen/wodeyue_name_testsize" />
 

@@ -59,6 +59,11 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
+            android:name="com.emperises.monercat.utils.GalleryUrlActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <activity
             android:name="com.emperises.monercat.ui.v3.WelcomeActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
