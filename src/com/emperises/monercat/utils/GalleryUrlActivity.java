@@ -26,8 +26,6 @@ import ru.truba.touchgallery.GalleryWidget.GalleryViewPager;
 import ru.truba.touchgallery.GalleryWidget.UrlPagerAdapter;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 
 import com.emperises.monercat.R;
 
@@ -57,13 +55,6 @@ public class GalleryUrlActivity extends Activity {
         mViewPager = (GalleryViewPager)findViewById(R.id.viewer);
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(pagerAdapter);
-        mViewPager.setOnClickListener(new OnClickListener() {
-        	
-        	@Override
-        	public void onClick(View arg0) {
-        		finish();
-        	}
-        });
         
     }
 

@@ -153,10 +153,16 @@ public class TiXianActivity extends OtherBaseActivity implements
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 			long arg3) {
+		
 		String tel = getStringValueForKey(LOCAL_CONFIGKEY_BIND_TEL);
 		if (!TextUtils.isEmpty(tel)) {
 			Intent i = new Intent(this, TiXianDialogActivity.class);
 			ZcmProduct p = mProducts.get(position);
+			int pNum = Integer.parseInt(p.getPnum());
+			if (pNum == 0 ) {
+				showToast("本月提现数量已经用完了哦!");
+				return;
+			}
 			float currentBalance = Float.parseFloat(queryLocalBalance());
 			float tixianPrice = Float.parseFloat(p.getPprice());
 			if ((currentBalance / 100) < tixianPrice) {

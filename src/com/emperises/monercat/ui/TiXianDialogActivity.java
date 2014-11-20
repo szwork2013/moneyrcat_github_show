@@ -102,7 +102,7 @@ public class TiXianDialogActivity extends OtherBaseActivity {
 			params.put("ubankno", bankNumber);
 			params.put("ubankName", bankAddr);
 			params.put("uname", name);
-			params.put("pid", tixianId);
+			params.put("pId", tixianId);
 			startRequest(SERVER_URL_TIXIAN, params);
 			finish();
 		} else {
