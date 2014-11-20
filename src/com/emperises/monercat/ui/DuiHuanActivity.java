@@ -144,13 +144,13 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 			holder.duihuanTitle.setText(pro.getPname());
 			int n = Integer.parseInt(pro.getPnum());
 			if(n != 0){
-				holder.duihuanCount.setText("数量:"+pro.getPnum());
+				holder.duihuanCount.setText("剩余:"+pro.getPnum());
 				holder.duihuanCount.setTextColor(Color.parseColor("#777777"));
 			} else {
 				holder.duihuanCount.setTextColor(Color.parseColor("#A1272B"));
 				holder.duihuanCount.setText("缺货");
 			}
-			holder.duihuanBalance.setText(pro.getPprice()+getString(R.string.m_gold));
+			holder.duihuanBalance.setText("价格:"+pro.getPprice()+getString(R.string.m_gold));
 			return view;
 		}
 
