@@ -85,15 +85,15 @@ public class HomeActivity_v2 extends BaseActivity implements
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
-		if(mAdPager != null){
-			if(hasFocus){
-				Logger.i("KEY", "HomeActivity 界面出现");
-				mAdPager.startAutoScroll();
-			} else {
-				Logger.i("KEY", "HomeActivity 界面消失");
-				mAdPager.stopAutoScroll();
-			}
-		}
+//		if(mAdPager != null){
+//			if(hasFocus){
+//				Logger.i("KEY", "HomeActivity 界面出现");
+//				mAdPager.startAutoScroll();
+//			} else {
+//				Logger.i("KEY", "HomeActivity 界面消失");
+//				mAdPager.stopAutoScroll();
+//			}
+//		}
 	}
 	@Override
 	protected void initViews() {
@@ -148,7 +148,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 							mAdPager.setAdapter(mImagePagerAdapter);
 							mAdPager.setInterval(3000);
 							if (mLoopAdInfos.size() > 1) {
-								mAdPager.startAutoScroll();
+//								mAdPager.startAutoScroll();
 							}
 							mAdPager.setCurrentItem(0);
 							mAdPager.setOnPageChangeListener(HomeActivity_v2.this);
@@ -203,7 +203,9 @@ public class HomeActivity_v2 extends BaseActivity implements
 						if (user != null && user.getVal() != null) {
 							getDatabaseInterface().saveMyInfo(user.getVal(),
 									HomeActivity_v2.this);
+							
 							// 保存用户头像地址
+							setStringtForKey(LOCAL_CONFIG_KEY_USER_STATUS, user.getVal().getUstatus());
 							setStringtForKey(LOCAL_CONFIGKEY_HEADER_IMAGE_URL,
 									user.getVal().getuImage());
 							setStringtForKey(LOCAL_CONFIGKEY_BIND_TEL,

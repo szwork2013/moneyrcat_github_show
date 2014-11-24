@@ -10,6 +10,7 @@ import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -88,7 +89,13 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		}
 		return age;
 	}
-
+	protected void showLockDialog(){
+		CustomDialogConfig c = new CustomDialogConfig();
+		c.setMessage("由于您的违规操作,用户已被锁定");
+		c.setTitle("提示");
+		showDialog(c);
+		
+	}
 	@Override
 	public void onHeaderImageChange(String path) {
 
@@ -143,6 +150,9 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 			currentBalance = info.getBalance();
 		} else {
 			Logger.i("BALANCE", "queryBalance : info ＝ null");
+		}
+		if(currentBalance == null){
+			currentBalance = "0";
 		}
 		return currentBalance;
 	}
@@ -592,11 +602,11 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 				}
 			});
 			String currentBalance = queryLocalBalance();
- 			float ci = Float.parseFloat(currentBalance) / 100;
-			ye.setText("余额:" + currentBalance + getString(R.string.m_gold)
-					+ "(" + ci + "元)");
-			tel.setText(info.getUtelephone());
-			nickname.setText(info.getUname());
+				float ci = Float.parseFloat(currentBalance) / 100;
+				ye.setText("余额:" + currentBalance + getString(R.string.m_gold)
+						+ "(" + ci + "元)");
+				tel.setText(info.getUtelephone());
+				nickname.setText(info.getUname());
 		}
 	}
 

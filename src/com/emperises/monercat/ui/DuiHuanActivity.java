@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -164,8 +165,15 @@ public class DuiHuanActivity extends OtherBaseActivity implements
 		
 	}
 
+	
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+		
+		String us = getStringValueForKey(LOCAL_CONFIG_KEY_USER_STATUS);
+		if(us.contains("0")){
+			showLockDialog();
+			return;
+		}
 		ZcmProduct pro = (ZcmProduct) mProductAdapter.getItem(position);
 		float currentBalance = Float.parseFloat(queryLocalBalance());
 		float price = Float.parseFloat(pro.getPprice());

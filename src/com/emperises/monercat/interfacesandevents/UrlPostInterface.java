@@ -32,4 +32,5 @@ public interface UrlPostInterface {
 	String SERVER_URL_FEEDBACK = BASE_URL + "/feedback/add.do";//提交意见反馈
 	String SERVER_URL_UPLOAD_LOG_FILE = BASE_URL + "user/upload_user_log_file.do";//提交log文件
 	String SERVER_URL_DUIHUANHISTORY = BASE_URL + "/duihuan/query_logs.do"; //查询兑换记录
+	String SERVER_URL_ROANDOM_REG = BASE_URL + "user/bind_devices_vir.do";
 }

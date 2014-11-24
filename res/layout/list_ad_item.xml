@@ -3,10 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/white_selector" >
-<View
+
+    <View
         android:layout_width="fill_parent"
         android:layout_height="0.5dp"
         android:background="@color/line" />
+
     <ImageView
         android:id="@+id/adIcon"
         android:layout_width="@dimen/list_aditem_headimage_wh"
@@ -20,21 +22,21 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/adIcon"
-        android:layout_marginRight="10dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/adIcon"
         android:orientation="vertical" >
 
-                <TextView
-                    android:id="@+id/adTitle"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/list_aditem_headimage_margin_top"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:text="title"
-                    android:textColor="@color/texttitle"
-                    android:textSize="@dimen/list_aditem_title_textsize" />
+        <TextView
+            android:id="@+id/adTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/list_aditem_headimage_margin_top"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="title"
+            android:textColor="@color/texttitle"
+            android:textSize="@dimen/list_aditem_title_textsize" />
 
         <TextView
             android:id="@+id/adDescription"
@@ -52,16 +54,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:singleLine="true"
-            android:ellipsize="end"
             android:layout_marginBottom="2dp"
             android:layout_marginTop="@dimen/list_aditem_adcontent_margin_top"
             android:drawableLeft="@drawable/rmbicon_1"
             android:drawablePadding="3dp"
+            android:ellipsize="end"
             android:gravity="center"
+            android:singleLine="true"
             android:text="总金额:500000.0"
             android:textColor="#6F0A0E"
             android:textSize="@dimen/list_aditem_balance_textsize" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ad_over_icon" />
 
 </RelativeLayout>

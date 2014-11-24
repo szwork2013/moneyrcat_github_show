@@ -57,15 +57,15 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
-		if(mAdPager != null){
-			if(hasFocus){
+//		if(mAdPager != null){
+//			if(hasFocus){
 				Logger.i("KEY", "TaskActivity 界面出现");
-				mAdPager.startAutoScroll();
-			} else {
-				Logger.i("KEY", "TaskActivity 界面消失");
-				mAdPager.stopAutoScroll();
-			}
-		}
+//				mAdPager.startAutoScroll();
+//			} else {
+//				Logger.i("KEY", "TaskActivity 界面消失");
+//				mAdPager.stopAutoScroll();
+//			}
+//		}
 	}
 	private List<ZcmAdertising> mLoopAdInfos;
 
@@ -179,7 +179,7 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 									.setInfiniteLoop(true));
 							mAdPager.setInterval(3000);
 							if (mLoopAdInfos.size() > 1) {
-								mAdPager.startAutoScroll();
+//								mAdPager.startAutoScroll();
 							}
 							mAdPager.setCurrentItem(0);
 							mAdPager.setOnPageChangeListener(TasksActivity_v2.this);
@@ -211,7 +211,7 @@ public class TasksActivity_v2 extends OtherBaseActivity implements
 
 		@Override
 		public Object getItem(int position) {
-			return mAdTaskInfos.get(position - 1);
+			return position;
 		}
 
 		@Override

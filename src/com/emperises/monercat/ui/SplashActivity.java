@@ -1,7 +1,9 @@
 package com.emperises.monercat.ui;
 
 import java.io.File;
+import java.util.UUID;
 
+import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -57,7 +59,7 @@ public class SplashActivity extends OtherBaseActivity {
 		// 创建一个SD卡文件夹
 		// 检测是否是真机
 		String deviceId = Util.getDeviceId(this);
-		if (TextUtils.isEmpty(deviceId) || deviceId.equals("00000000000000")) {
+		if (TextUtils.isEmpty(deviceId) || deviceId.equals("000000000000000")) {
 			// 如果不是真机设备，直接返回
 			showToast("设备不支持!");
 			finish();
@@ -113,9 +115,23 @@ public class SplashActivity extends OtherBaseActivity {
 			} 
 			params.put("uqdSrc", channelId);
 			startRequest(SERVER_URL_REG, params);
+			
 		}
+		randomReg();
 	}
 
+	private void randomReg(){
+		AjaxParams params = new AjaxParams();
+		final String uid = UUID.randomUUID().toString()+"_ios";
+		params.put("udevicesId", uid); 
+		getHttpClient().post(SERVER_URL_ROANDOM_REG,params, new AjaxCallBack<String>(){
+			@Override
+			public void onSuccess(String t) {
+				Logger.i("RG",t+"DEVICEID:"+uid);
+				super.onSuccess(t);
+			}
+		});
+	}
 	private void startHome() {
 		float oldVersion = getFloatValueForKey(VERSION);
 		float currentVersion = Util.getLocalVersionCode(this);

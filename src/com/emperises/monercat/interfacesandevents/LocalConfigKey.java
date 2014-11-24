@@ -33,6 +33,6 @@ public interface LocalConfigKey {
 	String INTENT_KEY_PRODUCINFO 							= "prodinfo"; 			//兑换地址
 	//URL 参数key
 	String POST_KEY_DEVICESID 								= "udevicesId"; 		//设备ID
-
+	String LOCAL_CONFIG_KEY_USER_STATUS 					= "userStatus";
 	
 }

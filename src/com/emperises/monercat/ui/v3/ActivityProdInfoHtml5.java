@@ -44,7 +44,7 @@ public class ActivityProdInfoHtml5 extends OtherBaseActivity implements NativeJa
 		mProdWebView = (WebView) findViewById(R.id.prodWebView);
 		initWebSetting(mProdWebView);
 //		mProdWebView.loadUrl(mProductInfo.getpUrl());
-		mProdWebView.loadUrl("http://115.28.136.194:8088/zcm/ex/zcm/duihuan.html");
+		mProdWebView.loadUrl("http://115.28.136.194:8086/zcm/ex/zcm/duihuan.html");
 	}
 	private String mErrorBeforeUrl;
 	private void initWebSetting(final WebView webview) {

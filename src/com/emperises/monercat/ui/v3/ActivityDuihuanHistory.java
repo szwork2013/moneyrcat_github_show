@@ -93,23 +93,25 @@ public class ActivityDuihuanHistory extends OtherBaseActivity {
 				view.setTag(holder);
 			}
 			DuihuanHistory history = mDuihuanHistroyList.get(position);
-			holder.prodName.setText(history.getDhPname());
-			holder.addr.setText("收货地址:"+history.getDhAddress());
-			holder.createTime.setText(history.getDhCreateTime());
-			holder.name.setText("收货人:"+history.getDhUname());
-			String statesText = "";
-			int states = Integer.parseInt(history.getDhStatus());
-			if(states == 0){
-				//审核中
-				statesText = "审核中";
-			} else if(states == 1){
-				//审核通过
-				statesText = "审核通过";
-			} else if(states == 2){
-				//审核未通过
-				statesText = "未通过审核";
+			if(history != null){
+				holder.prodName.setText(history.getDhPname());
+				holder.addr.setText("收货地址:"+history.getDhAddress());
+				holder.createTime.setText(history.getDhCreateTime());
+				holder.name.setText("收货人:"+history.getDhUname());
+				String statesText = "";
+				int states = Integer.parseInt(history.getDhStatus());
+				if(states == 0){
+					//审核中
+					statesText = "审核中";
+				} else if(states == 1){
+					//审核通过
+					statesText = "审核通过";
+				} else if(states == 2){
+					//审核未通过
+					statesText = "未通过审核";
+				}
+				holder.states.setText(statesText);
 			}
-			holder.states.setText(statesText);
 			return view;
 		}
 		

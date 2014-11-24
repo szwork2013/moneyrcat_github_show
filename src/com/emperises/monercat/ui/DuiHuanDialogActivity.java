@@ -14,6 +14,7 @@ import com.emperises.monercat.R;
 import com.emperises.monercat.domain.DomainObject;
 import com.emperises.monercat.domain.model.ZcmProduct;
 import com.emperises.monercat.domain.model.ZcmUser;
+import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
 
@@ -111,6 +112,7 @@ public class DuiHuanDialogActivity extends OtherBaseActivity {
 	@Override
 	public void onFinished(String content) {
 		super.onFinished(content);
+		Logger.i("DH", content);
 		mCommitBt.setClickable(true);
 		DomainObject obj = new Gson().fromJson(content, DomainObject.class);
 		if(obj != null  && obj.getResultCode().equals(HTTP_RESULE_SUCCESS)){
