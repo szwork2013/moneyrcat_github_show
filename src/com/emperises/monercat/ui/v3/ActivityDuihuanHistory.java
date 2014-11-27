@@ -90,6 +90,7 @@ public class ActivityDuihuanHistory extends OtherBaseActivity {
 				holder.createTime = (TextView) view.findViewById(R.id.duihuan_history_time);
 				holder.name = (TextView) view.findViewById(R.id.duihuan_history_ems_name);
 				holder.states = (TextView) view.findViewById(R.id.duihuan_history_states);
+				holder.prodName = (TextView)view.findViewById(R.id.duihuan_history_title);
 				view.setTag(holder);
 			}
 			DuihuanHistory history = mDuihuanHistroyList.get(position);

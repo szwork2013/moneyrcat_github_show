@@ -230,12 +230,23 @@ public class ActivityEditMyinfo extends OtherBaseActivity implements
 			String mAge = mAgeText.getText().toString();
 			String mGend = mGenderText.getText().toString();
 			String mNickname = mNicknameText.getText().toString();
-			boolean bindFlg = getBoleanValueForKey(LOCAL_CONFIGKEY_BIND_FLG);
+			String tel = mInfoTel.getText().toString();
+			String toastStr = "您填写的信息不完整!";
+			if(TextUtils.isEmpty(mAddress.trim()) ){
+				toastStr = "没有填写地址!";
+			} else if (TextUtils.isEmpty(mAge.trim())){
+				toastStr = "没有填写年龄!";
+			} else if (TextUtils.isEmpty(mGend.trim())){
+				toastStr = "没有填写性别!";
+			} else if (TextUtils.isEmpty(mNickname.trim())){
+				
+			}
+			//需要重构
 			if (!TextUtils.isEmpty(mAddress.trim()) && !TextUtils.isEmpty(mAge.trim()) && !TextUtils.isEmpty(mGend.trim())
-					&& !TextUtils.isEmpty(mNickname.trim()) && bindFlg) {
+					&& !TextUtils.isEmpty(mNickname.trim()) && !TextUtils.isEmpty(tel.trim()) ) {
 				saveMyInfo();
 			} else {
-				showToast("您填写的信息不完整!"); 
+				showToast(toastStr); 
 			}
 			break;
 		case R.id.editinfo_headerimage_layout:

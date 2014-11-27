@@ -51,7 +51,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		Logger.i("Activity", "HomeActivity_v2");
 		setContentView(R.layout.activity_home_v2);
-		Util.checkUpdateVersion(this, SERVER_URL_UPDATE_VERSION);
+		Util.checkUpdateVersion(this, SERVER_URL_UPDATE_VERSION,mUpdateProgressBar);
 
 	}
 
@@ -68,36 +68,10 @@ public class HomeActivity_v2 extends BaseActivity implements
 
 		return super.onKeyDown(keyCode, event);
 	}
-
-//	@Override
-//	protected void onStop() {
-//		super.onStop();
-//		Logger.i("KEY", "HomeActivity onStop 程序进入后台");
-//		//停止自动滑动
-//		mAdPager.stopAutoScroll();
-//	}
-//	@Override
-//	protected void onResume() {
-//		super.onResume();
-//		Logger.i("KEY", "HomeActivity onResume 程序进入后台");
-//		mAdPager.startAutoScroll();
-//	}
-	@Override
-	public void onWindowFocusChanged(boolean hasFocus) {
-		super.onWindowFocusChanged(hasFocus);
-//		if(mAdPager != null){
-//			if(hasFocus){
-//				Logger.i("KEY", "HomeActivity 界面出现");
-//				mAdPager.startAutoScroll();
-//			} else {
-//				Logger.i("KEY", "HomeActivity 界面消失");
-//				mAdPager.stopAutoScroll();
-//			}
-//		}
-	}
 	@Override
 	protected void initViews() {
 		HeaderImageEvent.getInstance().addHeaderImageListener(this);
+		mUpdateProgressBar = (ProgressBar) findViewById(R.id.progressbar);
 		mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_layout);
 		mRefreshLayout.setOnRefreshListener(this);
 		mErrorHit = (Button) findViewById(R.id.error_hit);
@@ -109,6 +83,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 		mPagerIndexLayout = (LinearLayout) homeHeaderItem
 				.findViewById(R.id.pageControlLayout);
 		mPullListView = (ListView) findViewById(R.id.adListView);
+		mPullListView.addHeaderView(homeHeaderItem);
 		// mMXButton = (Button) homeHeaderItem.findViewById(R.id.mingxi_button);
 		mAdPager = (AutoScrollViewPager) homeHeaderItem
 				.findViewById(R.id.adPager);
@@ -296,8 +271,6 @@ public class HomeActivity_v2 extends BaseActivity implements
 
 	}
 
-	private final static int ITEM_VIEW_TYPE_DEFAULT = 0;
-	private final static int ITEM_VIEW_TYPE_PAGER = 1;
 
 	class MyAdAdapter extends BaseAdapter {
 
@@ -309,31 +282,17 @@ public class HomeActivity_v2 extends BaseActivity implements
 
 		@Override
 		public int getCount() {
-			return mAdInfos.size() + 1;
+			return mAdInfos.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			return mAdInfos.get(position - 1);
+			return position;
 		}
 
 		@Override
 		public long getItemId(int arg0) {
 			return 0;
-		}
-
-		@Override
-		public int getViewTypeCount() {
-			return 2;
-		}
-
-		@Override
-		public int getItemViewType(int position) {
-			if (position == 0) {
-				return ITEM_VIEW_TYPE_PAGER;
-			} else {
-				return ITEM_VIEW_TYPE_DEFAULT;
-			}
 		}
 
 		@Override
@@ -344,8 +303,6 @@ public class HomeActivity_v2 extends BaseActivity implements
 				view = convertView;
 				holder = (ViewHolder) view.getTag();
 			} else {
-				if (getItemViewType(position) == ITEM_VIEW_TYPE_DEFAULT) {
-
 					view = getLayoutInflater().inflate(R.layout.list_ad_item,
 							null);
 					holder = new ViewHolder();
@@ -353,25 +310,26 @@ public class HomeActivity_v2 extends BaseActivity implements
 					holder.adTitle = (TextView) view.findViewById(R.id.adTitle);
 					holder.adDescription = (TextView) view
 							.findViewById(R.id.adDescription);
-					// holder.adRecommendText = (TextView) view
-					// .findViewById(R.id.adRecommendText);// 推荐
 					holder.adBalanceText = (TextView) view
 							.findViewById(R.id.adBalanceText);// 点击
+					holder.adOverImage = (ImageView) view.findViewById(R.id.ad_over_image);
 					view.setTag(holder);
-
-				} else if (getItemViewType(position) == ITEM_VIEW_TYPE_PAGER) {
-					mPullListView.setDividerHeight(0);
-					view = homeHeaderItem;
-				}
 			}
-			if (getItemViewType(position) == ITEM_VIEW_TYPE_DEFAULT) {
-				ZcmAdertising info = mAdInfos.get(position - 1);
+			if(mAdInfos.size() > 0){
+				ZcmAdertising info = mAdInfos.get(position);
 				Logger.i("ICON", info.getAdIcon());
-
 				getFinalBitmap().display(holder.adIcon, info.getAdIcon());
 				holder.adTitle.setText(info.getAdTitle());
 				holder.adDescription.setText(info.getAdContent());
 				holder.adBalanceText.setText(info.getAd_desc());
+				if (holder.adOverImage != null) {
+					String s = info.getAd_award_balance();
+					if(Integer.parseInt(s) == 0){
+						holder.adOverImage.setVisibility(View.VISIBLE);
+					} else {
+						holder.adOverImage.setVisibility(View.GONE);
+					}
+				}
 			}
 			Logger.i("VIEW", "getView");
 			return view;
@@ -385,6 +343,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 		TextView adDescription;
 		TextView adBalanceText;
 		TextView adRecommendText;
+		ImageView adOverImage;
 
 	}
 
@@ -418,6 +377,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 	private ImageView mHeaderImage;
 	private int mHeaderWH;
 	private SwipeRefreshLayout mRefreshLayout;
+	private ProgressBar mUpdateProgressBar;
 
 	private void changeIndexBg(int currentPosition) {
 		for (int i = 0; i < mPagerIndexLayout.getChildCount(); i++) {
@@ -438,7 +398,7 @@ public class HomeActivity_v2 extends BaseActivity implements
 		ZcmAdertising itemInfo = (ZcmAdertising) mAdInfos.get(position - 1);
 		i.putExtra(INTENT_KEY_ADINFO, itemInfo);
 		String url = itemInfo.getAdUrl();
-		if (!TextUtils.isEmpty(url)) {
+		if (!TextUtils.isEmpty(url) && Integer.parseInt(itemInfo.getAd_award_balance()) != 0) {
 			Logger.i("URL", "AD URL:" + itemInfo.getAdUrl());
 			startActivityWithAnimation(i);
 		}

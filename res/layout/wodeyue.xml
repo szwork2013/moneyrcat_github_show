@@ -43,7 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:text="余额:48700瞄币(400.87元)"
             android:textColor="#6e7d83"
             android:textSize="@dimen/wodeyue_yuetext_testsize" />
 

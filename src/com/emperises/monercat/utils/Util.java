@@ -11,6 +11,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.DownloadManager;
 import android.app.DownloadManager.Request;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -31,6 +32,8 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.emperises.monercat.R;
 import com.emperises.monercat.customview.CustomDialog.DialogClick;
@@ -216,11 +219,64 @@ public class Util {
 		Logger.i("VERSION", "当前版本Float:"+Float.parseFloat(version));
 		return Float.parseFloat(version);
 	}
+	//下载并更新APK
+	public static void showUpdateDialog(final Context context , final ZcmApp app , final ProgressBar progressbar){
+		CustomDialogConfig config = new CustomDialogConfig();
+		config.setTitle(context.getString(R.string.update_title));
+		config.setSureButtonText(context.getString(R.string.update_button_text));
+		config.setMessage(app.getAppContent());
+		config.setCancelListener(new DialogClick() {
+			@Override
+			public void onClick(View v) {
+				super.onClick(v);
+			}
+		});
+		config.setSureListener(new DialogClick() {
+			public void onClick(View v) {
+				super.onClick(v);
+				downloadApk(context, app, progressbar);
+			};
+		});
+		DialogManager.getInstance(context, config).show();
+		
+	}
+
+	public  static void downloadApk(final Context context , ZcmApp app , final ProgressBar progressbar){
+		File apkPath = new File(Environment.getExternalStorageDirectory(),"moneycat/zcmapk.apk");
+		new FinalHttp().download(app.getAppUrl(), apkPath.getAbsolutePath(), new AjaxCallBack<File>() {
+			@Override
+			public void onLoading(long count, long current) {
+				super.onLoading(count, current);
+				progressbar.setMax((int) count);
+				progressbar.setProgress((int) current);
+			}
+			@Override
+			public void onStart() {
+				super.onStart();
+				progressbar.setVisibility(View.VISIBLE);
+				Toast.makeText(context, "更新已启动", Toast.LENGTH_SHORT).show();
+			}
+			@Override
+			public void onSuccess(File t) {
+				progressbar.setVisibility(View.GONE);
+				if(t.exists()){
+					Toast.makeText(context, "更新完成", Toast.LENGTH_SHORT).show();
+					installApk(t.getAbsolutePath(), context);
+				}
+				super.onSuccess(t);
+			}
+			@Override
+			public void onFailure(Throwable t, int errorNo, String strMsg) {
+				progressbar.setVisibility(View.GONE);
+				super.onFailure(t, errorNo, strMsg);
+			}
+		});
+	}
 	/**
 	 * 检查更新版本
 	 * @return
 	 */
-	public static boolean checkUpdateVersion(final Context context,String updateUrl){
+	public static boolean checkUpdateVersion(final Context context,String updateUrl,final ProgressBar progressbar){
 		new FinalHttp().post(updateUrl, new AjaxCallBack<String>(){
 			@Override
 			public void onSuccess(String t) {
@@ -231,7 +287,8 @@ public class Util {
 					if(update != null && update.getResultCode().equals("00")){
 						float currentVersionCode = Float.parseFloat(update.getVal().getAppVersion());
 						if(currentVersionCode > getLocalVersionCode(context)){
-							showUpdateDialog(context, update.getVal());
+//							showUpdateDialog(context, update.getVal(),progressbar);
+							showUpdateDialog(context, update.getVal(),progressbar);
 						} else {
 							
 						}
@@ -270,6 +327,7 @@ public class Util {
 			public void onClick(View v) {
 				super.onClick(v);
 				downloadApkAndInstall(context, update);
+				
 			};
 		});
 		DialogManager.getInstance(context, config).show();
