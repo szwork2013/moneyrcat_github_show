@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/background" >
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <com.emperises.monercat.customview.CustomSwipeRefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
@@ -16,7 +16,7 @@
             android:divider="#cdcdcd"
             android:scrollbars="none" >
         </ListView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </com.emperises.monercat.customview.CustomSwipeRefreshLayout>
 
     <ProgressBar
         android:id="@+id/progress"

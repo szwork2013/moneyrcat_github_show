@@ -16,6 +16,7 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.emperises.monercat.BuildConfig;
@@ -23,8 +24,11 @@ import com.emperises.monercat.MainActivity;
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.customview.CustomDialog.DialogClick;
+import com.emperises.monercat.domain.DomainObject;
 import com.emperises.monercat.domain.model.RegResult;
+import com.emperises.monercat.interfacesandevents.UrlPostInterface;
 import com.emperises.monercat.services.MoneyCatService;
+import com.emperises.monercat.ui.v3.CheckCodeActivity;
 import com.emperises.monercat.ui.v3.WelcomeActivity;
 import com.emperises.monercat.utils.CrashHandler;
 import com.emperises.monercat.utils.Logger;
@@ -43,19 +47,51 @@ public class SplashActivity extends OtherBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_splash);
+		getHttpClient().post(SERVER_URL_CHECKCODE_FLG, new AjaxCallBack<String>(){
+			@Override
+			public void onSuccess(String t) {
+				Logger.i("CHECK", t);
+				super.onSuccess(t);
+				if(!TextUtils.isEmpty(t)){
+					DomainObject o = new Gson().fromJson(t, DomainObject.class);
+					if(o != null && o.getResultCode().equals("01")){
+						Intent i = new Intent(SplashActivity.this, CheckCodeActivity.class);
+						startActivityForResult(i, 0);						
+					} else {
+						init();
+					}
+				} else {
+					init();
+				}
+			}
+			@Override
+			public void onFailure(Throwable t, int errorNo, String strMsg) {
+				super.onFailure(t, errorNo, strMsg);
+				init();
+			}
+		});
+
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		init();
+	}
+	private void init() {
 		Logger.i("DEBUG",BuildConfig.DEBUG+"");
 		// 初始化异常捕获模块
 		if (!Logger.DEBUG) {
 			CrashHandler.getInstance().init(getApplicationContext());
 		}
 		startService(new Intent(this, MoneyCatService.class));
-		super.onCreate(savedInstanceState);
 		File file = new File(Environment.getExternalStorageDirectory(),
 				"moneycat");
 		if (!file.exists()) {
 			file.mkdir();
 		}
-		setContentView(R.layout.activity_splash);
 		// 创建一个SD卡文件夹
 		// 检测是否是真机
 		String deviceId = Util.getDeviceId(this);
@@ -73,7 +109,6 @@ public class SplashActivity extends OtherBaseActivity {
 				}
 			}).start();
 		}
-
 	}
 
 	private void reg() {

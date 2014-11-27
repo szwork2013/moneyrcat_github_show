@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background" >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/header" />
+
+<EditText
+    android:id="@+id/checkCodeEdit"
+    android:layout_width="200dp"
+    android:layout_height="30dp"
+    android:layout_below="@+id/include1"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="12dp"
+    android:background="@drawable/commit_bt_normal"
+    android:ems="10"
+    android:hint="请输入验证码"
+    android:inputType="text"
+    android:maxLength="4"
+    android:textColor="@color/textcontent"
+    android:textSize="13sp" />
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/texttitle"
+    android:layout_alignBaseline="@+id/checkCodeEdit"
+    android:layout_alignBottom="@+id/checkCodeEdit"
+    android:layout_toLeftOf="@+id/checkCodeEdit"
+    android:text="验证码：" />
+
+<Button
+    android:id="@+id/bindCheckCodeButton"
+    android:layout_width="110dp"
+    android:layout_height="30dp"
+    android:layout_alignLeft="@+id/checkCodeEdit"
+    android:layout_below="@+id/checkCodeEdit"
+    android:layout_marginTop="16dp"
+    android:background="@drawable/commit_bt_selector"
+    android:onClick="onClick"
+    android:text="进入招财喵"
+    android:textColor="@color/texttitle"
+    android:textSize="13sp" />
+
+<TextView
+    android:id="@+id/chechCodeTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/bindCheckCodeButton"
+    android:layout_alignBottom="@+id/bindCheckCodeButton"
+    android:layout_marginLeft="10dp"
+    android:textColor="@color/textcontent"
+    android:layout_toRightOf="@+id/bindCheckCodeButton"
+    android:text="验证码:6YHU" />
+
+<TextView
+    android:id="@+id/textView3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/bindCheckCodeButton"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="28dp"
+    android:text="提示:请输入验证码,进入招财喵." />
+
+</RelativeLayout>
