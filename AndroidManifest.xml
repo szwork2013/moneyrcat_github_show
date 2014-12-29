@@ -354,7 +354,7 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-
+		<meta-data android:value="UMCHANEL" android:name="UMENG_CHANNEL"/>
         <meta-data
             android:name="api_key"
             android:value="bTpSUZXgXH6DholXsUf4Rz38" />

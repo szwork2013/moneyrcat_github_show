@@ -47,30 +47,7 @@ public class SplashActivity extends OtherBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
-		getHttpClient().post(SERVER_URL_CHECKCODE_FLG, new AjaxCallBack<String>(){
-			@Override
-			public void onSuccess(String t) {
-				Logger.i("CHECK", t);
-				super.onSuccess(t);
-				if(!TextUtils.isEmpty(t)){
-					DomainObject o = new Gson().fromJson(t, DomainObject.class);
-					if(o != null && o.getResultCode().equals("01")){
-						Intent i = new Intent(SplashActivity.this, CheckCodeActivity.class);
-						startActivityForResult(i, 0);						
-					} else {
-						init();
-					}
-				} else {
-					init();
-				}
-			}
-			@Override
-			public void onFailure(Throwable t, int errorNo, String strMsg) {
-				super.onFailure(t, errorNo, strMsg);
-				init();
-			}
-		});
-
+		init();
 	}
 
 	@Override

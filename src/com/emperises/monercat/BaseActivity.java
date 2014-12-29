@@ -50,6 +50,7 @@ import com.emperises.monercat.ui.v3.ActivityMyInfo;
 import com.emperises.monercat.utils.Logger;
 import com.emperises.monercat.utils.Util;
 import com.google.gson.Gson;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -714,5 +715,17 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 	@Override
 	public void onPhoneNumberChangeAfter(String tel) {
 		
+	}
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 }
