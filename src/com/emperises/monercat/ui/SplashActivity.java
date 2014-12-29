@@ -16,7 +16,6 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.emperises.monercat.BuildConfig;
@@ -26,7 +25,6 @@ import com.emperises.monercat.R;
 import com.emperises.monercat.customview.CustomDialog.DialogClick;
 import com.emperises.monercat.domain.DomainObject;
 import com.emperises.monercat.domain.model.RegResult;
-import com.emperises.monercat.interfacesandevents.UrlPostInterface;
 import com.emperises.monercat.services.MoneyCatService;
 import com.emperises.monercat.ui.v3.CheckCodeActivity;
 import com.emperises.monercat.ui.v3.WelcomeActivity;

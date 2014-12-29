@@ -3,7 +3,7 @@ package com.emperises.monercat.utils;
 import android.util.Log;
 public class Logger
 {
-	public static boolean DEBUG = true;
+	public static boolean DEBUG = false;
 	public static void i(String tag,String msg) {
 		if (DEBUG) {
 			Log.i(tag, msg);

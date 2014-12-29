@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.DownloadListener;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -21,6 +22,7 @@ import android.widget.ProgressBar;
 import com.emperises.monercat.OtherBaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmAdertising;
+import com.emperises.monercat.domain.model.ZcmApp;
 import com.emperises.monercat.domain.model.ZcmUser;
 import com.emperises.monercat.interfacesandevents.NativeJavaScriptCallBackInterface;
 import com.emperises.monercat.utils.GalleryUrlActivity;
@@ -76,6 +78,17 @@ public class ActivityAdDetail_HTML5 extends OtherBaseActivity implements NativeJ
 		webview.setHorizontalScrollBarEnabled(false);
 		webview.setVerticalScrollBarEnabled(false);
 		webview.addJavascriptInterface(this, "zcmJavaCallBack");
+		webview.setDownloadListener(new DownloadListener() {
+			
+			@Override
+			public void onDownloadStart(String url, String userAgent, String contentDisposition,
+					String mimetype, long contentLength) {
+				Logger.i("DOWN", "url:"+url);
+				ZcmApp app = new ZcmApp();
+				app.setAppUrl(url);
+				Util.downloadApkAndInstall(ActivityAdDetail_HTML5.this, app);
+			}
+		});
 	}
 
 	@Override

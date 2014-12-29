@@ -25,7 +25,7 @@
     <string name="guanggaoshenling">广告申领</string>
     <string name="woyaotixian">我要提现</string>
     <string name="myad">我的广告</string>
-    <string name="updatestartstr">招财喵更新启动</string>
+    <string name="updatestartstr">正在下载</string>
     <string name="cancle">取消</string>
     <string name="sure">确定</string>
     <string name="errcode_success">发送成功</string>
@@ -78,7 +78,7 @@
     <string name="upload_image_loading_str">您的任务已经完成提交，小喵正在玩命儿审核中，敬请期待</string>
     <string name="app_copy_right_des">此应用内所有相关内容最终解释权归上海宸崛信息技术有限公司所有</string>
     <string name="app_copy_right">招财喵 © 2014. Emperises Group</string>
-    <string name="app_copy_right_version">Beta Version V2.2</string>
+    <string name="app_copy_right_version">Beta Version V2.3</string>
     <string name="_duihuan_button_text">兑换</string>
     <string name="duihuan_history">兑换记录</string>
 

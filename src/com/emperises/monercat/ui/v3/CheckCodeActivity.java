@@ -2,6 +2,7 @@ package com.emperises.monercat.ui.v3;
 
 import java.util.Locale;
 import java.util.Random;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.emperises.monercat.BaseActivity;
 import com.emperises.monercat.R;
 
