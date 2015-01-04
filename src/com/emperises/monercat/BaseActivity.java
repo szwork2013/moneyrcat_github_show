@@ -413,8 +413,8 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		// 清理接口事件
 		mController.getConfig().cleanListeners();
 		// QQ好友
-		UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(this, "1101962112",
-				"RY1S5XEVSVnjx3B7");
+		UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(this, "1103845698",
+				"veQuoAq2P0uVd64w");
 		qqSsoHandler.setTitle(shareTitle);
 		qqSsoHandler.setTargetUrl(shareUrl);
 		qqSsoHandler.addToSocialSDK();
@@ -427,7 +427,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		mController.setShareMedia(qqShareContent);
 		// QQ空间
 		QZoneSsoHandler qZoneSsoHandler = new QZoneSsoHandler(this,
-				"1101962112", "RY1S5XEVSVnjx3B7");
+				"1103845698", "veQuoAq2P0uVd64w");
 		QZoneShareContent content = new QZoneShareContent();
 		qZoneSsoHandler.setTargetUrl(shareUrl);
 		qZoneSsoHandler.addToSocialSDK();

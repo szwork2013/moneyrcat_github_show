@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">招财喵</string>
+    <string name="app_name">乐吉喵</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="neterror">网络错误</string>
@@ -78,7 +78,7 @@
     <string name="upload_image_loading_str">您的任务已经完成提交，小喵正在玩命儿审核中，敬请期待</string>
     <string name="app_copy_right_des">此应用内所有相关内容最终解释权归上海宸崛信息技术有限公司所有</string>
     <string name="app_copy_right">招财喵 © 2014. Emperises Group</string>
-    <string name="app_copy_right_version">Beta Version V2.3</string>
+    <string name="app_copy_right_version">Beta Version V2.4</string>
     <string name="_duihuan_button_text">兑换</string>
     <string name="duihuan_history">兑换记录</string>
 
