@@ -58,9 +58,9 @@ public class SplashActivity extends OtherBaseActivity {
 	private void init() {
 		Logger.i("DEBUG",BuildConfig.DEBUG+"");
 		// 初始化异常捕获模块
-		if (!Logger.DEBUG) {
-			CrashHandler.getInstance().init(getApplicationContext());
-		}
+//		if (!Logger.DEBUG) {
+//			CrashHandler.getInstance().init(getApplicationContext());
+//		}
 		startService(new Intent(this, MoneyCatService.class));
 		File file = new File(Environment.getExternalStorageDirectory(),
 				"moneycat");

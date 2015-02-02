@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.emperises.monercat.BaseActivity;
 import com.emperises.monercat.R;
 import com.emperises.monercat.domain.model.ZcmUser;
+import com.emperises.monercat.game.TurntableActivity;
 import com.emperises.monercat.interfacesandevents.HeaderImageEvent;
 import com.emperises.monercat.ui.v3.ActivityMyInfo;
 import com.emperises.monercat.utils.Util;
@@ -79,6 +80,9 @@ public class WoDeTabActivity extends BaseActivity {
 			break;
 		case R.id.chaozhiduihuan:
 			startActivityWithAnimation(new Intent(this, DuiHuanActivity.class));
+			break;
+		case R.id.dazhuanpan:
+			startActivityWithAnimation(new Intent(this, TurntableActivity.class));
 			break;
 		default:
 			break;

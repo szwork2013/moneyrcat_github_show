@@ -57,7 +57,7 @@ public class TiXianActivity extends OtherBaseActivity implements
 	public void onFinished(String content) {
 		super.onFinished(content);
 		ZcmProduct p = new Gson().fromJson(content, ZcmProduct.class);
-		if (p != null && p.getRows().size() > 0) {
+		if (p != null && p.getRows()!= null &&p.getRows().size()  > 0) {
 			mProducts = p.getRows();
 			MyAdapter mAdapter = new MyAdapter();
 			mTixianListView.setOnItemClickListener(this);

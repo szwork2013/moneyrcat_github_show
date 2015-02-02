@@ -38,7 +38,9 @@ public class DialogManager {
 		mCustomDialogConfig = config;
 	}
 	public void setDialogClickInterfaceListener(CustomDialogClickEventInterface listener){
-		mCustomDialogClickEvent.setOnDialogClickListener(listener);
+		if(mCustomDialogClickEvent!= null){			
+			mCustomDialogClickEvent.setOnDialogClickListener(listener);
+		}
 	}
 	public void show(){
 		mContext.startActivity(new Intent(mContext , CustomDialog.class));

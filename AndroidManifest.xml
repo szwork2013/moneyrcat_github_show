@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.emperises.monercat"
-    android:versionCode="11"
+    android:versionCode="12"
     android:versionName="2.4" > 
 
     <uses-sdk
@@ -128,6 +128,11 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="com.emperises.monercat.game.TurntableActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name="com.emperises.monercat.ui.v3.ActivityMessageList"
             android:launchMode="singleTop"

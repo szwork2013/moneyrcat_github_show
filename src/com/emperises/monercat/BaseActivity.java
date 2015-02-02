@@ -413,8 +413,8 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		// 清理接口事件
 		mController.getConfig().cleanListeners();
 		// QQ好友
-		UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(this, "1103845698",
-				"veQuoAq2P0uVd64w");
+		UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(this, "1103215729",
+				"niji70Ai4vzmwHrR");
 		qqSsoHandler.setTitle(shareTitle);
 		qqSsoHandler.setTargetUrl(shareUrl);
 		qqSsoHandler.addToSocialSDK();
@@ -427,7 +427,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		mController.setShareMedia(qqShareContent);
 		// QQ空间
 		QZoneSsoHandler qZoneSsoHandler = new QZoneSsoHandler(this,
-				"1103845698", "veQuoAq2P0uVd64w");
+				"1103215729", "niji70Ai4vzmwHrR");
 		QZoneShareContent content = new QZoneShareContent();
 		qZoneSsoHandler.setTargetUrl(shareUrl);
 		qZoneSsoHandler.addToSocialSDK();
@@ -437,7 +437,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,
 		content.setTitle(shareTitle);
 		mController.setShareMedia(content);
 		// wx967daebe835fbeac是你在微信开发平台注册应用的AppID, 这里需要替换成你注册的AppID
-		String appID = "wxcec4566d135405e6";
+		String appID = "wx996289d8270c6ceb";
 		// 添加微信平台
 		UMWXHandler wxHandler = new UMWXHandler(this, appID);
 		wxHandler.setTitle(shareTitle);

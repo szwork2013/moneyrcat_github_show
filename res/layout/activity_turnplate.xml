@@ -1,0 +1,211 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/whell_bg" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp" >
+
+        <Button
+            android:id="@+id/erbeiButton"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/button_one_selector"
+            android:onClick="onClick" />
+
+        <Button
+            android:id="@+id/sanbeiButton"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/button_two_selector"
+            android:onClick="onClick" />
+
+        <Button
+            android:id="@+id/wubeiButton"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/button_three_selector"
+            android:onClick="onClick" />
+
+        <Button
+            android:id="@+id/shibeiButton" 
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/button_four_selector"
+            android:onClick="onClick" />
+
+        <Button
+            android:id="@+id/ershibeiButton"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/button_five_selector"
+            android:onClick="onClick" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/editTextGroups"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="5dp" >
+
+        <EditText
+            android:id="@+id/erbeiEdit"
+            android:layout_width="62dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/edit_1"
+            android:editable="false"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#ffffff"
+            android:textStyle="bold" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/sanbeiText"
+            android:layout_width="62dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/edit_2"
+            android:editable="false"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#ffffff"
+            android:textStyle="bold" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/wubeiText"
+            android:layout_width="62dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/edit_3"
+            android:editable="false"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#ffffff"
+            android:textStyle="bold" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/shibeiText"
+            android:layout_width="62dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/edit_4"
+            android:editable="false"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#ffffff"
+            android:textStyle="bold" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/ershibeiText"
+            android:layout_width="62dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/edit_5"
+            android:editable="false"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#ffffff"
+            android:textStyle="bold" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTextGroups"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="10dp" >
+
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:visibility="gone"
+            android:background="@drawable/stop"
+            android:onClick="onClick" />
+
+        <CheckBox
+            android:button="@null"
+            android:id="@+id/playButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_play_selector"
+            android:onClick="onClick" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/balanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/blance"
+        android:gravity="center_vertical|right"
+        android:paddingRight="10dp"
+        android:text="10000"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/rootViewPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp" >
+
+        <ImageView
+            android:id="@+id/light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/light" />
+
+        <Button
+            android:onClick="onClick"
+            android:id="@+id/point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/point" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

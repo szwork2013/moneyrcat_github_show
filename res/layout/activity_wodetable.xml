@@ -204,6 +204,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="#cdcdcd" />
+            <RelativeLayout
+                android:id="@+id/dazhuanpan"
+                android:layout_width="fill_parent"
+                android:onClick="onClick"
+                android:layout_height="60dp"
+                android:background="@drawable/white_selector" >
+
+                <ImageView
+                    android:id="@+id/imageView1_3_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/chaozhiduihuan" />
+
+                <TextView
+                    android:id="@+id/mytab_nickname_3_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@+id/imageView1_3_1"
+                    android:text="大转盘单机测试版"
+                    android:textColor="#ff0000" />
+
+                <ImageView
+                    android:id="@+id/imageView2_3_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/right_arrow" />
+            </RelativeLayout>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#cdcdcd" />
         </LinearLayout>
     </ScrollView>
 
